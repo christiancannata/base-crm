@@ -18,6 +18,11 @@ return [
             'text' => 'Utenti',
             'route' => 'user.index',
             'submenu' => []
+        ],
+        'contracts' => [
+            'text' => 'Contratti',
+            'route' => 'contract.index',
+            'submenu' => []
         ]
     ]
 ];
