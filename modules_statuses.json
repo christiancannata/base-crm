@@ -1,0 +1,9 @@
+{
+    "User": true,
+    "Company": true,
+    "Task": true,
+    "Contract": true,
+    "Log": true,
+    "Comment": true,
+    "Dashboard": true
+}
