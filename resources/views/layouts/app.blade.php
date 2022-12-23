@@ -5,27 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Link Of CSS -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/assets/css/remixicon.css">
-    <link rel="stylesheet" href="/assets/css/boxicons.min.css">
-    <link rel="stylesheet" href="/assets/css/iconsax.css">
-    <link rel="stylesheet" href="/assets/css/metismenu.min.css">
-    <link rel="stylesheet" href="/assets/css/simplebar.min.css">
-    <link rel="stylesheet" href="/assets/css/calendar.css">
-    <link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
-    <link rel="stylesheet" href="/assets/css/jbox.all.min.css">
-    <link rel="stylesheet" href="/assets/css/editor.css">
-    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/css/loaders.css">
-    <link rel="stylesheet" href="/assets/css/header.css">
-    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
-    <link rel="stylesheet" href="/assets/css/footer.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/responsive.css">
+
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.svg">
@@ -44,8 +24,8 @@
 
     <!-- Start Main Content Area -->
     <main class="main-content-wrap style-two">
-
-        <!-- Start Features Area -->
+        @yield('content')
+        <!--
         <div class="features-area">
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -111,9 +91,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Features Area -->
 
-        <!-- Start Overview Area -->
         <div class="overview-area">
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -256,9 +234,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Overview Area -->
 
-        <!-- Start Device Website Area -->
         <div class="device-website-area">
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -415,9 +391,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Device Website Area -->
 
-        <!-- Start Total Visits Area -->
         <div class="total-visits-browse-area">
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -680,17 +654,13 @@
                 </div>
             </div>
         </div>
-        <!-- End Total Visits Area -->
-
-        <!-- Start Footer Area -->
         <div class="footer-area">
             <div class="container-fluid">
                 <div class="footer-content">
-                    <p>© Joxi is Proudly Owned by <a href="https://envytheme.com/" target="_blank">EnvyTheme</a></p>
+                    <p>© CRM is Proudly Owned by <a href="https://envytheme.com/" target="_blank">EnvyTheme</a></p>
                 </div>
             </div>
-        </div>
-        <!-- End Footer Area -->
+        </div>-->
 
     </main>
     <!-- End Main Content Area -->
@@ -705,8 +675,30 @@
 <!-- End Go Top Area -->
 
 <!-- Jquery Min JS -->
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 <script src="/assets/js/jquery.min.js"></script>
-<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+<!-- Link Of CSS -->
+<link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/assets/css/animate.min.css">
+<link rel="stylesheet" href="/assets/css/remixicon.css">
+<link rel="stylesheet" href="/assets/css/boxicons.min.css">
+<link rel="stylesheet" href="/assets/css/iconsax.css">
+<link rel="stylesheet" href="/assets/css/metismenu.min.css">
+<link rel="stylesheet" href="/assets/css/simplebar.min.css">
+<link rel="stylesheet" href="/assets/css/calendar.css">
+<link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
+<link rel="stylesheet" href="/assets/css/jbox.all.min.css">
+<link rel="stylesheet" href="/assets/css/editor.css">
+<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/css/loaders.css">
+<link rel="stylesheet" href="/assets/css/header.css">
+<link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+<link rel="stylesheet" href="/assets/css/footer.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/responsive.css">
+
 <script src="/assets/js/owl.carousel.min.js"></script>
 <script src="/assets/js/metismenu.min.js"></script>
 <script src="/assets/js/simplebar.min.js"></script>
@@ -720,9 +712,8 @@
 <script src="/assets/js/ajaxchimp.min.js"></script>
 <script src="/assets/js/custom.js"></script>
 
-<!--
-@vite(['resources/sass/app.scss', 'resources/js/app.js'])
--->
+
+
 
 @stack('scripts')
 

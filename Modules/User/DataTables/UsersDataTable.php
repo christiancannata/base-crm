@@ -45,11 +45,18 @@ class UsersDataTable extends DataTable
     {
         return $this->builder()
             ->setTableId('users-table')
+            ->setTableAttribute('class', 'table align-middle mb-0')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
             ->orderBy(1)
             ->selectStyleSingle()
+            ->parameters([
+                'language' => [
+                    'url' => url('/vendor/datatables/lang/' . config('app.locale') . '.json')
+                ],
+                // other configs
+            ])
             ->buttons([
                 Button::make('excel'),
                 Button::make('csv'),

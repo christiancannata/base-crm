@@ -55,7 +55,7 @@
 
     // Preloader
     $(window).on('load', function () {
-        $('.preloader').addClass('preloader-deactivate');
+       // $('.preloader').addClass('preloader-deactivate');
     })
 
     // Burger Menu JS
@@ -87,7 +87,7 @@
     });
 
     // Performers Slider JS
-    $('.performers-slider').owlCarousel({
+  /*  $('.performers-slider').owlCarousel({
         loop: true,
         margin: 30,
         nav: false,
@@ -127,7 +127,7 @@
             }
         }
     })
-
+*/
     // Sidebar Active JS
     $('.sidebar-menu ul li').click(function () {
         $('li a').removeClass("active");
@@ -171,7 +171,7 @@
     }
 
     setInterval(function () {
-        makeTimer();
+     //   makeTimer();
     }, 300);
 
     // Treeview JS

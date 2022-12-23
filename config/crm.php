@@ -13,6 +13,11 @@ return [
             'text' => 'Dashboard',
             'route' => 'dashboard',
             'submenu' => []
+        ],
+        'users' => [
+            'text' => 'Utenti',
+            'route' => 'user.index',
+            'submenu' => []
         ]
     ]
 ];

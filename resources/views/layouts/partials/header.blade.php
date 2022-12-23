@@ -280,10 +280,11 @@
                             <div class="dropdown-footer">
                                 <ul class="profile-nav">
                                     <li class="nav-item">
-                                        <a href="login.html" class="nav-link">
-                                            <i class="ri-login-circle-line"></i>
-                                            <span>Logout</span>
-                                        </a>
+                                            <a href="{{route('logout')}}" class="nav-link">
+                                                <i class="ri-login-circle-line"></i>
+                                                <span>Esci</span>
+                                            </a>
+
                                     </li>
                                 </ul>
                             </div>

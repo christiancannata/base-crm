@@ -14,8 +14,8 @@ add('writable_dirs', []);
 // Hosts
 
 host('86.107.98.17')
-    ->set('remote_user', 'deployer')
-    ->set('deploy_path', '/var/www/base-crm');
+    ->set('remote_user', 'root')
+    ->set('deploy_path', '/var/www/crm');
 
 // Hooks
 
