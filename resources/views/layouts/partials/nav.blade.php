@@ -11,7 +11,7 @@
                         <div class="simplebar-content">
                             <ul id="sidebar-menu" class="sidebar-menu metismenu">
                                 @foreach(config('crm.menu') as $link)
-                                    <li class="">
+                                    <li class="list-group-item main-grid active">
                                         <a
                                             @if($link['route'])
                                                 href="{{route($link['route'])}}"

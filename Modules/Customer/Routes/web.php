@@ -10,6 +10,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('$LOWER_NAME$/{$LOWER_NAME$}/confirm-delete', [$STUDLY_NAME$Controller::class, 'confirmDelete'])->name('$LOWER_NAME$.confirm_delete');
-Route::resource('$LOWER_NAME$', $STUDLY_NAME$Controller::class);
+Route::get('customer/{customer}/confirm-delete', [\Modules\Customer\Http\Controllers\CustomerController::class, 'confirmDelete'])->name('customer.confirm_delete');
+Route::resource('customer', CustomerController::class);

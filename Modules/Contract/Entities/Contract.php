@@ -4,6 +4,7 @@ namespace Modules\Contract\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Customer\Entities\Customer;
 use Modules\Task\Entities\TaskCategory;
 use Modules\Task\Entities\TaskStatus;
 
@@ -20,12 +21,18 @@ class Contract extends Model
 
     public function category()
     {
-        return $this->belongsTo(TaskCategory::class, 'category_id');
+        return $this->belongsTo(TaskCategory::class);
     }
 
     public function status()
     {
-        return $this->belongsTo(TaskStatus::class, 'status_id');
+        return $this->belongsTo(TaskStatus::class);
+    }
+
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 
 }

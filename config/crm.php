@@ -41,6 +41,11 @@ return [
                     'route' => 'contract-status.index'
                 ]
             ]
+        ],
+        'customers' => [
+            'text' => 'Clienti',
+            'route' => 'customer.index',
+            'submenu' => []
         ]
     ]
 ];

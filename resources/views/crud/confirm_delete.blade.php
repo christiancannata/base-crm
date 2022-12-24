@@ -28,7 +28,7 @@
             <div class="card-box-style">
 
 
-                <form method="POST" action="{{route($entityName.'.destroy',[$entityName=>$entity])}}">
+                <form method="POST" action="{{route($entityName.'.destroy', [ $entityName=>$entity ])}}">
                     @csrf
 
                     <input type="hidden" name="_method" value="DELETE">
