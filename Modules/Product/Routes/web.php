@@ -11,5 +11,6 @@
 |
 */
 
-Route::get('$LOWER_NAME$/{$LOWER_NAME$}/confirm-delete', [\Modules\$STUDLY_NAME$\Http\Controllers\$STUDLY_NAME$Controller::class, 'confirmDelete'])->name('$LOWER_NAME$.confirm_delete');
-Route::resource('$LOWER_NAME$', \Modules\$STUDLY_NAME$\Http\Controllers\$STUDLY_NAME$Controller::class);
+Route::get('product/{product}/confirm-delete', [Modules\Product\Http\Controllers\ProductController::class, 'confirmDelete'])->name('product.confirm_delete');
+Route::resource('product', ProductController::class);
+

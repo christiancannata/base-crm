@@ -46,6 +46,21 @@ return [
             'text' => 'Clienti',
             'route' => 'customer.index',
             'submenu' => []
+        ],
+        'products' => [
+            'text' => 'Prodotti',
+            'route' => 'product.index',
+            'submenu' => []
+        ],
+        'settings' => [
+            'text' => 'Impostazioni',
+            'route' => null,
+            'submenu' => [
+                [
+                    'text' => 'Campi aggiuntivi',
+                    'route' => 'settings.additional_fields'
+                ]
+            ]
         ]
     ]
 ];

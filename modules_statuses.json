@@ -6,5 +6,6 @@
     "Log": true,
     "Comment": true,
     "Dashboard": true,
-    "Customer": true
+    "Customer": true,
+    "Product": true
 }
