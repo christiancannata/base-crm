@@ -12,13 +12,18 @@
                             <ul id="sidebar-menu" class="sidebar-menu metismenu">
                                 @foreach(config('crm.menu') as $link)
                                     <li class="">
-                                        <a href="{{route($link['route'])}}"
-                                           class="
+                                        <a
+                                            @if($link['route'])
+                                                href="{{route($link['route'])}}"
+                                            @else
+                                                href="#"
+                                            @endif
+                                            class="
                                             @if(count($link['submenu'])>0)  has-arrow @endif
                                           box-style d-flex align-items-center"
-                                           aria-expanded="false">
+                                            aria-expanded="false">
                                             <div class="icon">
-                                                <img src="assets/images/icon/element.svg" alt="element">
+                                                <img src="/assets/images/icon/element.svg" alt="element">
                                             </div>
                                             <span class="menu-title">{{$link['text']}}</span>
                                         </a>

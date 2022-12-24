@@ -1,6 +1,11 @@
 (function ($) {
     'use strict';
 
+    // TxtEditor JS
+    $(document).ready(function () {
+
+    });
+
     // Sidebar Menu JS
     $('#sidebar-menu').metisMenu();
 
@@ -55,7 +60,7 @@
 
     // Preloader
     $(window).on('load', function () {
-       // $('.preloader').addClass('preloader-deactivate');
+        // $('.preloader').addClass('preloader-deactivate');
     })
 
     // Burger Menu JS
@@ -87,47 +92,47 @@
     });
 
     // Performers Slider JS
-  /*  $('.performers-slider').owlCarousel({
-        loop: true,
-        margin: 30,
-        nav: false,
-        dots: false,
-        autoplay: true,
-        stagePadding: 50,
-        responsive: {
-            0: {
-                items: 1,
-                stagePadding: 0,
-            },
-            375: {
-                items: 2,
-                stagePadding: 0,
-            },
-            576: {
-                items: 3,
-                stagePadding: 0,
-            },
-            768: {
-                items: 4,
-                stagePadding: 0,
-            },
-            1200: {
-                items: 3,
-                stagePadding: 0,
-            },
-            1320: {
-                items: 4,
-                stagePadding: 0,
-            },
-            1400: {
-                items: 4,
-            },
-            1700: {
-                items: 5,
-            }
-        }
-    })
-*/
+    /*  $('.performers-slider').owlCarousel({
+          loop: true,
+          margin: 30,
+          nav: false,
+          dots: false,
+          autoplay: true,
+          stagePadding: 50,
+          responsive: {
+              0: {
+                  items: 1,
+                  stagePadding: 0,
+              },
+              375: {
+                  items: 2,
+                  stagePadding: 0,
+              },
+              576: {
+                  items: 3,
+                  stagePadding: 0,
+              },
+              768: {
+                  items: 4,
+                  stagePadding: 0,
+              },
+              1200: {
+                  items: 3,
+                  stagePadding: 0,
+              },
+              1320: {
+                  items: 4,
+                  stagePadding: 0,
+              },
+              1400: {
+                  items: 4,
+              },
+              1700: {
+                  items: 5,
+              }
+          }
+      })
+  */
     // Sidebar Active JS
     $('.sidebar-menu ul li').click(function () {
         $('li a').removeClass("active");
@@ -171,7 +176,7 @@
     }
 
     setInterval(function () {
-     //   makeTimer();
+        //   makeTimer();
     }, 300);
 
     // Treeview JS
@@ -256,42 +261,36 @@
     }
 
     // ToolTip Hover JS
-/*
-    try {
-        new jBox('Tooltip', {
-            attach: '.tooltip'
-        });
+    /*
+        try {
+            new jBox('Tooltip', {
+                attach: '.tooltip'
+            });
 
-        // ToolTip Modal JS
-        new jBox('Modal', {
-            width: 300,
-            height: 100,
-            attach: '#myModal',
-            title: 'My Modal Window',
-            content: '<i>Hello there!</i>'
-        });
+            // ToolTip Modal JS
+            new jBox('Modal', {
+                width: 300,
+                height: 100,
+                attach: '#myModal',
+                title: 'My Modal Window',
+                content: '<i>Hello there!</i>'
+            });
 
-        // ToolTip Confirm JS
-        new jBox('Confirm', {
-            confirmButton: 'Do it!',
-            cancelButton: 'Nope'
-        });
+            // ToolTip Confirm JS
 
-        // ToolTip Notice JS
-        new jBox('Notice', {
-            content: 'Welcome To Joxi!',
-            color: 'blue'
-        });
 
-        // ToolTip Image JS
-        new jBox('Image');
+            // ToolTip Notice JS
+            new jBox('Notice', {
+                content: 'Welcome To Joxi!',
+                color: 'blue'
+            });
 
-    } catch (err) {
-    }
-*/
-    // TxtEditor JS
-    $(document).ready(function () {
-     //   $("#txtEditor").Editor();
-    });
+            // ToolTip Image JS
+            new jBox('Image');
+
+        } catch (err) {
+        }
+    */
+
 
 })(jQuery);

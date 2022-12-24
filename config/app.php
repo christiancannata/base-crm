@@ -197,7 +197,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
+        \App\Providers\FlashNotifyProvider::class
     ],
 
     /*
@@ -213,6 +214,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class
     ])->toArray(),
+
 
 ];

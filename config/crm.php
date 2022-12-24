@@ -16,13 +16,31 @@ return [
         ],
         'users' => [
             'text' => 'Utenti',
-            'route' => 'user.index',
-            'submenu' => []
+            'route' => null,
+            'submenu' => [
+                [
+                    'text' => 'Tutti gli utenti',
+                    'route' => 'user.index'
+                ],
+                [
+                    'text' => 'Ruoli',
+                    'route' => 'role.index'
+                ]
+            ]
         ],
         'contracts' => [
             'text' => 'Contratti',
-            'route' => 'contract.index',
-            'submenu' => []
+            'route' => null,
+            'submenu' => [
+                [
+                    'text' => 'Tutti i contratti',
+                    'route' => 'contract.index'
+                ],
+                [
+                    'text' => 'Gestione Stati',
+                    'route' => 'contract-status.index'
+                ]
+            ]
         ]
     ]
 ];

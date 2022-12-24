@@ -13,3 +13,6 @@
 
 
 Route::resource('user', UserController::class);
+
+Route::get('role/{role}/confirm-delete', [\Modules\User\Http\Controllers\RoleController::class, 'confirmDelete'])->name('role.confirm_delete');
+Route::resource('role', RoleController::class);

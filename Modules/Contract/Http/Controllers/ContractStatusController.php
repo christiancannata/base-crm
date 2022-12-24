@@ -5,40 +5,26 @@ namespace Modules\Contract\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Kris\LaravelFormBuilder\FormBuilder;
 use Modules\Contract\DataTables\ContractsDataTable;
-use Modules\Contract\Forms\ContractForm;
 
-class ContractController extends Controller
+class ContractStatusController extends Controller
 {
-
-    public $entityName = 'contract';
-    public $formClass = ContractForm::class;
-
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index(ContractsDataTable $dataTable)
+    public function index(ContractsDataTable $datatable)
     {
-        $entityName = $this->entityName;
-        return $dataTable->render('crud.list', compact('dataTable', 'entityName'));
+        return $datatable->render('contract::index');
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create(FormBuilder $formBuilder)
+    public function create()
     {
-        $entityName = $this->entityName;
-
-        $form = $formBuilder->create($this->formClass, [
-            'method' => 'POST',
-            'url' => route($this->entityName . '.store')
-        ]);
-
-        return view('crud.create', compact('form', 'entityName'));
+        return view('contract::create');
     }
 
     /**

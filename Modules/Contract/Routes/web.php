@@ -12,3 +12,4 @@
 */
 
 Route::resource('contract', ContractController::class);
+Route::resource('contract-status', ContractStatusController::class);

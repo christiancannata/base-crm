@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.svg">
     <!-- Title -->
@@ -653,16 +652,19 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="footer-area">
             <div class="container-fluid">
                 <div class="footer-content">
-                    <p>© CRM is Proudly Owned by <a href="https://envytheme.com/" target="_blank">EnvyTheme</a></p>
+                    <p>Vitrano & Co. S.r.l.s. - P.iva 01959390897 Via Corsica 38/D 96100 Siracusa (SR) – <a
+                            href="mailto:direzione@vitranoeco.it">direzione@vitranoeco.it</a></p>
                 </div>
             </div>
-        </div>-->
+        </div>
 
     </main>
+
+
     <!-- End Main Content Area -->
 </div>
 <!-- End All Section Area -->
@@ -711,9 +713,6 @@
 <script src="/assets/js/contact-form-script.js"></script>
 <script src="/assets/js/ajaxchimp.min.js"></script>
 <script src="/assets/js/custom.js"></script>
-
-
-
 
 @stack('scripts')
 
