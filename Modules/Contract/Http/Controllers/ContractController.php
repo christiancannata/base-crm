@@ -5,16 +5,20 @@ namespace Modules\Contract\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Modules\Contract\DataTables\ContractsDataTable;
 use Modules\Contract\Entities\Contract;
 use Modules\Contract\Forms\ContractForm;
 
 class ContractController extends Controller
 {
+    use FormBuilderTrait;
 
     public $entityName = 'contract';
     public $formClass = ContractForm::class;
+    public $entityClass = Contract::class;
 
     /**
      * Display a listing of the resource.
@@ -49,9 +53,15 @@ class ContractController extends Controller
      */
     public function store(FormBuilder $formBuilder)
     {
+
         $form = $formBuilder->create($this->formClass);
         $form->redirectIfNotValid();
-        Contract::create($form->getFieldValues());
+
+        $params = $form->getFieldValues();
+
+        $contract = Contract::create($params);
+
+        $contract->saveCustomFields($params['custom_fields']);
 
         flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
 
@@ -75,7 +85,17 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        return view('contract::edit');
+        $entityName = $this->entityName;
+
+        $entity = $this->entityClass::findOrFail($id);
+
+        $form = $this->form($this->formClass, [
+            'method' => 'POST',
+            'model' => $entity,
+            'url' => route('contract.update', ['contract' => $entity->id])
+        ]);
+
+        return view('crud.create', compact('form', 'entityName', 'entity'));
     }
 
     /**

@@ -2,15 +2,15 @@
 
 namespace Modules\Contract\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use Givebutter\LaravelCustomFields\Traits\HasCustomFieldResponses;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Customer\Entities\Customer;
-use Modules\Task\Entities\TaskCategory;
-use Modules\Task\Entities\TaskStatus;
 
 class Contract extends Model
 {
     use HasFactory;
+    use HasCustomFieldResponses;
 
     protected $fillable = [
         'name',
