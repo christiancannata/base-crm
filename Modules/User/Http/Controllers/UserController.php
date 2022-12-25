@@ -5,26 +5,45 @@ namespace Modules\User\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\View;
+use Kris\LaravelFormBuilder\FormBuilder;
+use Modules\Customer\Entities\Customer;
 use Modules\User\DataTables\UsersDataTable;
+use Modules\User\Forms\UserForm;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+    public $entityName = 'user';
+    public $formClass = UserForm::class;
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index(UsersDataTable $usersDataTable)
+    public function index(UsersDataTable $dataTable)
     {
-        return $usersDataTable->render('user::index');
+        $entityName = $this->entityName;
+        return $dataTable->render('crud.list', compact('dataTable', 'entityName'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create()
+    public function create(FormBuilder $formBuilder)
     {
-        return view('user::create');
+        $entityName = $this->entityName;
+
+        $form = $formBuilder->create($this->formClass, [
+            'method' => 'POST',
+            'url' => route($this->entityName . '.store'),
+            'attr' => ['class' => 'row']
+        ]);
+
+        return view('crud.create', compact('form', 'entityName'));
     }
 
     /**
@@ -32,9 +51,15 @@ class UserController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(FormBuilder $formBuilder)
     {
-        //
+        $form = $formBuilder->create($this->formClass);
+        $form->redirectIfNotValid();
+        Customer::create($form->getFieldValues());
+
+        flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
+
+        return redirect(route($this->entityName . '.index'));
     }
 
     /**
@@ -42,9 +67,11 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        return view('user::show');
+        View::share('entityName', $this->entityName);
+
+        return view('crud.show', ['entity' => $role]);
     }
 
     /**
@@ -52,9 +79,10 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        return view('user::edit');
+        return view('user::roles.edit');
+
     }
 
     /**
@@ -63,9 +91,14 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(FormBuilder $formBuilder, $id)
     {
-        //
+        $songForm = SongForm::findOrFail($id);
+
+        $form = $this->getForm($songForm);
+        $form->redirectIfNotValid();
+
+        $songForm->update($form->getFieldValues());
     }
 
     /**
@@ -73,8 +106,19 @@ class UserController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        flash()->success('Elemento eliminato con successo.');
+
+        return redirect(route($this->entityName . '.index'));
+    }
+
+    public function confirmDelete(Customer $customer)
+    {
+        View::share('entityName', $this->entityName);
+
+        return view('crud.confirm_delete', ['entity' => $customer]);
     }
 }

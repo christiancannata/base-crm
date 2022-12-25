@@ -7,5 +7,6 @@
     "Comment": true,
     "Dashboard": true,
     "Customer": true,
-    "Product": true
+    "Product": true,
+    "Setting": true
 }

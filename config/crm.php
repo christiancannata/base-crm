@@ -58,9 +58,15 @@ return [
             'submenu' => [
                 [
                     'text' => 'Campi aggiuntivi',
-                    'route' => 'settings.additional_fields'
+                    'route' => 'setting.additional_fields'
                 ]
             ]
         ]
+    ],
+
+    'additional_fields_entities' => [
+        \App\Models\User::class => 'Utente',
+        \Modules\Customer\Entities\Customer::class => 'Cliente',
+        \Modules\Contract\Entities\Contract::class => 'Contratto',
     ]
 ];

@@ -677,8 +677,9 @@
 <!-- End Go Top Area -->
 
 <!-- Jquery Min JS -->
-@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 <script src="/assets/js/jquery.min.js"></script>
+
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 <!-- Link Of CSS -->
 <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
