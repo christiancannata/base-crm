@@ -38,7 +38,7 @@ return [
                 ],
                 [
                     'text' => 'Gestione Stati',
-                    'route' => 'contract-status.index'
+                    'route' => 'contractstatus.index'
                 ]
             ]
         ],

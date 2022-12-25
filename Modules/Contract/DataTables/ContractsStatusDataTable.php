@@ -3,14 +3,14 @@
 namespace Modules\Contract\DataTables;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Modules\Contract\Entities\Contract;
+use Modules\Contract\Entities\ContractStatus;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class ContractsDataTable extends DataTable
+class ContractsStatusDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,10 +21,7 @@ class ContractsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function (Contract $contract) {
-                $route = 'contract';
-                return view('datatables.action', ['entity' => $contract, 'route' => $route]);
-            })
+            ->addColumn('action', 'users.action')
             ->setRowId('id');
     }
 
@@ -34,9 +31,9 @@ class ContractsDataTable extends DataTable
      * @param \App\Models\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Contract $model): QueryBuilder
+    public function query(ContractStatus $model): QueryBuilder
     {
-        return $model->newQuery()->with(['customer', 'status']);
+        return $model->newQuery();
     }
 
     /**
@@ -78,13 +75,11 @@ class ContractsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('customer.first_name'),
-            Column::make('created_at'),
-            Column::make('status.name'),
+            Column::make('name'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
+                ->width(60)
                 ->addClass('text-center'),
         ];
     }

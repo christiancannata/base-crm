@@ -293,4 +293,16 @@
     */
 
 
+    $(document).ready(function () {
+        $(".select2").select2({
+            theme: "bootstrap-5"
+        })
+
+        $(".price").blur(function () {
+            var enteredNumber = '' + $(this).val();
+            enteredNumber = enteredNumber.replace(",", '.')
+            enteredNumber = enteredNumber.replace(/[^0-9\.]+/g, '').replace(/[^0-9\.]+/g, '');
+            $(this).val(Number(enteredNumber).toLocaleString('it-IT', {style: 'currency', currency: 'EUR'}));
+        })
+    })
 })(jQuery);

@@ -701,6 +701,7 @@
 <link rel="stylesheet" href="/assets/css/footer.css">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="stylesheet" href="/assets/css/responsive.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 <script src="/assets/js/owl.carousel.min.js"></script>
 <script src="/assets/js/metismenu.min.js"></script>
@@ -714,6 +715,8 @@
 <script src="/assets/js/contact-form-script.js"></script>
 <script src="/assets/js/ajaxchimp.min.js"></script>
 <script src="/assets/js/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 <script src="/assets/js/custom.js"></script>
 
 @stack('scripts')

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Modules\Contract\DataTables\ContractsDataTable;
+use Modules\Contract\Entities\Contract;
 use Modules\Contract\Forms\ContractForm;
 
 class ContractController extends Controller
@@ -46,9 +47,15 @@ class ContractController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(FormBuilder $formBuilder)
     {
-        //
+        $form = $formBuilder->create($this->formClass);
+        $form->redirectIfNotValid();
+        Contract::create($form->getFieldValues());
+
+        flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
+
+        return redirect(route($this->entityName . '.index'));
     }
 
     /**

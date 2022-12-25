@@ -21,6 +21,8 @@ class Customer extends Model
         'vat_code'
     ];
 
+    public $appends = ['full_name'];
+
     protected static function newFactory()
     {
         return \Modules\Task\Database\factories\TaskFactory::new();
@@ -31,4 +33,11 @@ class Customer extends Model
         return $this->hasMany(Contract::class);
     }
 
+    public function getFullNameAttribute()
+    {
+        if ($this->company_name) {
+            return $this->company_name;
+        }
+        return $this->first_name . " " . $this->last_name;
+    }
 }

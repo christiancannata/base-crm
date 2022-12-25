@@ -3,11 +3,11 @@
 
 	// Sidebar Menu JS
 	$('#sidebar-menu').metisMenu();
-	
+
 	// Header Sticky, Go To Top JS
 	$(window).on('scroll', function() {
 		// Header Sticky JS
-		if ($(this).scrollTop() >150){  
+		if ($(this).scrollTop() >150){
 			$('.header-area').addClass("is-sticky");
 		}
 
@@ -20,7 +20,7 @@
 		if (scrolled > 300) $('.go-top').addClass('active');
 		if (scrolled < 300) $('.go-top').removeClass('active');
 	});
-	
+
 	// Click Event JS
 	$('.go-top').on('click', function() {
 		$("html, body").animate({ scrollTop: "0" }, 50);
@@ -57,8 +57,8 @@
 	// Preloader
 	$(window).on('load', function() {
 		$('.preloader').addClass('preloader-deactivate');
-	}) 
-	
+	})
+
 	// Burger Menu JS
 	$('.burger-menu').on('click', function() {
 		$(this).toggleClass('active');
@@ -84,7 +84,7 @@
 	});
 
 	$(document).ready(function(){
-		$('[data-toggle="tooltip"]').tooltip();   
+		$('[data-toggle="tooltip"]').tooltip();
 	});
 
 	// Performers Slider JS
@@ -137,12 +137,12 @@
 
 	// Count Time JS
 	function makeTimer() {
-		var endTime = new Date("november  30, 2023 17:00:00 PDT");			
+		var endTime = new Date("november  30, 2023 17:00:00 PDT");
 		var endTime = (Date.parse(endTime)) / 1000;
 		var now = new Date();
 		var now = (Date.parse(now) / 1000);
 		var timeLeft = endTime - now;
-		var days = Math.floor(timeLeft / 86400); 
+		var days = Math.floor(timeLeft / 86400);
 		var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
 		var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
 		var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
@@ -200,22 +200,22 @@
 		},
 		removeLevel: function(target) {
 			target.closest("li").remove();
-			
+
 		}
 	};
-	
+
 	// Treeview Functions
 	$(".js-treeview").on("click", ".level-add", function() {
 		$(this).find("span").toggleClass("fa-plus").toggleClass("fa-times text-danger");
 		$(this).siblings().toggleClass("in");
 	});
-	
+
 	// Add same level
 	$(".js-treeview").on("click", ".level-same", function() {
 		treeview.addSameLevel($(this));
 		treeview.resetBtnToggle();
 	});
-	
+
 	// Add sub level
 	$(".js-treeview").on("click", ".level-sub", function() {
 		treeview.addSubLevel($(this));
@@ -224,14 +224,14 @@
 		// Remove Level
 	$(".js-treeview").on("click", ".level-remove", function() {
 		treeview.removeLevel($(this));
-	}); 
-	
+	});
+
 	// Selected Level
 	$(".js-treeview").on("click", ".level-title", function() {
 		let isSelected = $(this).closest("[data-level]").hasClass("selected");
 		!isSelected && $(this).closest(".js-treeview").find("[data-level]").removeClass("selected");
 		$(this).closest("[data-level]").toggleClass("selected");
-	}); 
+	});
 
 	try {
 		// Sweet Alert
@@ -247,7 +247,7 @@
 	} catch (err) {}
 
 	// ToolTip Hover JS
-	
+
 	try {
 		new jBox('Tooltip', {
 			attach: '.tooltip'
@@ -281,7 +281,7 @@
 
 	// TxtEditor JS
 	$(document).ready(function() {
-		$("#txtEditor").Editor();    
+		$("#txtEditor").Editor();
 	});
 
 })(jQuery);

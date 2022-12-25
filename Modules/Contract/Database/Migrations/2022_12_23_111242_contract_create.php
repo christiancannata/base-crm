@@ -39,7 +39,7 @@ return new class extends Migration {
             $table->string('country')->default('IT');
             $table->timestamps();
 
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('contract_categories');
 
             $table->unsignedBigInteger('status_id');
