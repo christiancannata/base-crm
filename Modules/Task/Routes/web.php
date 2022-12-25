@@ -14,3 +14,6 @@
 
 Route::get('task/{task}/confirm-delete', [\Modules\Task\Http\Controllers\TaskController::class, 'confirmDelete'])->name('task.confirm_delete');
 Route::resource('task', \Modules\Task\Http\Controllers\TaskController::class);
+
+Route::resource('taskstatus', \Modules\Task\Http\Controllers\TaskStatusController::class);
+Route::resource('taskcategory', \Modules\Task\Http\Controllers\TaskCategoryController::class);

@@ -21,6 +21,14 @@ return [
       'task' => [
           'singular_name' => 'appuntamento',
           'plural_name' => 'appuntamenti'
+      ],
+      'taskcategory' => [
+          'singular_name' => 'categoria appuntamento',
+          'plural_name' => 'categorie appuntamento'
+      ],
+      'taskstatus' => [
+          'singular_name' => 'stato appuntamento',
+          'plural_name' => 'stati appuntamento'
       ]
   ]
 ];

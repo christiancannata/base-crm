@@ -49,8 +49,17 @@ return [
         ],
         'tasks' => [
             'text' => 'Appuntamenti',
-            'route' => 'task.index',
-            'submenu' => []
+            'route' => null,
+            'submenu' => [
+                [
+                    'text' => 'Tutti gli appuntamenti',
+                    'route' => 'task.index'
+                ],
+                [
+                    'text' => 'Categorie',
+                    'route' => 'taskcategory.index'
+                ]
+            ]
         ],
         'products' => [
             'text' => 'Prodotti',
