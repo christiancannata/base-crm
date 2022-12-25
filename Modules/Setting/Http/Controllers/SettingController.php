@@ -2,6 +2,7 @@
 
 namespace Modules\Setting\Http\Controllers;
 
+use Givebutter\LaravelCustomFields\Models\CustomField;
 use Illuminate\Routing\Controller;
 use Modules\Setting\Entities\Entity;
 
@@ -45,11 +46,11 @@ class SettingController extends Controller
             $entity->save();
         }
 
-        $alreadyExists = $entity->customFields()->filter(function ($field) use ($params) {
+        $alreadyExists = $entity->customFields->filter(function ($field) use ($params) {
             return $field->name == $params['name'];
         });
 
-        if (!empty($alreadyExists)) {
+        if (!$alreadyExists->empty()) {
             return response()->json([], 400);
         }
 
@@ -63,5 +64,11 @@ class SettingController extends Controller
 
         return response()->json($entity, 201);
 
+    }
+
+    public function deleteAdditionalField(CustomField $field)
+    {
+        $field->delete();
+        return response()->json([], 204);
     }
 }

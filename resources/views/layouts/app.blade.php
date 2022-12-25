@@ -713,6 +713,7 @@
 <script src="/assets/js/form-validator.min.js"></script>
 <script src="/assets/js/contact-form-script.js"></script>
 <script src="/assets/js/ajaxchimp.min.js"></script>
+<script src="/assets/js/sweetalert2.all.min.js"></script>
 <script src="/assets/js/custom.js"></script>
 
 @stack('scripts')

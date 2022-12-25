@@ -140,7 +140,8 @@
                                                 <a href="#">
                                                     Modifica
                                                 </a>
-                                                <a href="#">
+                                                <a data-href="{{route('setting.delete_additional_field',['field' => $field->id])}}"
+                                                   class="ask-cancel" href="#">
                                                     <img src="/assets/images/icon/trash-2.svg"
                                                          alt="trash-2">
                                                 </a>
@@ -176,10 +177,42 @@
             $("#newFieldForm").submit(function (e) {
                 e.preventDefault()
                 $.post($(this).attr('action'), $(this).serialize(), function (data) {
-
                     modal.hide();
-
+                    Swal.fire(
+                        '',
+                        'Campo aggiunto con successo!',
+                        'success'
+                    ).then(function () {
+                        location.href = ''
+                    })
                 });
+            })
+
+            $(".ask-cancel").click(function (e) {
+                e.preventDefault()
+                let a = $(this)
+                Swal.fire({
+                    title: "Attenzione!",
+                    text: "Vuoi davvero eliminare il campo?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, elimina',
+                    cancelButtonText: 'Indietro'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.get(a.attr('data-href'), function (data) {
+                            Swal.fire(
+                                '',
+                                'Campo eliminato con successo!',
+                                'success'
+                            ).then(function () {
+                                location.href = ''
+                            })
+                        });
+                    }
+                })
             })
         })
 

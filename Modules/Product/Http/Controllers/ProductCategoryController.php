@@ -8,21 +8,23 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Modules\Customer\Entities\Customer;
+use Modules\Product\DataTables\ProductCategoryDataTable;
 use Modules\Product\DataTables\ProductDataTable;
 use Modules\Product\Entities\Product;
-use Modules\Product\Forms\ProductForm;
+use Modules\Product\Entities\ProductCategory;
+use Modules\Product\Forms\ProductCategoryForm;
 use Spatie\Permission\Models\Role;
 
-class ProductController extends Controller
+class ProductCategoryController extends Controller
 {
-    public $entityName = 'product';
-    public $formClass = ProductForm::class;
+    public $entityName = 'productcategory';
+    public $formClass = ProductCategoryForm::class;
 
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index(ProductDataTable $dataTable)
+    public function index(ProductCategoryDataTable $dataTable)
     {
         $entityName = $this->entityName;
         return $dataTable->render('crud.list', compact('dataTable', 'entityName'));
@@ -55,7 +57,7 @@ class ProductController extends Controller
     {
         $form = $formBuilder->create($this->formClass);
         $form->redirectIfNotValid();
-        Product::create($form->getFieldValues());
+        ProductCategory::create($form->getFieldValues());
 
         flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
 
@@ -106,19 +108,19 @@ class ProductController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy(Customer $customer)
+    public function destroy(ProductCategory $productcategory)
     {
-        $customer->delete();
+        $productcategory->delete();
 
         flash()->success('Elemento eliminato con successo.');
 
         return redirect(route($this->entityName . '.index'));
     }
 
-    public function confirmDelete(Customer $customer)
+    public function confirmDelete(ProductCategory $productcategory)
     {
         View::share('entityName', $this->entityName);
 
-        return view('crud.confirm_delete', ['entity' => $customer]);
+        return view('crud.confirm_delete', ['entity' => $productcategory]);
     }
 }

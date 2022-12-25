@@ -49,8 +49,17 @@ return [
         ],
         'products' => [
             'text' => 'Prodotti',
-            'route' => 'product.index',
-            'submenu' => []
+            'route' => null,
+            'submenu' => [
+                [
+                    'text' => 'Tutti i prodotti',
+                    'route' => 'product.index'
+                ],
+                [
+                    'text' => 'Categorie',
+                    'route' => 'productcategory.index'
+                ]
+            ]
         ],
         'settings' => [
             'text' => 'Impostazioni',
