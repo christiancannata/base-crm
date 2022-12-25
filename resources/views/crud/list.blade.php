@@ -8,15 +8,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-sm-12">
                     <div class="page-title">
-                        <h3>Lista {{trans('crm.modules.'.strtolower($entityName).'.name')}}</h3>
+                        <h3>Lista {{trans('crm.modules.'.strtolower($entityName).'.plural_name')}}</h3>
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-sm-6 col-sm-6 d-none d-sm-block">
-                    <ul class="page-title-list">
-                        <li>Lista {{trans('crm.modules.'.strtolower($entityName).'.name')}}</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>

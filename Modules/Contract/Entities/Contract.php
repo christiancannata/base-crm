@@ -2,6 +2,7 @@
 
 namespace Modules\Contract\Entities;
 
+use App\Models\User;
 use Givebutter\LaravelCustomFields\Traits\HasCustomFieldResponses;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +34,11 @@ class Contract extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

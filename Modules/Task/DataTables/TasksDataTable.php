@@ -2,6 +2,7 @@
 
 namespace Modules\Task\DataTables;
 
+use App\Http\DataTables\BaseDataTable;
 use Modules\Task\Entities\Task;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -10,7 +11,7 @@ use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class TasksDataTable extends DataTable
+class TasksDataTable extends BaseDataTable
 {
     /**
      * Build DataTable class.
@@ -36,29 +37,6 @@ class TasksDataTable extends DataTable
         return $model->newQuery();
     }
 
-    /**
-     * Optional method if you want to use html builder.
-     *
-     * @return \Yajra\DataTables\Html\Builder
-     */
-    public function html(): HtmlBuilder
-    {
-        return $this->builder()
-            ->setTableId('tasks-table')
-            ->columns($this->getColumns())
-            ->minifiedAjax()
-            //->dom('Bfrtip')
-            ->orderBy(1)
-            ->selectStyleSingle()
-            ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            ]);
-    }
 
     /**
      * Get the dataTable columns definition.

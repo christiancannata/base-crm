@@ -47,6 +47,11 @@ return [
             'route' => 'customer.index',
             'submenu' => []
         ],
+        'tasks' => [
+            'text' => 'Appuntamenti',
+            'route' => 'task.index',
+            'submenu' => []
+        ],
         'products' => [
             'text' => 'Prodotti',
             'route' => null,

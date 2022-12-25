@@ -1,16 +1,17 @@
 <?php
 
-namespace Modules\Contract\Forms;
+namespace Modules\Task\Forms;
 
 use App\Models\User;
 use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\Form;
-use Modules\Contract\Entities\Contract;
-use Modules\Contract\Entities\ContractStatus;
 use Modules\Customer\Entities\Customer;
 use Modules\Setting\Entities\Entity;
+use Modules\Task\Entities\Task;
+use Modules\Task\Entities\TaskCategory;
+use Modules\Task\Entities\TaskStatus;
 
-class ContractForm extends Form
+class TaskForm extends Form
 {
     public function buildForm()
     {
@@ -24,10 +25,10 @@ class ContractForm extends Form
         }
 
         $this
-            ->add('name', Field::TEXT, [
+            ->add('title', Field::TEXT, [
                 'rules' => 'required'
             ])
-            ->add('customer_id', 'entity', [
+            ->add('assigned_to_id', 'entity', [
                 //   'class' => Customer::class,
                 'property' => 'first_name',
                 'attr' => [
@@ -36,12 +37,20 @@ class ContractForm extends Form
                 'choices' => $customers
             ])
             ->add('status_id', 'entity', [
-                'class' => ContractStatus::class,
+                'class' => TaskStatus::class,
                 'property' => 'name',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ]
-            ])->add('created_by_id', 'entity', [
+            ])
+            ->add('category_id', 'entity', [
+                'class' => TaskCategory::class,
+                'property' => 'name',
+                'attr' => [
+                    'class' => 'select2 form-control'
+                ]
+            ])
+            ->add('created_by_id', 'entity', [
                 'class' => User::class,
                 'property' => 'first_name',
                 'attr' => [
@@ -49,7 +58,7 @@ class ContractForm extends Form
                 ]
             ]);
 
-        $entityForm = Entity::where('class', Contract::class)->first();
+        $entityForm = Entity::where('class', Task::class)->first();
 
         if ($entityForm) {
             $fields = $entityForm->customFields;
