@@ -16,6 +16,8 @@ class UserController extends BaseController
     public $datatable = UsersDataTable::class;
     public $entity = User::class;
 
+    public $createView = 'user::create';
+
     public function afterStore(User|\Illuminate\Database\Eloquent\Model $user)
     {
         $user->syncRoles(request()->get('role_id'));

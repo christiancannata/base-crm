@@ -4,3 +4,27 @@
     font-family: "Poppins", sans-serif;
     font-size: 1.35rem;
 }
+
+.select2-container--default .select2-selection--single{
+    height: 60px !important;
+    color: #292d32 !important;
+    border: 1px solid #F1F5FF !important;
+    background-color: #F1F5FF !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 40px !important;
+    position: absolute;
+    top: 11px !important;
+    right: 18px !important;
+    width: 28px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 38px !important;
+}

@@ -47,5 +47,7 @@ return [
             'plural_name' => 'ruoli'
         ]
     ],
-    'success_message' => 'Elemento aggiunto con successo.'
+    'form' => [
+        'success_message' => 'Elemento aggiunto con successo.'
+    ]
 ];

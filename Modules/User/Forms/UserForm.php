@@ -5,7 +5,7 @@ namespace Modules\User\Forms;
 use App\Models\User;
 use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\Form;
-use Modules\Contract\Entities\ContractCategory;
+use Modules\Attachment\Forms\AttachmentForm;
 use Modules\Setting\Entities\Entity;
 use Spatie\Permission\Models\Role;
 
@@ -48,6 +48,18 @@ class UserForm extends Form
                     'class' => 'select2 form-control'
                 ],
                 'choices' => Role::pluck('name', 'id')->toArray(),
+            ])
+            ->add('attachments', 'collection', [
+                'label' => false,
+                'type' => 'form',
+                'prototype' => true,            // Should prototype be generated. Default: true
+                'prototype_name' => '__NAME__', // Value used for replacing when generating new elements from prototype, default: __NAME__
+                'options' => [    // these are options for a single type
+                    'class' => AttachmentForm::class,
+                    'label' => false,
+                ],
+                'wrapper' => ['class' => 'form-group '],
+
             ]);
 
         $entityForm = Entity::where('class', User::class)->first();

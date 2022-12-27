@@ -37,7 +37,7 @@ class BaseController
             'url' => route($this->entityName . '.store')
         ]);
 
-        return view('crud.create', compact('form', 'entityName'));
+        return view($this->createView ?? 'crud.create', compact('form', 'entityName'));
     }
 
     /**
@@ -57,7 +57,7 @@ class BaseController
         $entity->fill($params);
         $entity->save();
 
-        if(isset($params['custom_fields'])){
+        if (isset($params['custom_fields'])) {
             $entity->saveCustomFields($params['custom_fields']);
         }
 
@@ -106,7 +106,7 @@ class BaseController
      */
     public function update(Request $request, $id)
     {
-       // $this->afterUpdate($entity);
+        // $this->afterUpdate($entity);
 
     }
 
@@ -120,11 +120,13 @@ class BaseController
         //
     }
 
-    public function afterStore(Model $entity){
+    public function afterStore(Model $entity)
+    {
 
     }
 
-    public function afterUpdate($entity){
+    public function afterUpdate($entity)
+    {
 
     }
 }

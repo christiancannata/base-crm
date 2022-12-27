@@ -8,5 +8,6 @@
     "Dashboard": true,
     "Customer": true,
     "Product": true,
-    "Setting": true
+    "Setting": true,
+    "Attachment": true
 }

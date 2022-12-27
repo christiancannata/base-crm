@@ -295,7 +295,6 @@
 
     $(document).ready(function () {
         $(".select2").select2({
-            theme: "bootstrap-5"
         })
 
         $(".price").blur(function () {
@@ -303,6 +302,10 @@
             enteredNumber = enteredNumber.replace(",", '.')
             enteredNumber = enteredNumber.replace(/[^0-9\.]+/g, '').replace(/[^0-9\.]+/g, '');
             $(this).val(Number(enteredNumber).toLocaleString('it-IT', {style: 'currency', currency: 'EUR'}));
+        })
+
+        $('*[dynamic="true"]').each(function () {
+                console.log("asdasd")
         })
     })
 })(jQuery);
