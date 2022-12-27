@@ -6,6 +6,7 @@ require 'recipe/laravel.php';
 
 // Config
 set('repository', 'git@bitbucket.org:andry11/crm.vitranoeco.it.git');
+set('keep_releases', 1);
 
 add('shared_files', []);
 
@@ -28,7 +29,7 @@ task('reload:php', function () {
 });
 
 task('assets:css', function () {
-    run('cd {{release_path}} && yarn && yarn build');
+    run('cd {{current_path}} && yarn');
 });
 
 after('deploy:prepare', 'environment');
