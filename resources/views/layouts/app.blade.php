@@ -9,7 +9,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.svg">
     <!-- Title -->
-    <title>Joxi - Admin Dashboard Bootstrap 5 Template</title>
+    <title>CRM VitranoEco</title>
 </head>
 
 <body class="body-bg-f8faff">
