@@ -9,7 +9,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.svg">
     <!-- Title -->
-    <title>CRM VitranoEco</title>
+    <title>CRM Vitrano & Co</title>
 </head>
 
 <body class="body-bg-f8faff">
