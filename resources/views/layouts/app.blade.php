@@ -10,6 +10,50 @@
     <link rel="icon" type="image/png" href="assets/images/favicon.svg">
     <!-- Title -->
     <title>CRM Vitrano & Co</title>
+
+    <!-- Jquery Min JS -->
+    <script src="/assets/js/jquery.min.js"></script>
+
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/metismenu.min.js"></script>
+    <script src="/assets/js/simplebar.min.js"></script>
+    <script src="/assets/js/apexcharts/apexcharts.min.js"></script>
+    <script src="/assets/js/apexcharts/website-analytics.js"></script>
+    <script src="/assets/js/geticons.js"></script>
+    <script src="/assets/js/calendar.js"></script>
+    <script src="/assets/js/editor.js"></script>
+    <script src="/assets/js/form-validator.min.js"></script>
+    <script src="/assets/js/contact-form-script.js"></script>
+    <script src="/assets/js/ajaxchimp.min.js"></script>
+    <script src="/assets/js/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script src="/assets/js/custom.js"></script>
+    <!-- Link Of CSS -->
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/remixicon.css">
+    <link rel="stylesheet" href="/assets/css/boxicons.min.css">
+    <link rel="stylesheet" href="/assets/css/iconsax.css">
+    <link rel="stylesheet" href="/assets/css/metismenu.min.css">
+    <link rel="stylesheet" href="/assets/css/simplebar.min.css">
+    <link rel="stylesheet" href="/assets/css/calendar.css">
+    <link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="/assets/css/jbox.all.min.css">
+    <link rel="stylesheet" href="/assets/css/editor.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/loaders.css">
+    <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/sidebar-menu.css">
+    <link rel="stylesheet" href="/assets/css/footer.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body class="body-bg-f8faff">
@@ -676,48 +720,7 @@
 </div>
 <!-- End Go Top Area -->
 
-<!-- Jquery Min JS -->
-<script src="/assets/js/jquery.min.js"></script>
 
-@vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-<!-- Link Of CSS -->
-<link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
-<link rel="stylesheet" href="/assets/css/animate.min.css">
-<link rel="stylesheet" href="/assets/css/remixicon.css">
-<link rel="stylesheet" href="/assets/css/boxicons.min.css">
-<link rel="stylesheet" href="/assets/css/iconsax.css">
-<link rel="stylesheet" href="/assets/css/metismenu.min.css">
-<link rel="stylesheet" href="/assets/css/simplebar.min.css">
-<link rel="stylesheet" href="/assets/css/calendar.css">
-<link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
-<link rel="stylesheet" href="/assets/css/jbox.all.min.css">
-<link rel="stylesheet" href="/assets/css/editor.css">
-<link rel="stylesheet" href="/assets/css/font-awesome.min.css">
-<link rel="stylesheet" href="/assets/css/loaders.css">
-<link rel="stylesheet" href="/assets/css/header.css">
-<link rel="stylesheet" href="/assets/css/sidebar-menu.css">
-<link rel="stylesheet" href="/assets/css/footer.css">
-<link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/assets/css/responsive.css">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-<script src="/assets/js/owl.carousel.min.js"></script>
-<script src="/assets/js/metismenu.min.js"></script>
-<script src="/assets/js/simplebar.min.js"></script>
-<script src="/assets/js/apexcharts/apexcharts.min.js"></script>
-<script src="/assets/js/apexcharts/website-analytics.js"></script>
-<script src="/assets/js/geticons.js"></script>
-<script src="/assets/js/calendar.js"></script>
-<script src="/assets/js/editor.js"></script>
-<script src="/assets/js/form-validator.min.js"></script>
-<script src="/assets/js/contact-form-script.js"></script>
-<script src="/assets/js/ajaxchimp.min.js"></script>
-<script src="/assets/js/sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
-<script src="/assets/js/custom.js"></script>
 
 @stack('scripts')
 
