@@ -14,5 +14,10 @@ class UserController extends BaseController
     public $formClass = UserForm::class;
 
     public $datatable = UsersDataTable::class;
-    public $entityClass = User::class;
+    public $entity = User::class;
+
+    public function afterStore(User|\Illuminate\Database\Eloquent\Model $user)
+    {
+        $user->syncRoles(request()->get('role_id'));
+    }
 }

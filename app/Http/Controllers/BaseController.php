@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
@@ -32,6 +33,7 @@ class BaseController
 
         $form = $formBuilder->create($this->formClass, [
             'method' => 'POST',
+            'attr' => ['class' => 'row'],
             'url' => route($this->entityName . '.store')
         ]);
 
@@ -58,6 +60,8 @@ class BaseController
         if(isset($params['custom_fields'])){
             $entity->saveCustomFields($params['custom_fields']);
         }
+
+        $this->afterStore($entity);
 
         flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
 
@@ -102,7 +106,8 @@ class BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+       // $this->afterUpdate($entity);
+
     }
 
     /**
@@ -113,5 +118,13 @@ class BaseController
     public function destroy($id)
     {
         //
+    }
+
+    public function afterStore(Model $entity){
+
+    }
+
+    public function afterUpdate($entity){
+
     }
 }
