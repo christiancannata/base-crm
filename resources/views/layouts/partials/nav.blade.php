@@ -23,7 +23,7 @@
                                           box-style d-flex align-items-center"
                                             aria-expanded="false">
                                             <div class="icon">
-                                                <img src="/assets/images/icon/element.svg" alt="element">
+                                                <img src="/assets/images/icon/{{$link['icon']}}" alt="element">
                                             </div>
                                             <span class="menu-title">{{$link['text']}}</span>
                                         </a>

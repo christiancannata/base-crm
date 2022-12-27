@@ -10,25 +10,34 @@ return [
 
     'menu' => [
         'dashboard' => [
+            'icon' => 'element.svg',
             'text' => 'Dashboard',
             'route' => 'dashboard',
             'submenu' => []
         ],
-        'users' => [
-            'text' => 'Utenti',
+        'tasks' => [
+            'icon' => 'calendar.svg',
+            'text' => 'Appuntamenti',
             'route' => null,
             'submenu' => [
                 [
-                    'text' => 'Tutti gli utenti',
-                    'route' => 'user.index'
+                    'text' => 'Tutti gli appuntamenti',
+                    'route' => 'task.index'
                 ],
                 [
-                    'text' => 'Ruoli',
-                    'route' => 'role.index'
+                    'text' => 'Categorie',
+                    'route' => 'taskcategory.index'
                 ]
             ]
         ],
+        'customers' => [
+            'icon' => 'user-octagon.svg',
+            'text' => 'Clienti',
+            'route' => 'customer.index',
+            'submenu' => []
+        ],
         'contracts' => [
+            'icon' => 'book.svg',
             'text' => 'Contratti',
             'route' => null,
             'submenu' => [
@@ -46,26 +55,8 @@ return [
                 ]
             ]
         ],
-        'customers' => [
-            'text' => 'Clienti',
-            'route' => 'customer.index',
-            'submenu' => []
-        ],
-        'tasks' => [
-            'text' => 'Appuntamenti',
-            'route' => null,
-            'submenu' => [
-                [
-                    'text' => 'Tutti gli appuntamenti',
-                    'route' => 'task.index'
-                ],
-                [
-                    'text' => 'Categorie',
-                    'route' => 'taskcategory.index'
-                ]
-            ]
-        ],
         'products' => [
+            'icon' => 'layer.svg',
             'text' => 'Prodotti',
             'route' => null,
             'submenu' => [
@@ -79,7 +70,23 @@ return [
                 ]
             ]
         ],
+        'users' => [
+            'icon' => 'profile-2user.svg',
+            'text' => 'Utenti',
+            'route' => null,
+            'submenu' => [
+                [
+                    'text' => 'Tutti gli utenti',
+                    'route' => 'user.index'
+                ],
+                [
+                    'text' => 'Ruoli',
+                    'route' => 'role.index'
+                ]
+            ]
+        ],
         'settings' => [
+            'icon' => 'setting.svg',
             'text' => 'Impostazioni',
             'route' => null,
             'submenu' => [
