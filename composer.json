@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "doctrine/dbal": "^3.5",
         "givebutter/laravel-custom-fields": "0.2.*",
         "guzzlehttp/guzzle": "^7.2",
         "kris/laravel-form-builder": "^1.51",

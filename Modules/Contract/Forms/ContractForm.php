@@ -26,10 +26,10 @@ class ContractForm extends Form
         }
 
         $this
-            ->add('name', Field::TEXT, [
+         /*   ->add('name', Field::TEXT, [
                 'label' => 'Nome Contratto',
                 'rules' => 'required'
-            ])
+            ])*/
             ->add('customer_id', 'entity', [
                 'label' => 'Cliente',
                 'property' => 'first_name',
@@ -38,14 +38,14 @@ class ContractForm extends Form
                 ],
                 'choices' => $customers
             ])
-            ->add('new_customer', 'form', [
+          /*  ->add('new_customer', 'form', [
                 'class' => CustomerForm::class,
                 'label' => 'Nuovo Cliente',
                 'wrapper' => ['class' => 'row'],
                 'label_attr' => ['class' => 'big-label'],
-            ])
+            ])*/
             ->add('category_id', 'entity', [
-                'label' => 'Tipologia',
+                'label' => 'Tipologia di contratto',
                 'class' => ContractCategory::class,
                 'property' => 'name',
                 'attr' => [
@@ -60,14 +60,14 @@ class ContractForm extends Form
                     'class' => 'select2 form-control'
                 ]
             ])->add('created_by_id', 'entity', [
-                'label' => 'Stipulato da',
+                'label' => 'Creato da',
                 'class' => User::class,
                 'property' => 'first_name',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ]
             ])->add('referent_id', 'entity', [
-                'label' => 'Referente',
+                'label' => 'Agente di riferimento',
                 'class' => User::class,
                 'property' => 'first_name',
                 'attr' => [
@@ -78,6 +78,9 @@ class ContractForm extends Form
                 'label' => 'Originale in sede',
                 'value' => 1,
                 'checked' => false
+            ])
+            ->add('start_date', 'date', [
+                'label' => 'Data stipulata'
             ]);
 
         $entityForm = Entity::where('class', Contract::class)->first();

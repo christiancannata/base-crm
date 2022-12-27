@@ -13,9 +13,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('contracts', function (Blueprint $table) {
-            $table->unsignedBigInteger('referent_id')->nullable();
-            $table->dateTime('start_date')->nullable(true);
-            $table->boolean('originale_sede')->default(false);
+            $table->string('name')->nullable()->change();
         });
     }
 
