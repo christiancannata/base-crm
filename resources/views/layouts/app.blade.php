@@ -17,21 +17,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 
-    <script src="/assets/js/owl.carousel.min.js"></script>
-    <script src="/assets/js/metismenu.min.js"></script>
-    <script src="/assets/js/simplebar.min.js"></script>
-    <script src="/assets/js/apexcharts/apexcharts.min.js"></script>
-    <script src="/assets/js/apexcharts/website-analytics.js"></script>
-    <script src="/assets/js/geticons.js"></script>
-    <script src="/assets/js/calendar.js"></script>
-    <script src="/assets/js/editor.js"></script>
-    <script src="/assets/js/form-validator.min.js"></script>
-    <script src="/assets/js/contact-form-script.js"></script>
-    <script src="/assets/js/ajaxchimp.min.js"></script>
-    <script src="/assets/js/sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
-    <script src="/assets/js/custom.js"></script>
     <!-- Link Of CSS -->
     <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
@@ -721,6 +706,21 @@
 <!-- End Go Top Area -->
 
 
+<script src="/assets/js/owl.carousel.min.js"></script>
+<script src="/assets/js/metismenu.min.js"></script>
+<script src="/assets/js/simplebar.min.js"></script>
+<script src="/assets/js/apexcharts/apexcharts.min.js"></script>
+<script src="/assets/js/apexcharts/website-analytics.js"></script>
+<script src="/assets/js/geticons.js"></script>
+<script src="/assets/js/calendar.js"></script>
+<script src="/assets/js/editor.js"></script>
+<script src="/assets/js/form-validator.min.js"></script>
+<script src="/assets/js/contact-form-script.js"></script>
+<script src="/assets/js/ajaxchimp.min.js"></script>
+<script src="/assets/js/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<script src="/assets/js/custom.js"></script>
 
 @stack('scripts')
 
