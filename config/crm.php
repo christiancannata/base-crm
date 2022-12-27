@@ -102,5 +102,9 @@ return [
         \App\Models\User::class => 'Utente',
         \Modules\Customer\Entities\Customer::class => 'Cliente',
         \Modules\Contract\Entities\Contract::class => 'Contratto',
-    ]
+    ],
+
+    'document_types' => ['PATENTE' => 'Patente di guida', 'CARTA_IDENTITA' => "Carta d'identità", 'PASSAPORTO' => 'Passaporto'],
+
+    'payment_methods' => ['BOLLETTINO_POSTALE' => 'Bollettino postale', 'DOMICILIAZIONE_BANCARIA' => "Domiciliazione bancaria", 'BONIFICO' => 'Bonifico Bancario', 'FINANZIAMENTO' => 'Finanziamento']
 ];
