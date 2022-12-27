@@ -27,7 +27,12 @@ task('reload:php', function () {
     run('{{release_path}}/artisan queue:restart');
 });
 
+task('assets:css', function () {
+    run('cd {{release_path}} && yarn && yarn build');
+});
+
 after('deploy:prepare', 'environment');
+after('deploy:publish', 'assets:css');
 after('deploy:publish', 'reload:php');
 
 after('deploy:failed', 'deploy:unlock');
