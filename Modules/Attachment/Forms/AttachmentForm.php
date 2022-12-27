@@ -23,7 +23,7 @@ class AttachmentForm extends Form
                 'wrapper' => ['class' => 'form-group col-md-5 '],
 
             ])
-            ->add('file', Field::FILE, [
+            ->add('file', 'upload_file', [
                 'label' => 'File',
                 'wrapper' => ['class' => 'form-group col-md-5 '],
             ])

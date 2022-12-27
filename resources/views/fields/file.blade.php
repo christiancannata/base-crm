@@ -9,10 +9,18 @@
     <?php endif; ?>
 
     <?php if ($showField): ?>
-    <input type="text" name="{{$name}}" value="{{$options['value']}}">
-        <?= Form::input($type, $name, $options['value'], $options['attr']) ?>
+
+    <div id="{{$name}}" class="dropzone">
+            <?= Form::input('hidden', $name, $options['value'], $options['attr']) ?>
+    </div>
+
+
 
         <?php include helpBlockPath(); ?>
+
+    @if($options['value'])
+        <a href="#">Elimina</a>
+    @endif
     <?php endif; ?>
 
     <?php include errorBlockPath(); ?>

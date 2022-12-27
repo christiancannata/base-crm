@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('attachment')->group(function() {
-    Route::get('/', 'AttachmentController@index');
+Route::prefix('attachment')->group(function () {
+    Route::post('/upload-temp-file', 'AttachmentController@uploadTempFile')->name('attachment.upload_temp_file');
 });

@@ -47,7 +47,7 @@ return [
     'default_namespace' => '',
 
     'custom_fields' => [
-       // 'price' => App\Forms\Fields\PriceType::class
+        'upload_file' => \App\FormField\UploadFileType::class
     ],
 
     'plain_form_class' => \Kris\LaravelFormBuilder\Form::class,
