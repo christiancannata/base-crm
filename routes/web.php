@@ -21,4 +21,10 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
+
+Route::get('/logout', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect('/');
+});
+
 Auth::routes();
