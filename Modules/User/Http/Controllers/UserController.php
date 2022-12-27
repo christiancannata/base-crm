@@ -14,7 +14,7 @@ class UserController extends BaseController
     public $formClass = UserForm::class;
 
     public $datatable = UsersDataTable::class;
-    public $entity = User::class;
+    public $entityClass = User::class;
 
     public $createView = 'user::create';
 

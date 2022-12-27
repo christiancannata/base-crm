@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Modules\Customer\Entities\Customer;
 
 class BaseController
 {
@@ -117,7 +119,21 @@ class BaseController
      */
     public function destroy($id)
     {
-        //
+        $entity = $this->entityClass::findOrFail($id);
+        $entity->delete();
+
+        flash()->success('Elemento eliminato con successo.');
+
+        return redirect(route($this->entityName . '.index'));
+
+    }
+
+    public function confirmDelete($id)
+    {
+        $entity = $this->entityClass::findOrFail($id);
+        View::share('entityName', $this->entityName);
+
+        return view('crud.confirm_delete', ['entity' => $entity]);
     }
 
     public function afterStore(Model $entity)

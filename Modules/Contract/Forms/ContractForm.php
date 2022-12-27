@@ -9,7 +9,6 @@ use Modules\Contract\Entities\Contract;
 use Modules\Contract\Entities\ContractCategory;
 use Modules\Contract\Entities\ContractStatus;
 use Modules\Customer\Entities\Customer;
-use Modules\Customer\Forms\CustomerForm;
 use Modules\Setting\Entities\Entity;
 
 class ContractForm extends Form

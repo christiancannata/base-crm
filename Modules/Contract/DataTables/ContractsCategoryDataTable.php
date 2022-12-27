@@ -4,7 +4,6 @@ namespace Modules\Contract\DataTables;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Modules\Contract\Entities\ContractCategory;
-use Modules\Contract\Entities\ContractStatus;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;

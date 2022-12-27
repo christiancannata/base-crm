@@ -3,9 +3,7 @@
 namespace Modules\Product\DataTables;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Modules\Customer\Entities\Customer;
 use Modules\Product\Entities\Product;
-use Spatie\Permission\Models\Role;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Column;

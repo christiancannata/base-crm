@@ -27,6 +27,10 @@ return [
                 [
                     'text' => 'Categorie',
                     'route' => 'taskcategory.index'
+                ],
+                [
+                    'text' => 'Gestione Stati',
+                    'route' => 'taskstatus.index'
                 ]
             ]
         ],

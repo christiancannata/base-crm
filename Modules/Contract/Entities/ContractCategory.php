@@ -2,11 +2,8 @@
 
 namespace Modules\Contract\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Contract\Entities\Contract;
-use Modules\Task\Entities\TaskCategory;
-use Modules\Task\Entities\TaskStatus;
+use Illuminate\Database\Eloquent\Model;
 
 class ContractCategory extends Model
 {

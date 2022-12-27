@@ -12,7 +12,7 @@ class TaskController extends BaseController
 
     public $datatable = TasksDataTable::class;
     public $entityName = 'task';
-    public $entity = Task::class;
+    public $entityClass = Task::class;
     public $formClass = TaskForm::class;
 
 }

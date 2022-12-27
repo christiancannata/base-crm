@@ -3,29 +3,13 @@
 namespace Modules\Task\DataTables;
 
 use App\Http\DataTables\BaseDataTable;
-use Modules\Task\Entities\Task;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Modules\Task\Entities\TaskCategory;
-use Yajra\DataTables\EloquentDataTable;
-use Yajra\DataTables\Html\Builder as HtmlBuilder;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Services\DataTable;
 
 class TaskCategoriesDataTable extends BaseDataTable
 {
-    /**
-     * Build DataTable class.
-     *
-     * @param QueryBuilder $query Results from query() method.
-     * @return \Yajra\DataTables\EloquentDataTable
-     */
-    public function dataTable(QueryBuilder $query): EloquentDataTable
-    {
-        return (new EloquentDataTable($query))
-            ->addColumn('action', 'tasks.action')
-            ->setRowId('id');
-    }
+   public $route = 'taskcategory';
 
     /**
      * Get query source of dataTable.
@@ -47,13 +31,11 @@ class TaskCategoriesDataTable extends BaseDataTable
     public function getColumns(): array
     {
         return [
+            Column::make('name'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('name')
+                ->addClass('text-center')
         ];
     }
 

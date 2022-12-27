@@ -3,8 +3,8 @@
 namespace Modules\Company\Entities;
 
 use Givebutter\LaravelCustomFields\Traits\HasCustomFields;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {

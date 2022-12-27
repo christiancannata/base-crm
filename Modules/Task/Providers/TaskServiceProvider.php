@@ -2,8 +2,8 @@
 
 namespace Modules\Task\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Support\ServiceProvider;
 
 class TaskServiceProvider extends ServiceProvider
 {

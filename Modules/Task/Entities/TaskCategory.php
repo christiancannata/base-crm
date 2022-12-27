@@ -2,8 +2,8 @@
 
 namespace Modules\Task\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class TaskCategory extends Model
 {
@@ -11,7 +11,9 @@ class TaskCategory extends Model
 
     protected $table = 'task_categories';
 
-    protected $fillable = [];
+    protected $fillable = [
+        'name'
+    ];
 
     protected static function newFactory()
     {

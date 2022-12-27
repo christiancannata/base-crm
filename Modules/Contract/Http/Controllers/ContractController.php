@@ -5,7 +5,6 @@ namespace Modules\Contract\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 use Modules\Contract\DataTables\ContractsDataTable;

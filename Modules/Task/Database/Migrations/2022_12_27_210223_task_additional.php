@@ -13,8 +13,11 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('tasks');
+            $table->dateTime('event_date')->nullable();
+            $table->integer('customer_id')->nullable();
+            // $table->integer('contract_id')->nullable();
+            $table->integer('assigned_to_id')->nullable();
+
         });
     }
 

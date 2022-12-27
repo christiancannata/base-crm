@@ -7,15 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
 use Kris\LaravelFormBuilder\FormBuilder;
-use Modules\Contract\DataTables\ContractsDataTable;
 use Modules\Contract\DataTables\ContractsStatusDataTable;
-use Modules\Contract\Entities\Contract;
 use Modules\Contract\Entities\ContractStatus;
 use Modules\Contract\Forms\ContractStatusForm;
-use Modules\Product\DataTables\ProductCategoryDataTable;
-use Modules\Product\Entities\ProductCategory;
-use Modules\Product\Forms\ProductCategoryForm;
-use Spatie\Permission\Models\Role;
 
 class ContractStatusController extends Controller
 {

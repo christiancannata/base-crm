@@ -5,14 +5,23 @@
     font-size: 1.35rem;
 }
 
-.select2-container--default .select2-selection--single{
+.select2 {
+    background-color: #F1F5FF !important;
     height: 60px !important;
     color: #292d32 !important;
     border: 1px solid #F1F5FF !important;
-    background-color: #F1F5FF !important;
+
     border-radius: 10px !important;
     font-size: 14px !important;
     padding: 10px 20px !important;
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: transparent !important;
+    height: 100% !important;
+    border: none !important;
+    color: #292d32 !important;
     width: 100% !important;
 }
 
