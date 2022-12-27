@@ -53,9 +53,11 @@ class BaseController
 
         $entity = new $this->entity();
         $entity->fill($params);
-        $entity = $entity->save();
+        $entity->save();
 
-        $entity->saveCustomFields($params['custom_fields']);
+        if(isset($params['custom_fields'])){
+            $entity->saveCustomFields($params['custom_fields']);
+        }
 
         flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
 

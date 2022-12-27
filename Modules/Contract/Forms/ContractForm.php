@@ -6,8 +6,10 @@ use App\Models\User;
 use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\Form;
 use Modules\Contract\Entities\Contract;
+use Modules\Contract\Entities\ContractCategory;
 use Modules\Contract\Entities\ContractStatus;
 use Modules\Customer\Entities\Customer;
+use Modules\Customer\Forms\CustomerForm;
 use Modules\Setting\Entities\Entity;
 
 class ContractForm extends Form
@@ -25,28 +27,57 @@ class ContractForm extends Form
 
         $this
             ->add('name', Field::TEXT, [
+                'label' => 'Nome Contratto',
                 'rules' => 'required'
             ])
             ->add('customer_id', 'entity', [
-                //   'class' => Customer::class,
+                'label' => 'Cliente',
                 'property' => 'first_name',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ],
                 'choices' => $customers
             ])
+            ->add('new_customer', 'form', [
+                'class' => CustomerForm::class,
+                'label' => 'Nuovo Cliente',
+                'wrapper' => ['class' => 'row'],
+                'label_attr' => ['class' => 'big-label'],
+            ])
+            ->add('category_id', 'entity', [
+                'label' => 'Tipologia',
+                'class' => ContractCategory::class,
+                'property' => 'name',
+                'attr' => [
+                    'class' => 'select2 form-control'
+                ]
+            ])
             ->add('status_id', 'entity', [
+                'label' => 'Stato',
                 'class' => ContractStatus::class,
                 'property' => 'name',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ]
             ])->add('created_by_id', 'entity', [
+                'label' => 'Stipulato da',
                 'class' => User::class,
                 'property' => 'first_name',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ]
+            ])->add('referent_id', 'entity', [
+                'label' => 'Referente',
+                'class' => User::class,
+                'property' => 'first_name',
+                'attr' => [
+                    'class' => 'select2 form-control'
+                ]
+            ])
+            ->add('originale_sede', 'checkbox', [
+                'label' => 'Originale in sede',
+                'value' => 1,
+                'checked' => false
             ]);
 
         $entityForm = Entity::where('class', Contract::class)->first();

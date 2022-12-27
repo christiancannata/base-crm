@@ -39,6 +39,10 @@ return [
                 [
                     'text' => 'Gestione Stati',
                     'route' => 'contractstatus.index'
+                ],
+                [
+                    'text' => 'Categorie',
+                    'route' => 'contractcategory.index'
                 ]
             ]
         ],

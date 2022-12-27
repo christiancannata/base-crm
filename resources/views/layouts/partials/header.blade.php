@@ -224,7 +224,7 @@
                     <div class="header-right-option dropdown profile-nav-item pt-0 pb-0">
                         <a class="dropdown-item dropdown-toggle avatar d-flex align-items-center" href="#"
                            id="navbarDropdown-4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <!-- <img src="/assets/images/avatar.png" alt="avatar">-->
+                            <img src="/assets/images/avatar.png" alt="avatar">
                             <div class="d-none d-lg-block d-md-block">
                                 <h3>{{auth()->user()->full_name}}</h3>
                                 <span>{{auth()->user()->roles()->pluck('name')->implode(", ")}}</span>
@@ -233,9 +233,9 @@
 
                         <div class="dropdown-menu">
                             <div class="dropdown-header d-flex flex-column align-items-center">
-                                <!--  <div class="figure mb-3">
-                                      <img src="/assets/images/avatar.png" class="rounded-circle" alt="avatar">
-                                  </div>-->
+                                <div class="figure mb-3">
+                                    <img src="/assets/images/avatar.png" class="rounded-circle" alt="avatar">
+                                </div>
 
                                 <div class="info text-center">
                                     <span class="name">{{auth()->user()->full_name}}</span>
@@ -247,43 +247,43 @@
 
                             <div class="dropdown-wrap">
                                 <ul class="profile-nav p-0 pt-3">
-                                    <li class="nav-item">
-                                        <a href="profile.html" class="nav-link">
-                                            <i class="ri-user-line"></i>
-                                            <span>Profile</span>
-                                        </a>
-                                    </li>
+                                    <!--   <li class="nav-item">
+                                           <a href="profile.html" class="nav-link">
+                                               <i class="ri-user-line"></i>
+                                               <span>Profilo</span>
+                                           </a>
+                                       </li>
 
+                                       <li class="nav-item">
+                                           <a href="inbox.html" class="nav-link">
+                                               <i class="ri-mail-send-line"></i>
+                                               <span>My Inbox</span>
+                                           </a>
+                                       </li>
+   -->
                                     <li class="nav-item">
-                                        <a href="inbox.html" class="nav-link">
-                                            <i class="ri-mail-send-line"></i>
-                                            <span>My Inbox</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="edit-profile.html" class="nav-link">
+                                        <a href="{{route('user.edit',['user' => auth()->user()])}}" class="nav-link">
                                             <i class="ri-edit-box-line"></i>
-                                            <span>Edit Profile</span>
+                                            <span>Modifica profilo</span>
                                         </a>
                                     </li>
-
-                                    <li class="nav-item">
-                                        <a href="edit-profile.html" class="nav-link">
-                                            <i class="ri-settings-5-line"></i>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
+                                    <!--
+                                                                        <li class="nav-item">
+                                                                            <a href="edit-profile.html" class="nav-link">
+                                                                                <i class="ri-settings-5-line"></i>
+                                                                                <span>Settings</span>
+                                                                            </a>
+                                                                        </li>-->
                                 </ul>
                             </div>
 
                             <div class="dropdown-footer">
                                 <ul class="profile-nav">
                                     <li class="nav-item">
-                                            <a href="{{route('logout')}}" class="nav-link">
-                                                <i class="ri-login-circle-line"></i>
-                                                <span>Esci</span>
-                                            </a>
+                                        <a href="{{route('logout')}}" class="nav-link">
+                                            <i class="ri-login-circle-line"></i>
+                                            <span>Esci</span>
+                                        </a>
 
                                     </li>
                                 </ul>

@@ -15,3 +15,4 @@
 Route::get('contract/{contract}/confirm-delete', [\Modules\Contract\Http\Controllers\ContractController::class, 'confirmDelete'])->name('contract.confirm_delete');
 Route::resource('contract', ContractController::class);
 Route::resource('contractstatus', ContractStatusController::class);
+Route::resource('contractcategory', ContractCategoryController::class);

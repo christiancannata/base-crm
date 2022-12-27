@@ -6,17 +6,12 @@
     <div class="page-title-area">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-lg-6 col-sm-6">
+                <div class="col-lg-12">
                     <div class="page-title">
                         <h3>Aggiungi {{trans('crm.modules.'.strtolower($entityName).'.singular_name')}}</h3>
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-sm-6">
-                    <ul class="page-title-list">
-                        <li>Aggiungi {{trans('crm.modules.'.strtolower($entityName).'.singular_name')}}</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>

@@ -22,6 +22,10 @@ return [
           'singular_name' => 'appuntamento',
           'plural_name' => 'appuntamenti'
       ],
+      'productcategory' => [
+          'singular_name' => 'categoria prodotto',
+          'plural_name' => 'categorie prodotto'
+      ],
       'taskcategory' => [
           'singular_name' => 'categoria appuntamento',
           'plural_name' => 'categorie appuntamento'
@@ -29,6 +33,18 @@ return [
       'taskstatus' => [
           'singular_name' => 'stato appuntamento',
           'plural_name' => 'stati appuntamento'
+      ],
+      'contractstatus' => [
+          'singular_name' => 'stato contratto',
+          'plural_name' => 'stati contratto'
+      ],
+      'contractcategory' => [
+          'singular_name' => 'categoria contratto',
+          'plural_name' => 'categorie contratto'
+      ],
+      'role' => [
+          'singular_name' => 'ruolo',
+          'plural_name' => 'ruoli'
       ]
   ]
 ];
