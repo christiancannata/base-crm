@@ -140,26 +140,27 @@
         window.originalSubmitUrl = null
 
         $(document).ready(function () {
+
             $(".reset-search-form").click(function (e) {
                 e.preventDefault()
                 $("#searchForm")[0].reset()
                 $(".select2").val(0).trigger("change");
 
                 if (!window.originalSubmitUrl) {
-                    window.originalSubmitUrl = LaravelDataTables['task-table'].ajax.url()
+                    window.originalSubmitUrl = LaravelDataTables['{{$dataTable->getTableAttributes()['id']}}'].ajax.url()
                 }
 
-                LaravelDataTables['task-table'].ajax.url(window.originalSubmitUrl + "?" + $(this).serialize()).load();
+                LaravelDataTables['{{$dataTable->getTableAttributes()['id']}}'].ajax.url(window.originalSubmitUrl + "?" + $(this).serialize()).load();
 
             })
             $("#searchForm").submit(function (e) {
                 e.preventDefault()
 
                 if (!window.originalSubmitUrl) {
-                    window.originalSubmitUrl = LaravelDataTables['task-table'].ajax.url()
+                    window.originalSubmitUrl = LaravelDataTables['{{$dataTable->getTableAttributes()['id']}}'].ajax.url()
                 }
 
-                LaravelDataTables['task-table'].ajax.url(window.originalSubmitUrl + "?" + $(this).serialize()).load();
+                LaravelDataTables['{{$dataTable->getTableAttributes()['id']}}'].ajax.url(window.originalSubmitUrl + "?" + $(this).serialize()).load();
 
             })
         })
