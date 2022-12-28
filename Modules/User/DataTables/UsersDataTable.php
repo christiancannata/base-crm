@@ -18,7 +18,7 @@ class UsersDataTable extends BaseDataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function (Model $model) {
-                return view('datatables.action', ['entity' => $model, 'route' => $this->route]);
+                return view('datatables.user_action', ['entity' => $model, 'route' => $this->route]);
             })
             ->addColumn('roles', function (Model $model) {
                 return $model->getRoleNames()->implode(', ');

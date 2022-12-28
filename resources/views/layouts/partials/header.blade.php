@@ -267,6 +267,15 @@
                                             <span>Modifica profilo</span>
                                         </a>
                                     </li>
+                                    @impersonating()
+
+                                    <li class="nav-item">
+                                        <a class="nav-link"
+                                           href="{{ route('user.impersonate_leave',['user' => auth()->user()]) }}">Torna
+                                            al tuo utente</a>
+                                    </li>
+                                    @endImpersonating
+
                                     <!--
                                                                         <li class="nav-item">
                                                                             <a href="edit-profile.html" class="nav-link">
@@ -279,7 +288,9 @@
 
                             <div class="dropdown-footer">
                                 <ul class="profile-nav">
+
                                     <li class="nav-item">
+
                                         <a href="{{route('logout')}}" class="nav-link">
                                             <i class="ri-login-circle-line"></i>
                                             <span>Esci</span>

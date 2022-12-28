@@ -41,4 +41,9 @@ class Product extends Model
     {
         return number_format($this->attributes['price'], 2, ',', '.') . "€";
     }
+
+    public function __toString()
+    {
+      return $this->name;
+    }
 }

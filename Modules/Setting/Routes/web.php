@@ -13,7 +13,10 @@
 
 Route::middleware(['auth'])->prefix('setting')->group(function () {
 
+
     Route::get('/additional-field/{field}/delete', 'SettingController@deleteAdditionalField')->name('setting.delete_additional_field');
     Route::get('/additional-field', 'SettingController@getAdditionalFieldsPage')->name('setting.additional_fields');
     Route::post('/additional-field', 'SettingController@postAdditionalField')->name('setting.post_additional_fields');
+    Route::patch('/additional-field/{field}', 'SettingController@updateAdditionalField')->name('setting.update_additional_fields');
+
 });

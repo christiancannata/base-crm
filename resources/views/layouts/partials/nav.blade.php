@@ -27,9 +27,12 @@
                                             </div>
                                             <span class="menu-title">{{$link['text']}}</span>
                                         </a>
-                                        @if(count($link['submenu'])>0)
+                                            <?php
+                                            $visibleSubmenu = getSubmenu($link);
+                                            ?>
+                                        @if(count($visibleSubmenu)>0)
                                             <ul class="sidemenu-nav-second-level mm-collapse">
-                                                @foreach($link['submenu'] as $submenu)
+                                                @foreach($visibleSubmenu as $submenu)
                                                     <li>
                                                         <a href="{{route($submenu['route'])}}">
                                                             <span class="menu-title">{{$submenu['text']}}</span>

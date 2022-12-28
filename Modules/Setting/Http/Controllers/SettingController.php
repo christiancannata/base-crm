@@ -34,6 +34,21 @@ class SettingController extends Controller
         return view('setting::additional_fields', compact('entities'));
     }
 
+    public function updateAdditionalField(CustomField $field)
+    {
+
+        $params = request()->except(['_token', '_method']);
+        if (isset($params['required'])) {
+            $params['required'] = true;
+        } else {
+            $params['required'] = false;
+        }
+        $field->fill($params);
+        $field->save();
+        return response()->json([], 204);
+
+    }
+
     public function postAdditionalField()
     {
         $params = request()->all();

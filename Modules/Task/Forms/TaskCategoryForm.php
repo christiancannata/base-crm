@@ -9,6 +9,12 @@ class TaskCategoryForm extends Form
 {
     public function buildForm()
     {
+
+        if ($this->getModel()) {
+            $this->add('_method', Field::HIDDEN, [
+                'value' => 'PATCH'
+            ]);
+        }
         $this
             ->add('name', Field::TEXT, [
                 'rules' => 'required',

@@ -20,6 +20,26 @@ class UserController extends BaseController
 
     public function afterStore(User|\Illuminate\Database\Eloquent\Model $user)
     {
-        $user->syncRoles(request()->get('role_id'));
+        $user->syncRoles(request()->get('roles_id'));
+    }
+
+    public function afterUpdate($user)
+    {
+        $user->syncRoles(request()->get('roles_id'));
+    }
+
+    public function impersonate(User $user)
+    {
+        auth()->user()->impersonate($user);
+
+        flash()->success('Adesso sei loggato come: ' . $user->full_name);
+        return redirect(route('dashboard'));
+    }
+
+    public function leaveImpersonate()
+    {
+        auth()->user()->leaveImpersonation();
+        flash()->success('Adesso sei tornato al tuo utente');
+        return redirect(route('dashboard'));
     }
 }

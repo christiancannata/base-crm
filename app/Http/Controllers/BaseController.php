@@ -55,7 +55,7 @@ class BaseController
 
         $params = $form->getFieldValues();
 
-        $entity = new $this->entity();
+        $entity = new $this->entityClass();
         $entity->fill($params);
         $entity->save();
 
@@ -77,7 +77,10 @@ class BaseController
      */
     public function show($id)
     {
-        return view('contract::show');
+        $entity = $this->entityClass::findOrFail($id);
+
+        $entityName = $this->entityName;
+        return view($this->showView ?? 'crud.show', compact('entity', 'entityName'));
     }
 
     /**
@@ -94,7 +97,8 @@ class BaseController
         $form = $this->form($this->formClass, [
             'method' => 'POST',
             'model' => $entity,
-            'url' => route('contract.update', ['contract' => $entity->id])
+            'attr' => ['class' => 'row'],
+            'url' => route($entityName . '.update', [$entityName => $entity->id])
         ]);
 
         return view('crud.create', compact('form', 'entityName', 'entity'));
@@ -108,8 +112,14 @@ class BaseController
      */
     public function update(Request $request, $id)
     {
-        // $this->afterUpdate($entity);
+        $entity = $this->entityClass::findOrFail($id);
+        $entity->fill($request->except(['_method', '_token']));
+        $entity->save();
+        $this->afterUpdate($entity);
 
+        flash()->success(trans('crm.form.update_success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
+
+        return redirect(route($this->entityName . '.index'));
     }
 
     /**

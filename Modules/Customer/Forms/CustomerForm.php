@@ -9,6 +9,14 @@ class CustomerForm extends Form
 {
     public function buildForm()
     {
+
+
+        if ($this->getModel()) {
+            $this->add('_method', Field::HIDDEN, [
+                'value' => 'PATCH'
+            ]);
+        }
+
         $this
             ->add('first_name', Field::TEXT, [
                 'label' => 'Nome',
@@ -30,7 +38,7 @@ class CustomerForm extends Form
                 'rules' => 'required',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
-            ->add('alternative_phone', Field::TEXT, [
+            ->add('secondary_phone', Field::TEXT, [
                 'label' => 'Telefono secondario',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
@@ -70,7 +78,7 @@ class CustomerForm extends Form
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
             ->add('pod', Field::TEXT, [
-                'label' => 'POST',
+                'label' => 'POD',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
             ->add('pdr', Field::TEXT, [

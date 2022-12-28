@@ -198,7 +198,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Kris\LaravelFormBuilder\FormBuilderServiceProvider::class,
-        \App\Providers\FlashNotifyProvider::class
+        \App\Providers\FlashNotifyProvider::class,
+        Lab404\Impersonate\ImpersonateServiceProvider::class,
     ],
 
     /*

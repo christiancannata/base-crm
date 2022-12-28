@@ -14,6 +14,13 @@ class UserForm extends Form
     public function buildForm()
     {
 
+
+        if ($this->getModel()) {
+            $this->add('_method', Field::HIDDEN, [
+                'value' => 'PATCH'
+            ]);
+        }
+
         $this->add('first_name', Field::TEXT, [
             'rules' => 'required',
             'label' => 'Nome',
@@ -28,15 +35,18 @@ class UserForm extends Form
             ->add('email', Field::TEXT, [
                 'rules' => 'required',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-2'],
-            ])
-            ->add('password', Field::TEXT, [
+            ]);
+        if (!$this->getModel()) {
+            $this->add('password', Field::TEXT, [
                 'label' => 'Password',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-2'],
-            ])
-            ->add('phone', Field::TEXT, [
-                'label' => 'Telefono',
-                'wrapper' => ['class' => 'form-group col-md-6 mb-2'],
-            ])
+            ]);
+        }
+
+        $this->add('phone', Field::TEXT, [
+            'label' => 'Telefono',
+            'wrapper' => ['class' => 'form-group col-md-6 mb-2'],
+        ])
             ->add('vat_code', Field::TEXT, [
                 'label' => 'Partita IVA',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-2'],
@@ -77,7 +87,7 @@ class UserForm extends Form
             }
         }
         $this->add('submit', 'submit', [
-            'label' => 'Aggiungi',
+            'label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi',
             'wrapper' => ['class' => 'form-group col-md-12 mb-2'],
             'attr' => ['class' => 'btn btn-success mb-4 pull-right']]);
     }

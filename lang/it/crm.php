@@ -48,6 +48,7 @@ return [
         ]
     ],
     'form' => [
-        'success_message' => 'Elemento aggiunto con successo.'
+        'success_message' => ':entity aggiunto con successo.',
+        'update_success_message' => ':entity aggiornato con successo.'
     ]
 ];

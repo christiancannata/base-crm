@@ -26,11 +26,14 @@ return [
                 ],
                 [
                     'text' => 'Categorie',
-                    'route' => 'taskcategory.index'
+                    'route' => 'taskcategory.index',
+                    'roles' => ['admin', 'superadmin']
                 ],
                 [
                     'text' => 'Gestione Stati',
-                    'route' => 'taskstatus.index'
+                    'route' => 'taskstatus.index',
+                    'roles' => ['admin', 'superadmin']
+
                 ]
             ]
         ],
@@ -51,11 +54,16 @@ return [
                 ],
                 [
                     'text' => 'Gestione Stati',
-                    'route' => 'contractstatus.index'
+                    'route' => 'contractstatus.index',
+                    'roles' => ['admin', 'superadmin']
+
                 ],
                 [
                     'text' => 'Categorie',
-                    'route' => 'contractcategory.index'
+                    'route' => 'contractcategory.index',
+                    'roles' => ['admin', 'superadmin']
+
+
                 ]
             ]
         ],
@@ -70,7 +78,9 @@ return [
                 ],
                 [
                     'text' => 'Categorie',
-                    'route' => 'productcategory.index'
+                    'route' => 'productcategory.index',
+                    'roles' => ['admin', 'superadmin']
+
                 ]
             ]
         ],
@@ -85,7 +95,8 @@ return [
                 ],
                 [
                     'text' => 'Ruoli',
-                    'route' => 'role.index'
+                    'route' => 'role.index',
+                    'roles' => ['admin', 'superadmin']
                 ]
             ]
         ],
@@ -96,7 +107,8 @@ return [
             'submenu' => [
                 [
                     'text' => 'Campi aggiuntivi',
-                    'route' => 'setting.additional_fields'
+                    'route' => 'setting.additional_fields',
+                    'roles' => ['admin', 'superadmin']
                 ]
             ]
         ]

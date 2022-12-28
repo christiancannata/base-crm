@@ -88,7 +88,7 @@
     <div class="tabs-area">
         <div class="container-fluid">
 
-            <div class="card-box-style">
+            <div class="card-box-style contact-list-area">
 
                 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                     @foreach($entities as $key => $entity)
@@ -136,16 +136,30 @@
 
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-betweens">
-                                                <a href="#">
-                                                    Modifica
-                                                </a>
-                                                <a data-href="{{route('setting.delete_additional_field',['field' => $field->id])}}"
-                                                   class="ask-cancel" href="#">
-                                                    <img src="/assets/images/icon/trash-2.svg"
-                                                         alt="trash-2">
-                                                </a>
-                                            </div>
+                                            <ul class="d-flex justify-content-betweens">
+                                                <li>
+                                                    <a href="#" data-bs-toggle="modal"
+                                                       data-bs-target="#addFieldUser{{$field->id}}">
+                                                        <svg width="24" viewBox="0 0 25 26" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M15.9231 4.26214L18.1374 2.02635C18.7797 1.37775 19.6909 1.0264 20.5811 1.22814C22.7354 1.71631 23.4075 2.70584 23.7679 4.31851C23.9565 5.16267 23.6769 6.03667 23.1135 6.69303L21 9.15534M15.9231 4.26214L21 9.15534M15.9231 4.26214L3.23077 17.0777M21 9.15534L8.07692 22.2039M3.23077 17.0777H5.07692V19.4078H8.07692V22.2039M3.23077 17.0777L0.83401 22.9549C0.509285 23.7512 1.27449 24.5588 2.08711 24.2775L8.07692 22.2039"
+                                                                stroke="#7F98FD" stroke-width="1.5"
+                                                                stroke-linecap="round"/>
+                                                        </svg>
+                                                    </a>
+
+                                                    @include('setting::partials.modal_additional_field',['field' => $field])
+                                                </li>
+                                                <li>
+                                                    <a data-href="{{route('setting.delete_additional_field',['field' => $field->id])}}"
+                                                       class="ask-cancel" href="#">
+                                                        <img src="/assets/images/icon/trash-2.svg"
+                                                             alt="trash-2">
+                                                    </a>
+                                                </li>
+
+                                            </ul>
 
                                         </td>
                                     </tr>
@@ -174,6 +188,20 @@
             const container = document.getElementById("addFieldUser");
             const modal = new bootstrap.Modal(container);
 
+
+            $(".updateField").submit(function (e) {
+                e.preventDefault()
+                $.post($(this).attr('action'), $(this).serialize(), function (data) {
+                    modal.hide();
+                    Swal.fire(
+                        '',
+                        'Campo aggiornato con successo!',
+                        'success'
+                    ).then(function () {
+                        location.href = ''
+                    })
+                });
+            })
             $("#newFieldForm").submit(function (e) {
                 e.preventDefault()
                 $.post($(this).attr('action'), $(this).serialize(), function (data) {
