@@ -4,6 +4,7 @@ namespace Modules\Task\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Calendar\Entities\Event;
 
 class Task extends Model
 {
@@ -31,5 +32,10 @@ class Task extends Model
     public function parent()
     {
         return $this->belongsTo(Task::class, 'parent_id');
+    }
+
+    public function events()
+    {
+        return $this->morphMany(Event::class, 'model');
     }
 }

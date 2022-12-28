@@ -9,8 +9,8 @@ class CalendarController extends Controller
 {
     public function getAllEvents()
     {
-        $from = request()->get('start_date');
-        $to = request()->get('end_date');
+        $from = request()->get('start');
+        $to = request()->get('end');
 
         $events = Event::when(!auth()->user()->hasAnyRole(['admin', 'superadmin']), function ($q) {
             $q->where('user_id', auth()->user()->id);

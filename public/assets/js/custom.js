@@ -294,8 +294,7 @@
 
 
     $(document).ready(function () {
-        $(".select2").select2({
-        })
+        $(".select2").select2({})
 
         $(".price").blur(function () {
             var enteredNumber = '' + $(this).val();
@@ -305,7 +304,7 @@
         })
 
         $('*[dynamic="true"]').each(function () {
-                console.log("asdasd")
+            console.log("asdasd")
         })
     })
 })(jQuery);
