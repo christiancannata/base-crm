@@ -25,26 +25,30 @@ class ContractForm extends Form
         }
 
         $this
-         /*   ->add('name', Field::TEXT, [
-                'label' => 'Nome Contratto',
-                'rules' => 'required'
-            ])*/
+            /*   ->add('name', Field::TEXT, [
+                   'label' => 'Nome Contratto',
+                   'rules' => 'required'
+               ])*/
             ->add('customer_id', 'entity', [
                 'label' => 'Cliente',
                 'property' => 'first_name',
+                'empty_value' => '-- Seleziona --',
+                'rules' => 'required',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ],
                 'choices' => $customers
             ])
-          /*  ->add('new_customer', 'form', [
-                'class' => CustomerForm::class,
-                'label' => 'Nuovo Cliente',
-                'wrapper' => ['class' => 'row'],
-                'label_attr' => ['class' => 'big-label'],
-            ])*/
+            /*  ->add('new_customer', 'form', [
+                  'class' => CustomerForm::class,
+                  'label' => 'Nuovo Cliente',
+                  'wrapper' => ['class' => 'row'],
+                  'label_attr' => ['class' => 'big-label'],
+              ])*/
             ->add('category_id', 'entity', [
                 'label' => 'Tipologia di contratto',
+                'empty_value' => '-- Seleziona --',
+                'rules' => 'required',
                 'class' => ContractCategory::class,
                 'property' => 'name',
                 'attr' => [
@@ -55,12 +59,16 @@ class ContractForm extends Form
                 'label' => 'Stato',
                 'class' => ContractStatus::class,
                 'property' => 'name',
+                'empty_value' => '-- Seleziona --',
+                'rules' => 'required',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ]
             ])->add('created_by_id', 'entity', [
                 'label' => 'Creato da',
                 'class' => User::class,
+                'empty_value' => '-- Seleziona --',
+                'rules' => 'required',
                 'property' => 'first_name',
                 'attr' => [
                     'class' => 'select2 form-control'
@@ -68,6 +76,8 @@ class ContractForm extends Form
             ])->add('referent_id', 'entity', [
                 'label' => 'Agente di riferimento',
                 'class' => User::class,
+                'empty_value' => '-- Seleziona --',
+                'rules' => 'required',
                 'property' => 'first_name',
                 'attr' => [
                     'class' => 'select2 form-control'

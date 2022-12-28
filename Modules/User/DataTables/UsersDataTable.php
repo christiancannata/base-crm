@@ -5,11 +5,26 @@ namespace Modules\User\DataTables;
 use App\Http\DataTables\BaseDataTable;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Database\Eloquent\Model;
+use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
 class UsersDataTable extends BaseDataTable
 {
-   public $route = 'user';
+    public $route = 'user';
+
+
+    public function dataTable(QueryBuilder $query): EloquentDataTable
+    {
+        return (new EloquentDataTable($query))
+            ->addColumn('action', function (Model $model) {
+                return view('datatables.action', ['entity' => $model, 'route' => $this->route]);
+            })
+            ->addColumn('roles', function (Model $model) {
+                return $model->roles->pluck('name')->implode(', ');
+            })
+            ->setRowId('id');
+    }
 
     /**
      * Get query source of dataTable.
@@ -19,7 +34,7 @@ class UsersDataTable extends BaseDataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('roles');
     }
 
 
@@ -32,10 +47,25 @@ class UsersDataTable extends BaseDataTable
     {
         return [
 
-            Column::make('id'),
-            Column::make('first_name'),
-            Column::make('last_name'),
-            Column::make('email'),
+          /*  Column::make([
+                'data' => 'id',
+                'title' => 'ID'
+            ]),*/
+            Column::make([
+                'data' => 'first_name',
+                'title' => 'Nome'
+            ]),
+            Column::make([
+                'data' => 'last_name',
+                'title' => 'Cognome'
+            ]),
+            Column::make([
+                'data' => 'email',
+                'name' => 'Email'
+            ]),
+            Column::computed('roles')
+                ->title('Ruoli')
+                ->addClass('text-center'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

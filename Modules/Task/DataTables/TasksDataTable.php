@@ -28,7 +28,8 @@ class TasksDataTable extends BaseDataTable
         return [
             Column::make([
                     'data' => 'title',
-                    'name' => 'Appuntamento']
+                    'title' => 'Appuntamento'
+                ]
             ),
             Column::make('description'),
             Column::make('event_date'),

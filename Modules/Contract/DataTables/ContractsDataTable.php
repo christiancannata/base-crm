@@ -25,6 +25,18 @@ class ContractsDataTable extends DataTable
                 $route = 'contract';
                 return view('datatables.action', ['entity' => $contract, 'route' => $route]);
             })
+            ->addColumn('customer_full_name', function (Contract $contract) {
+                return $contract->customer ? $contract->customer->full_name : '-';
+            })
+            ->addColumn('created_by_full_name', function (Contract $contract) {
+                return $contract->createdBy ? $contract->createdBy->full_name : '-';
+            })
+            ->addColumn('referent_full_name', function (Contract $contract) {
+                return $contract->referent ? $contract->referent->full_name : '-';
+            })
+            ->editColumn('created_at', function (Contract $contract) {
+                return $contract->created_at->format("d-m-Y H:i");
+            })
             ->setRowId('id');
     }
 
@@ -36,7 +48,7 @@ class ContractsDataTable extends DataTable
      */
     public function query(Contract $model): QueryBuilder
     {
-        return $model->newQuery()->with(['customer', 'status']);
+        return $model->newQuery()->with(['customer', 'status', 'referent', 'createdBy', 'category']);
     }
 
     /**
@@ -79,9 +91,30 @@ class ContractsDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('customer.first_name'),
-            Column::make('created_at'),
-            Column::make('status.name'),
+            Column::make([
+                'data' => 'customer_full_name',
+                'title' => 'Cliente'
+            ]),
+            Column::make([
+                'data' => 'created_at',
+                'title' => 'Creato il'
+            ]),
+            Column::make([
+                'data' => 'category.name',
+                'title' => 'Categoria'
+            ]),
+            Column::make([
+                'data' => 'status.name',
+                'title' => 'Stato'
+            ]),
+            Column::make([
+                'data' => 'type',
+                'title' => 'Tipo'
+            ]),
+            Column::make([
+                'data' => 'referent_full_name',
+                'title' => 'Referente'
+            ]),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

@@ -13,11 +13,14 @@ class Contract extends Model
     use HasFactory;
     use HasCustomFieldResponses;
 
-    protected $fillable = [
-        'name',
-        'status_id',
-        'customer_id',
-        'created_by'
+    protected $guarded = [
+        'id',
+    ];
+
+    public $dates = [
+        'created_at',
+        'updated_at',
+        'start_date'
     ];
 
     protected static function newFactory()
@@ -36,9 +39,19 @@ class Contract extends Model
         return $this->belongsTo(Customer::class);
     }
 
+
+    public function referent()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(ContractCategory::class);
+    }
 }

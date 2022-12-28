@@ -2,7 +2,7 @@
 
 return [
     'defaults' => [
-        'wrapper_class' => 'form-group mb-3 row',
+        'wrapper_class' => 'form-group mb-3',
         'wrapper_error_class' => 'has-error',
         'label_class' => 'control-label',
         'field_class' => 'form-control',
