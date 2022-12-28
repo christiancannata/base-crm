@@ -11,4 +11,8 @@
 |
 */
 
-Route::resource('company', \Modules\Company\Http\Controllers\CompanyController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('company', \Modules\Company\Http\Controllers\CompanyController::class);
+
+});
+

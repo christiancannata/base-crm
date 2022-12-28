@@ -19,14 +19,17 @@ class TasksDataTable extends BaseDataTable
      */
     public function query(Task $model): QueryBuilder
     {
-        return $model->newQuery()->with('category','status');
+        return $model->newQuery()->with('category', 'status');
     }
 
 
     public function getColumns(): array
     {
         return [
-            Column::make('title'),
+            Column::make([
+                    'data' => 'title',
+                    'name' => 'Appuntamento']
+            ),
             Column::make('description'),
             Column::make('event_date'),
             Column::make('category.name'),
