@@ -724,6 +724,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.0.2/index.global.min.js"
         integrity="sha512-Oh8TxU+uqKYsmHku33fGrSDbZyN+2U3w/MJSWlnCnpHVzIJSczqx6XxAYjS2zAXCfnH1+YXwwD6BnagxPizYAA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @stack('scripts')
 
 </body>

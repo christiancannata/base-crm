@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
-use Modules\Customer\Entities\Customer;
 
 class BaseController
 {
@@ -22,7 +21,8 @@ class BaseController
     {
         $dataTable = new $this->datatable();
         $entityName = $this->entityName;
-        return $dataTable->render('crud.list', compact('dataTable', 'entityName'));
+        $filters = $dataTable->getFilters();
+        return $dataTable->render('crud.list', compact('entityName','filters'));
     }
 
     /**

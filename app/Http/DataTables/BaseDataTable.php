@@ -4,13 +4,9 @@ namespace App\Http\DataTables;
 
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Customer\Entities\Customer;
-use Modules\Task\Entities\Task;
-use Spatie\Permission\Models\Role;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
-use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\SearchPane;
 use Yajra\DataTables\Services\DataTable;
 
@@ -38,19 +34,27 @@ class BaseDataTable extends DataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html(): HtmlBuilder
+    public function html(): \Yajra\DataTables\Html\Builder
     {
         return $this->builder()
-            ->setTableId('roles-table')
+            ->setTableId($this->route . '-table')
             ->setTableAttribute('class', 'table align-middle mb-0')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->searchPanes(SearchPane::make())
+            /*  ->addColumnDef([
+                  'searchPanes' => ['show' => true],
+                  'targets' => [3],
+              ])*/
+            //   ->searchPanes(SearchPane::make())
+            ->selectStyleMulti()
             ->orderBy(1)
-            ->selectStyleSingle()
-            ->buttons([
-                Button::make('searchPanes')
-            ])
+            ->dom('Bfrtip')
+            /* ->buttons([
+                 Button::make('searchPanes'),
+                 Button::make('export'),
+                 Button::make('reset'),
+
+             ])*/
             ->parameters([
                 'language' => [
                     'url' => url('/vendor/datatables/lang/' . config('app.locale') . '.json')
@@ -59,4 +63,8 @@ class BaseDataTable extends DataTable
             ]);
     }
 
+    public function getFilters()
+    {
+        return [];
+    }
 }

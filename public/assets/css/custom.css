@@ -37,3 +37,11 @@
     color: #444;
     line-height: 38px !important;
 }
+
+.easepick-wrapper {
+    z-index: 999;
+}
+
+a img {
+    max-width: inherit !important;
+}

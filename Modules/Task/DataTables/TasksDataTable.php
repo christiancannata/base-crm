@@ -3,9 +3,11 @@
 namespace Modules\Task\DataTables;
 
 use App\Http\DataTables\BaseDataTable;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Task\Entities\Task;
+use Modules\Task\Entities\TaskCategory;
 use Modules\Task\Entities\TaskStatus;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
@@ -16,46 +18,14 @@ class TasksDataTable extends BaseDataTable
 
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-
+        //  $users = User::query()->select('id as value', 'id as label')->get();
         return (new EloquentDataTable($query))
             ->addColumn('action', function (Model $model) {
                 return view('datatables.action', ['entity' => $model, 'route' => $this->route]);
             })
-            ->searchPane(
-            /*
-             * This is the column for which this SearchPane definition is for
-             */
-                'status.name',
-                /*
-                 * Here we define the options for our SearchPane. This should be either a collection or an array with the
-                 * form:
-                 * [
-                 *     [
-                 *          'value' => 1,
-                 *          'label' => 'display value',
-                 *          'total' => 5, // optional
-                 *          'count' => 3 // optional
-                 *     ],
-                 *     [
-                 *          'value' => 2,
-                 *          'label' => 'display value 2',
-                 *          'total' => 6, // optional
-                 *          'count' => 5 // optional
-                 *     ],
-                 * ]
-                 */
-                fn() => TaskStatus::query()->select('id as value', 'name as label')->get(),
-                /*
-                 * This is the filter that gets executed when the user selects one or more values on the SearchPane. The
-                 * values are always given in an array even if just one is selected
-                 */
-                function (\Illuminate\Database\Eloquent\Builder $query, array $values) {
-                    return $query
-                        ->whereIn(
-                            'status_id',
-                            $values);
-                }
-            )
+            /*   ->searchPane('assigned_to_id', $users, function ($query, $values) {
+                   $query->whereIn('assigned_to_id', $values);
+               })*/
             ->setRowId('id');
     }
 
@@ -67,7 +37,25 @@ class TasksDataTable extends BaseDataTable
      */
     public function query(Task $model): QueryBuilder
     {
-        return $model->newQuery()->with('category', 'status');
+        return $model->newQuery()
+            ->with('category', 'status')
+            ->when(!empty(request()->get('category_id')), function ($q) {
+                $q->whereIn('category_id', [request()->get('category_id')]);
+            })
+            ->when(!empty(request()->get('assigned_to_id')), function ($q) {
+                $q->whereIn('assigned_to_id', [request()->get('assigned_to_id')]);
+            })
+            ->when(!empty(request()->get('status_id')), function ($q) {
+                $q->whereIn('status_id', [request()->get('status_id')]);
+            })
+            ->when(!empty(request()->get('event_date')), function ($q) {
+                $date = explode(" - ", request()->get('event_date'));
+                $from = \DateTime::createFromFormat('d-m-Y', $date[0]);
+                $to = \DateTime::createFromFormat('d-m-Y', $date[1]);
+                if ($from && $to) {
+                    $q->whereBetween('status_id', [$from->format("Y-m-d 00:00:00"), $from->format("Y-m-d 23:59:59")]);
+                }
+            });
     }
 
 
@@ -81,6 +69,7 @@ class TasksDataTable extends BaseDataTable
             ),
             Column::make('description'),
             Column::make('event_date'),
+            Column::make(['name' => 'assigned_to_id', 'data' => 'assigned_to_id', 'title' => 'Assegnato a']),
             Column::make('category.name'),
             Column::make([
                 'title' => 'Stato',
@@ -101,5 +90,28 @@ class TasksDataTable extends BaseDataTable
     protected function filename(): string
     {
         return 'Tasks_' . date('YmdHis');
+    }
+
+    public function getFilters()
+    {
+        return [
+            'event_date' => [
+                'label' => 'Dal / Al',
+                'type' => 'daterange',
+                'cols' => 4
+            ],
+            'assigned_to_id' => [
+                'label' => 'Assegnato a',
+                'type' => 'select',
+                'cols' => 4,
+                'options' => User::orderBy('last_name')->get()->pluck('last_name', 'id')->toArray()
+            ],
+            'category_id' => [
+                'label' => 'Categoria',
+                'type' => 'select',
+                'cols' => 4,
+                'options' => TaskCategory::orderBy('name')->get()->pluck('name', 'id')->toArray()
+            ]
+        ];
     }
 }

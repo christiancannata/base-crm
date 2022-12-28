@@ -42,6 +42,52 @@
                             <div class="simplebar-content-wrapper"
                             >
                                 <div class="simplebar-content">
+                                    @if(isset($filters) && is_array($filters))
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form autocomplete="off" method="GET" action="" id="searchForm"
+                                                      class="row">
+                                                    @foreach($filters as $field => $filter)
+
+                                                        <div class="col-md-{{$filter['cols']}} mb-2">
+                                                            <label>{{$filter['label']}}</label>
+                                                            @if($filter['type'] == 'select')
+                                                                <select autocomplete="off" class="select2 form-control"
+                                                                        name="{{$field}}">
+                                                                    <option selected value="0">-- seleziona --</option>
+                                                                    @foreach($filter['options'] as $value => $option)
+                                                                        <option
+                                                                            value="{{$value}}">{{$option}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            @endif
+
+                                                            @if($filter['type'] == 'text')
+                                                                <input type="text" class="form-control"
+                                                                       name="{{$field}}">
+                                                            @endif
+
+                                                            @if($filter['type'] == 'daterange')
+                                                                <input type="text" class="datepicker form-control"
+                                                                       name="{{$field}}">
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
+                                                    <div class="col-md-12 mb-2">
+                                                        <button type="submit"
+                                                                class="btn btn-success pull-right"
+                                                        >Filtra
+                                                        </button>
+                                                        <button type="reset"
+                                                                class="btn btn-primary pull-right  reset-search-form"
+                                                                style="margin-right:10px;">Reset
+                                                        </button>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    @endif
                                     {{ $dataTable->table() }}
                                 </div>
                             </div>
@@ -68,5 +114,55 @@
 
 
 @push('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.0/dist/index.umd.min.js"></script>
+    <script>
+        const DateTime = easepick.DateTime;
+
+        const picker = new easepick.create({
+            element: document.getElementsByClassName('datepicker')[0],
+            css: [
+                'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.0/dist/index.css',
+            ],
+            plugins: ['RangePlugin'],
+            format: 'DD-MM-YYYY',
+            RangePlugin: {
+                tooltipNumber(num) {
+                    return num - 1;
+                },
+                locale: {
+                    one: 'giorno',
+                    other: 'giorni',
+                }
+            }
+        });
+
+        window.originalSubmitUrl = null
+
+        $(document).ready(function () {
+            $(".reset-search-form").click(function (e) {
+                e.preventDefault()
+                $("#searchForm")[0].reset()
+                $(".select2").val(0).trigger("change");
+
+                if (!window.originalSubmitUrl) {
+                    window.originalSubmitUrl = LaravelDataTables['task-table'].ajax.url()
+                }
+
+                LaravelDataTables['task-table'].ajax.url(window.originalSubmitUrl + "?" + $(this).serialize()).load();
+
+            })
+            $("#searchForm").submit(function (e) {
+                e.preventDefault()
+
+                if (!window.originalSubmitUrl) {
+                    window.originalSubmitUrl = LaravelDataTables['task-table'].ajax.url()
+                }
+
+                LaravelDataTables['task-table'].ajax.url(window.originalSubmitUrl + "?" + $(this).serialize()).load();
+
+            })
+        })
+    </script>
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush
