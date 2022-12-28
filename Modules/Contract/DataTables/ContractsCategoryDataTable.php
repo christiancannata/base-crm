@@ -2,15 +2,15 @@
 
 namespace Modules\Contract\DataTables;
 
+use App\Http\DataTables\BaseDataTable;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Modules\Contract\Entities\ContractCategory;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Services\DataTable;
 
-class ContractsCategoryDataTable extends DataTable
+class ContractsCategoryDataTable extends BaseDataTable
 {
     /**
      * Build DataTable class.
