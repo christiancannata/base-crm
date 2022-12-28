@@ -13,4 +13,6 @@
 
 Route::prefix('calendar')->group(function () {
     Route::get('/all-events', 'CalendarController@getAllEvents')->name('calendar.all-events');
+    Route::get('/latest-events-box', 'CalendarController@getLatestEventsBox')->name('calendar.latest-events-box');
+
 });

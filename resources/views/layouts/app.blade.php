@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="/assets/css/iconsax.css">
     <link rel="stylesheet" href="/assets/css/metismenu.min.css">
     <link rel="stylesheet" href="/assets/css/simplebar.min.css">
-    <link rel="stylesheet" href="/assets/css/calendar.css">
     <link rel="stylesheet" href="/assets/css/sweetalert2.min.css">
     <link rel="stylesheet" href="/assets/css/jbox.all.min.css">
     <link rel="stylesheet" href="/assets/css/editor.css">
@@ -38,8 +37,9 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
     <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="/assets/css/calendar.css">
 
-    <link href="/assets/css/select2.min.css" rel="stylesheet" />
+    <link href="/assets/css/select2.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -714,7 +714,6 @@
 <script src="/assets/js/apexcharts/apexcharts.min.js"></script>
 <script src="/assets/js/apexcharts/website-analytics.js"></script>
 <script src="/assets/js/geticons.js"></script>
-<script src="/assets/js/calendar.js"></script>
 <script src="/assets/js/editor.js"></script>
 <script src="/assets/js/form-validator.min.js"></script>
 <script src="/assets/js/contact-form-script.js"></script>
@@ -722,7 +721,9 @@
 <script src="/assets/js/sweetalert2.all.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="/assets/js/custom.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.0.2/index.global.min.js" integrity="sha512-Oh8TxU+uqKYsmHku33fGrSDbZyN+2U3w/MJSWlnCnpHVzIJSczqx6XxAYjS2zAXCfnH1+YXwwD6BnagxPizYAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.0.2/index.global.min.js"
+        integrity="sha512-Oh8TxU+uqKYsmHku33fGrSDbZyN+2U3w/MJSWlnCnpHVzIJSczqx6XxAYjS2zAXCfnH1+YXwwD6BnagxPizYAA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @stack('scripts')
 
 </body>

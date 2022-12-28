@@ -108,7 +108,24 @@ datatables.net-buttons@>=2.2.3:
     datatables.net ">=1.12.1"
     jquery ">=1.7"
 
-datatables.net-select-bs5@^1.4.0:
+datatables.net-searchpanes-bs5@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/datatables.net-searchpanes-bs5/-/datatables.net-searchpanes-bs5-2.1.0.tgz#e3186ece239cc628babf334d91160a2660a64448"
+  integrity sha512-W3buWSnG9nML9CWJft7q8TQyJ6yKlyEf1YBC59YBm2xRlzM2GggRrUf7zbAgXIk3KB71tnR4se3MXr73AkEt5Q==
+  dependencies:
+    datatables.net-bs5 ">=1.12.1"
+    datatables.net-searchpanes ">=2.0.2"
+    jquery ">=1.7"
+
+datatables.net-searchpanes@>=2.0.2:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/datatables.net-searchpanes/-/datatables.net-searchpanes-2.1.0.tgz#e67fa2e8ce452a8c6fcebc69cddb101cf4208cf2"
+  integrity sha512-MA5rvXxqqCI0wBcAjrA0Bpp7QynWsjfpH2ZlhiTrBjsilYfn5oGPSSwsJxLO7unolmnhm+iuqethlWNyo9TC6Q==
+  dependencies:
+    datatables.net ">=1.12.1"
+    jquery ">=1.7"
+
+datatables.net-select-bs5@^1.4.0, datatables.net-select-bs5@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/datatables.net-select-bs5/-/datatables.net-select-bs5-1.5.0.tgz#b059461fb862888a84920544109bd7b1a25e2c4b"
   integrity sha512-/eumznIBBDtjSWZRqesTKOUHuaE7TVK+7kqeuj39em7Dg6J6UaqH2LsdlWaLGF6bHK0jEHAkZeZN/aezkfb7tQ==

@@ -5,10 +5,13 @@ namespace App\Http\DataTables;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Customer\Entities\Customer;
+use Modules\Task\Entities\Task;
 use Spatie\Permission\Models\Role;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
+use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
+use Yajra\DataTables\Html\SearchPane;
 use Yajra\DataTables\Services\DataTable;
 
 class BaseDataTable extends DataTable
@@ -42,9 +45,12 @@ class BaseDataTable extends DataTable
             ->setTableAttribute('class', 'table align-middle mb-0')
             ->columns($this->getColumns())
             ->minifiedAjax()
-            //->dom('Bfrtip')
+            ->searchPanes(SearchPane::make())
             ->orderBy(1)
             ->selectStyleSingle()
+            ->buttons([
+                Button::make('searchPanes')
+            ])
             ->parameters([
                 'language' => [
                     'url' => url('/vendor/datatables/lang/' . config('app.locale') . '.json')

@@ -18,4 +18,17 @@ class CalendarController extends Controller
 
         return $events;
     }
+
+    public function getLatestEventsBox()
+    {
+        $now = new \DateTime();
+        $endDate = clone $now;
+        $endDate->add(new \DateInterval('P' . request()->get('days') . 'D'));
+
+        $events = Event::when(!auth()->user()->hasAnyRole(['admin', 'superadmin']), function ($q) {
+            $q->where('user_id', auth()->user()->id);
+        })->whereBetween('start', [$now->format("Y-m-d H:i:s"), $endDate->format("Y-m-d H:i:s")])->get();
+
+        return view('calendar::partials.list-event', compact('events'));
+    }
 }
