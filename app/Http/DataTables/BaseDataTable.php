@@ -49,12 +49,10 @@ class BaseDataTable extends DataTable
             ->selectStyleMulti()
             ->orderBy(1)
             ->dom('Bfrtip')
-            /* ->buttons([
-                 Button::make('searchPanes'),
-                 Button::make('export'),
-                 Button::make('reset'),
-
-             ])*/
+            ->buttons([
+                Button::make('excel'),
+                Button::make('pdf'),
+            ])
             ->parameters([
                 'language' => [
                     'url' => url('/vendor/datatables/lang/' . config('app.locale') . '.json')
