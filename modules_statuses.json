@@ -9,5 +9,6 @@
     "Customer": true,
     "Product": true,
     "Setting": true,
-    "Attachment": true
+    "Attachment": true,
+    "Calendar": true
 }

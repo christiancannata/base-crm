@@ -21,7 +21,7 @@ class UsersDataTable extends BaseDataTable
                 return view('datatables.action', ['entity' => $model, 'route' => $this->route]);
             })
             ->addColumn('roles', function (Model $model) {
-                return $model->roles->pluck('name')->implode(', ');
+                return $model->getRoleNames()->implode(', ');
             })
             ->setRowId('id');
     }
@@ -47,10 +47,10 @@ class UsersDataTable extends BaseDataTable
     {
         return [
 
-          /*  Column::make([
-                'data' => 'id',
-                'title' => 'ID'
-            ]),*/
+            /*  Column::make([
+                  'data' => 'id',
+                  'title' => 'ID'
+              ]),*/
             Column::make([
                 'data' => 'first_name',
                 'title' => 'Nome'

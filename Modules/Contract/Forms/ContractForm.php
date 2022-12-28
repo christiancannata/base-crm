@@ -29,9 +29,8 @@ class ContractForm extends Form
                    'label' => 'Nome Contratto',
                    'rules' => 'required'
                ])*/
-            ->add('customer_id', 'entity', [
+            ->add('customer_id', 'choice', [
                 'label' => 'Cliente',
-                'property' => 'first_name',
                 'empty_value' => '-- Seleziona --',
                 'rules' => 'required',
                 'attr' => [
@@ -64,24 +63,23 @@ class ContractForm extends Form
                 'attr' => [
                     'class' => 'select2 form-control'
                 ]
-            ])->add('created_by_id', 'entity', [
+            ])->add('created_by_id', 'choice', [
                 'label' => 'Creato da',
-                'class' => User::class,
                 'empty_value' => '-- Seleziona --',
                 'rules' => 'required',
-                'property' => 'first_name',
                 'attr' => [
                     'class' => 'select2 form-control'
-                ]
-            ])->add('referent_id', 'entity', [
+                ],
+                'choices' => User::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray()
+            ])->add('referent_id', 'choice', [
                 'label' => 'Agente di riferimento',
-                'class' => User::class,
                 'empty_value' => '-- Seleziona --',
                 'rules' => 'required',
                 'property' => 'first_name',
                 'attr' => [
                     'class' => 'select2 form-control'
-                ]
+                ],
+                'choices' => User::role('agente')->orderBy('last_name')->get()->pluck('full_name', 'id')->toArray()
             ])
             ->add('originale_sede', 'checkbox', [
                 'label' => 'Originale in sede',

@@ -12,10 +12,12 @@ class ProductForm extends Form
     {
         $this
             ->add('name', Field::TEXT, [
+                'label' => 'Nome',
                 'rules' => 'required',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
             ->add('price', Field::TEXT, [
+                'label' => 'Prezzo',
                 'rules' => 'required',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3'],
                 'attr' => [
@@ -24,9 +26,12 @@ class ProductForm extends Form
                 ]
             ])
             ->add('description', Field::TEXTAREA, [
+                'label' => 'Descrizione',
                 'wrapper' => ['class' => 'form-group col-md-12 mb-3']
             ])
             ->add('category_id', 'entity', [
+                'label' => 'Categoria',
+
                 'class' => ProductCategory::class,
                 'property' => 'name',
                 'attr' => [
