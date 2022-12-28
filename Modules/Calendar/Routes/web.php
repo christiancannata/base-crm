@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('calendar')->group(function() {
-    Route::get('/', 'CalendarController@index');
+Route::prefix('calendar')->group(function () {
+    Route::get('/all-events', 'CalendarController@getAllEvents')->name('calendar.all-events');
 });
