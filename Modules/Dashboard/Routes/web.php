@@ -12,5 +12,6 @@
 */
 
 Route::prefix('dashboard')->group(function() {
+    Route::get('/chart', 'DashboardController@getChart')->name('dashboard.chart');
     Route::get('/', 'DashboardController@index')->name('dashboard');
 });

@@ -13,6 +13,7 @@
 
 
 Route::middleware(['auth'])->group(function () {
+
     Route::get('contract/{contract}/confirm-delete', [\Modules\Contract\Http\Controllers\ContractController::class, 'confirmDelete'])->name('contract.confirm_delete');
     Route::resource('contract', ContractController::class);
 

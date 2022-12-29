@@ -1,162 +1,163 @@
-(function($) {
+(function ($) {
     "use strict";
 
     // Overview Chart
     var options = {
-        chart: { 
-            height: 230, 
-            type: "area", 
-            stacked: !0, 
-            toolbar: { 
-                show: !1, 
-                autoSelected: "zoom" 
-            } 
+        chart: {
+            height: 230,
+            type: "area",
+            stacked: !0,
+            toolbar: {
+                show: !1,
+                autoSelected: "zoom"
+            }
         },
         colors: [
-            "#1765fd", 
+            "#1765fd",
             "#bbc6cf"
         ],
-        dataLabels: { 
-            enabled: !1 
+        dataLabels: {
+            enabled: !1
         },
-        stroke: { 
-            curve: "smooth", 
-            width: [5, 2], 
-            dashArray: [0, 4], 
+        stroke: {
+            curve: "smooth",
+            width: [5, 2],
+            dashArray: [0, 4],
             lineCap: "round"
         },
-        grid: { 
-            padding: { 
-                left: 0, 
-                right: 0 
-            }, 
+        grid: {
+            padding: {
+                left: 0,
+                right: 0
+            },
             strokeDashArray: 1
         },
-        markers: { 
-            size: 0, 
-            hover: { 
-                size: 0 
-            } 
+        markers: {
+            size: 0,
+            hover: {
+                size: 0
+            }
         },
         series: [
-            { name: "New Visits", data: [0, 60, 20, 90, 45, 110, 55, 130, 44, 110, 75, 120] },
-            { name: "Unique Visits", data: [0, 45, 10, 75, 35, 94, 40, 115, 30, 105, 65, 110] },
+            {name: "New Visits", data: [0, 60, 20, 90, 45, 110, 55, 130, 44, 110, 75, 120]},
+            {name: "Unique Visits", data: [0, 45, 10, 75, 35, 94, 40, 115, 30, 105, 65, 110]},
         ],
-        xaxis: { 
-            type: "month", 
-            categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], axisBorder: { 
-                show: !0 
-            }, 
-            axisTicks: { 
-                show: !0 
-            } 
+        xaxis: {
+            type: "month",
+            categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            axisBorder: {
+                show: !0
+            },
+            axisTicks: {
+                show: !0
+            }
         },
-        fill: { 
-            type: "gradient", 
-            gradient: { 
-                shadeIntensity: 1, 
-                opacityFrom: 0, 
-                opacityTo: 0, 
-                stops: [0, 90, 100] 
-            } 
+        fill: {
+            type: "gradient",
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            }
         },
-        tooltip: { 
-            x: { 
-                format: "dd/MM/yy HH:mm" 
-            } 
+        tooltip: {
+            x: {
+                format: "dd/MM/yy HH:mm"
+            }
         },
-        legend: { 
-            position: "bottom", 
-            horizontalAlign: "right",  
-            show: false 
+        legend: {
+            position: "bottom",
+            horizontalAlign: "right",
+            show: false
         },
     };
     (chart = new ApexCharts(
-        document.querySelector("#overview_chart"), 
-        options)
+            document.querySelector("#overview_chart"),
+            options)
     );
     chart.render();
-    
+
     // Traffic Chart
-    options = { 
-        series: [60, 20, 15, 5], 
-        chart: { 
-            type: "donut", 
-            height: 300 
-        }, 
+    options = {
+        series: [60, 20, 15, 5],
+        chart: {
+            type: "donut",
+            height: 300
+        },
         dataLabels: {
             enabled: false
-          },
+        },
         labels: [
-            "Email", 
+            "Email",
             "Social Media",
-            "Referrals", 
+            "Referrals",
             "Organic Search"
-        ], 
+        ],
         colors: [
-            "#4FCB8D", 
-            "#5C31D6", 
+            "#4FCB8D",
+            "#5C31D6",
             "#FEC107",
-            "#1765FD", 
-        ], 
-        legend: { 
-            show: !1 
-        }, 
-        plotOptions: { 
-            pie: { 
-                donut: { 
-                    size: "60%" 
-                } 
-            } 
-        } 
+            "#1765FD",
+        ],
+        legend: {
+            show: !1
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: "60%"
+                }
+            }
+        }
     };
     (chart = new ApexCharts(
-        document.querySelector("#traffic_chart"), 
-        options
+            document.querySelector("#traffic_chart"),
+            options
         )
     );
     chart.render();
 
     // Device Chart
-     var walletOptions = {
+    var walletOptions = {
         series: [65, 50, 30],
-        chart: { 
-            height: 302, 
-            type: "radialBar" 
+        chart: {
+            height: 302,
+            type: "radialBar"
         },
         plotOptions: {
             radialBar: {
                 offsetY: 0,
                 startAngle: 0,
                 endAngle: 400,
-                hollow: { 
-                    margin: 5, 
-                    size: "10%", 
-                    background: "transparent", 
-                    image: void 0 
+                hollow: {
+                    margin: 5,
+                    size: "10%",
+                    background: "transparent",
+                    image: void 0
                 },
-                track: { 
-                    show: !0, 
-                    startAngle: void 0, 
-                    endAngle: void 0, 
-                    background: "#f2f2f2", 
-                    strokeWidth: "97%", 
-                    opacity: 1, 
-                    margin: 15, 
-                    dropShadow: { 
-                        enabled: !1, 
-                        top: 0, 
-                        left: 0, 
-                        blur: 3, 
-                        opacity: 0.5 
-                    } 
+                track: {
+                    show: !0,
+                    startAngle: void 0,
+                    endAngle: void 0,
+                    background: "#f2f2f2",
+                    strokeWidth: "97%",
+                    opacity: 1,
+                    margin: 15,
+                    dropShadow: {
+                        enabled: !1,
+                        top: 0,
+                        left: 0,
+                        blur: 3,
+                        opacity: 0.5
+                    }
                 },
                 dataLabels: {
-                    name: { 
-                        show: !0, 
-                        fontSize: "16px", 
-                        fontWeight: 600, 
-                        offsetY: -10 
+                    name: {
+                        show: !0,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        offsetY: -10
                     },
                     value: {
                         show: !0,
@@ -169,354 +170,360 @@
                 },
             },
         },
-        stroke: { 
-            lineCap: "round" 
+        stroke: {
+            lineCap: "round"
         },
         colors: [
-            "#4FCB8D", 
-            "#1765FD", 
+            "#4FCB8D",
+            "#1765FD",
             "#FEC107"
         ],
         labels: [
-            "Desktop", 
-            "Mobile", 
+            "Desktop",
+            "Mobile",
             "Tablet"
         ],
-        legend: { 
-            show: !1 
+        legend: {
+            show: !1
         },
     };
     (chart = new ApexCharts(
-        document.querySelector("#device_chart"), 
-        walletOptions
+            document.querySelector("#device_chart"),
+            walletOptions
         )
     );
     chart.render();
 
     // Click Chart
     var options = {
-        series: [
-            { name: "CLICK", 
-                data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14] 
-            }
-        ],
-        chart: { 
-            type: "area", 
-            height: 50, 
-            sparkline: { 
-                enabled: !0 
-            } 
+            series: [
+                {
+                    name: "CLICK",
+                    data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
+                }
+            ],
+            chart: {
+                type: "area",
+                height: 50,
+                sparkline: {
+                    enabled: !0
+                }
+            },
+            stroke: {
+                curve: "smooth",
+                width: 4,
+                lineCap: "round"
+            },
+            colors: [
+                "#4FCB8D"
+            ],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 0,
+                    inverseColors: !0,
+                    opacityFrom: 0,
+                    opacityTo: 0,
+                    stops: [
+                        75, 100, 100, 100
+                    ]
+                }
+            },
+            tooltip: {
+                fixed: {
+                    enabled: !1
+                },
+                x: {
+                    show: !1
+                },
+                marker: {
+                    show: !1
+                }
+            },
         },
-        stroke: { 
-            curve: "smooth", 
-            width: 4,
-            lineCap: "round" 
-        },
-        colors: [
-            "#4FCB8D"
-        ],
-        fill: { 
-            type: "gradient", 
-            gradient: { 
-                shadeIntensity: 0, 
-                inverseColors: !0, 
-                opacityFrom: 0, 
-                opacityTo: 0, 
-                stops: [
-                    75, 100, 100, 100
-                ] 
-            } 
-        },
-        tooltip: { 
-            fixed: { 
-                enabled: !1 
-            }, 
-            x: { 
-                show: !1 
-            }, 
-            marker: { 
-                show: !1 
-            } 
-        },
-    },
-    chart = new ApexCharts(
-        document.querySelector("#click_chart"), 
-        options
-    );
+        chart = new ApexCharts(
+            document.querySelector("#click_chart"),
+            options
+        );
     chart.render();
 
     // View Chart
     var options = {
-        series: [
-            { name: "VIEW", 
-                data: [0, 50, 70, 5, 42, 15, 47, 75, 65, 19, 14] 
-            }
-        ],
-        chart: { 
-            type: "area", 
-            height: 50, 
-            sparkline: { 
-                enabled: !0 
-            } 
+            series: [
+                {
+                    name: "VIEW",
+                    data: [0, 50, 70, 5, 42, 15, 47, 75, 65, 19, 14]
+                }
+            ],
+            chart: {
+                type: "area",
+                height: 50,
+                sparkline: {
+                    enabled: !0
+                }
+            },
+            stroke: {
+                curve: "smooth",
+                width: 4,
+                lineCap: "round"
+            },
+            colors: [
+                "#1765FD"
+            ],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 0,
+                    inverseColors: !0,
+                    opacityFrom: 0,
+                    opacityTo: 0,
+                    stops: [
+                        75, 100, 100, 100
+                    ]
+                }
+            },
+            tooltip: {
+                fixed: {
+                    enabled: !1
+                },
+                x: {
+                    show: !1
+                },
+                marker: {
+                    show: !1
+                }
+            },
         },
-        stroke: { 
-            curve: "smooth", 
-            width: 4,
-            lineCap: "round" 
-        },
-        colors: [
-            "#1765FD"
-        ],
-        fill: { 
-            type: "gradient", 
-            gradient: { 
-                shadeIntensity: 0, 
-                inverseColors: !0, 
-                opacityFrom: 0, 
-                opacityTo: 0, 
-                stops: [
-                    75, 100, 100, 100
-                ] 
-            } 
-        },
-        tooltip: { 
-            fixed: { 
-                enabled: !1 
-            }, 
-            x: { 
-                show: !1 
-            }, 
-            marker: { 
-                show: !1 
-            } 
-        },
-    },
-    chart = new ApexCharts(
-        document.querySelector("#view_chart"), 
-        options
-    );
+        chart = new ApexCharts(
+            document.querySelector("#view_chart"),
+            options
+        );
     chart.render();
 
     // Conversions Chart
     var options = {
-        series: [
-            { name: "CONVERSIONS", 
-                data: [0, 50, 100, 50, 42, 150, 47, 75, 10, 100, 14] 
-            }
-        ],
-        chart: { 
-            type: "area", 
-            height: 50, 
-            sparkline: { 
-                enabled: !0 
-            } 
+            series: [
+                {
+                    name: "CONVERSIONS",
+                    data: [0, 50, 100, 50, 42, 150, 47, 75, 10, 100, 14]
+                }
+            ],
+            chart: {
+                type: "area",
+                height: 50,
+                sparkline: {
+                    enabled: !0
+                }
+            },
+            stroke: {
+                curve: "smooth",
+                width: 4,
+                lineCap: "round"
+            },
+            colors: [
+                "#5C31D6"
+            ],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 0,
+                    inverseColors: !0,
+                    opacityFrom: 0,
+                    opacityTo: 0,
+                    stops: [
+                        75, 100, 100, 100
+                    ]
+                }
+            },
+            tooltip: {
+                fixed: {
+                    enabled: !1
+                },
+                x: {
+                    show: !1
+                },
+                marker: {
+                    show: !1
+                }
+            },
         },
-        stroke: { 
-            curve: "smooth", 
-            width: 4,
-            lineCap: "round" 
-        },
-        colors: [
-            "#5C31D6"
-        ],
-        fill: { 
-            type: "gradient", 
-            gradient: { 
-                shadeIntensity: 0, 
-                inverseColors: !0, 
-                opacityFrom: 0, 
-                opacityTo: 0, 
-                stops: [
-                    75, 100, 100, 100
-                ] 
-            } 
-        },
-        tooltip: { 
-            fixed: { 
-                enabled: !1 
-            }, 
-            x: { 
-                show: !1 
-            }, 
-            marker: { 
-                show: !1 
-            } 
-        },
-    },
-    chart = new ApexCharts(
-        document.querySelector("#conversions_chart"), 
-        options
-    );
+        chart = new ApexCharts(
+            document.querySelector("#conversions_chart"),
+            options
+        );
     chart.render();
 
     // Bounce Rate Chart
     var options = {
-        series: [
-            { name: "Bounce Rate (avg)", 
-                data: [0, 50, 100, 50, 42, 150, 47, 75, 10, 100, 14] 
-            }
-        ],
-        chart: { 
-            type: "area", 
-            height: 50, 
-            sparkline: { 
-                enabled: !0 
-            } 
+            series: [
+                {
+                    name: "Bounce Rate (avg)",
+                    data: [0, 50, 100, 50, 42, 150, 47, 75, 10, 100, 14]
+                }
+            ],
+            chart: {
+                type: "area",
+                height: 50,
+                sparkline: {
+                    enabled: !0
+                }
+            },
+            stroke: {
+                curve: "smooth",
+                width: 4,
+                lineCap: "round"
+            },
+            colors: [
+                "#5C31D6"
+            ],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 0,
+                    inverseColors: !0,
+                    opacityFrom: 0,
+                    opacityTo: 0,
+                    stops: [
+                        75, 100, 100, 100
+                    ]
+                }
+            },
+            tooltip: {
+                fixed: {
+                    enabled: !1
+                },
+                x: {
+                    show: !1
+                },
+                marker: {
+                    show: !1
+                }
+            },
         },
-        stroke: { 
-            curve: "smooth", 
-            width: 4,
-            lineCap: "round" 
-        },
-        colors: [
-            "#5C31D6"
-        ],
-        fill: { 
-            type: "gradient", 
-            gradient: { 
-                shadeIntensity: 0, 
-                inverseColors: !0, 
-                opacityFrom: 0, 
-                opacityTo: 0, 
-                stops: [
-                    75, 100, 100, 100
-                ] 
-            } 
-        },
-        tooltip: { 
-            fixed: { 
-                enabled: !1 
-            }, 
-            x: { 
-                show: !1 
-            }, 
-            marker: { 
-                show: !1 
-            } 
-        },
-    },
-    chart = new ApexCharts(
-        document.querySelector("#bounce_rate"), 
-        options
-    );
+        chart = new ApexCharts(
+            document.querySelector("#bounce_rate"),
+            options
+        );
     chart.render();
 
     // Page Views Chart
     var options = {
-        series: [
-            { name: "Page Views (avg)", 
-                data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14] 
-            }
-        ],
-        chart: { 
-            type: "area", 
-            height: 50, 
-            sparkline: { 
-                enabled: !0 
-            } 
+            series: [
+                {
+                    name: "Page Views (avg)",
+                    data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
+                }
+            ],
+            chart: {
+                type: "area",
+                height: 50,
+                sparkline: {
+                    enabled: !0
+                }
+            },
+            stroke: {
+                curve: "smooth",
+                width: 4,
+                lineCap: "round"
+            },
+            colors: [
+                "#4FCB8D"
+            ],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 0,
+                    inverseColors: !0,
+                    opacityFrom: 0,
+                    opacityTo: 0,
+                    stops: [
+                        75, 100, 100, 100
+                    ]
+                }
+            },
+            tooltip: {
+                fixed: {
+                    enabled: !1
+                },
+                x: {
+                    show: !1
+                },
+                marker: {
+                    show: !1
+                }
+            },
         },
-        stroke: { 
-            curve: "smooth", 
-            width: 4,
-            lineCap: "round" 
-        },
-        colors: [
-            "#4FCB8D"
-        ],
-        fill: { 
-            type: "gradient", 
-            gradient: { 
-                shadeIntensity: 0, 
-                inverseColors: !0, 
-                opacityFrom: 0, 
-                opacityTo: 0, 
-                stops: [
-                    75, 100, 100, 100
-                ] 
-            } 
-        },
-        tooltip: { 
-            fixed: { 
-                enabled: !1 
-            }, 
-            x: { 
-                show: !1 
-            }, 
-            marker: { 
-                show: !1 
-            } 
-        },
-    },
-    chart = new ApexCharts(
-        document.querySelector("#page_views"), 
-        options
-    );
+        chart = new ApexCharts(
+            document.querySelector("#page_views"),
+            options
+        );
     chart.render();
 
     // Time On Site Chart
     var options = {
-        series: [
-            { name: "Time On Site (avg)", 
-                data: [0, 50, 100, 50, 42, 150, 47, 75, 10, 100, 14] 
-            }
-        ],
-        chart: { 
-            type: "area", 
-            height: 50, 
-            sparkline: { 
-                enabled: !0 
-            } 
+            series: [
+                {
+                    name: "Time On Site (avg)",
+                    data: [0, 50, 100, 50, 42, 150, 47, 75, 10, 100, 14]
+                }
+            ],
+            chart: {
+                type: "area",
+                height: 50,
+                sparkline: {
+                    enabled: !0
+                }
+            },
+            stroke: {
+                curve: "smooth",
+                width: 4,
+                lineCap: "round"
+            },
+            colors: [
+                "#5C31D6"
+            ],
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shadeIntensity: 0,
+                    inverseColors: !0,
+                    opacityFrom: 0,
+                    opacityTo: 0,
+                    stops: [
+                        75, 100, 100, 100
+                    ]
+                }
+            },
+            tooltip: {
+                fixed: {
+                    enabled: !1
+                },
+                x: {
+                    show: !1
+                },
+                marker: {
+                    show: !1
+                }
+            },
         },
-        stroke: { 
-            curve: "smooth", 
-            width: 4,
-            lineCap: "round" 
-        },
-        colors: [
-            "#5C31D6"
-        ],
-        fill: { 
-            type: "gradient", 
-            gradient: { 
-                shadeIntensity: 0, 
-                inverseColors: !0, 
-                opacityFrom: 0, 
-                opacityTo: 0, 
-                stops: [
-                    75, 100, 100, 100
-                ] 
-            } 
-        },
-        tooltip: { 
-            fixed: { 
-                enabled: !1 
-            }, 
-            x: { 
-                show: !1 
-            }, 
-            marker: { 
-                show: !1 
-            } 
-        },
-    },
-    chart = new ApexCharts(
-        document.querySelector("#time_on_site"), 
-        options
-    );
+        chart = new ApexCharts(
+            document.querySelector("#time_on_site"),
+            options
+        );
     chart.render();
 
     // Sessions Chart
     var options = {
         chart: {
-          height: 230,
-          type: "candlestick",
-          zoom: {
-            enabled: false
-          }
+            height: 230,
+            type: "candlestick",
+            zoom: {
+                enabled: false
+            }
         },
         colors: ["#4FCB8D", "#1765FD"],
         series: [{
-          data: [{
+            data: [{
                 x: new Date(15388452e5),
                 y: [6595.97, 6602.01, 6588.17, 6602]
             }, {
@@ -596,7 +603,7 @@
         },
         plotOptions: {
             candlestick: {
-                    colors: {
+                colors: {
                     upward: '#4FCB8D',
                     downward: '#1765FD'
                 }
