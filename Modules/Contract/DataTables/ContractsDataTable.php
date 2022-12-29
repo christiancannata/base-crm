@@ -48,7 +48,11 @@ class ContractsDataTable extends BaseDataTable
      */
     public function query(Contract $model): QueryBuilder
     {
-        return $model->newQuery()->with(['customer', 'status', 'referent', 'createdBy', 'category']);
+        return $model->newQuery()->with(['customer', 'status', 'referent', 'createdBy', 'category'])->when(auth()->user()->hasRole('agente'), function ($q) {
+            $q->where(function ($q) {
+                $q->where('referent_id', auth()->user()->id)->orWhere('created_by_id', auth()->user()->id);
+            });
+        });
     }
 
     /**

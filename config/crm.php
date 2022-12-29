@@ -19,6 +19,7 @@ return [
             'icon' => 'calendar.svg',
             'text' => 'Appuntamenti',
             'route' => null,
+            'roles' => ['admin', 'superadmin', 'agente', 'telemarketing'],
             'submenu' => [
                 [
                     'text' => 'Tutti gli appuntamenti',
@@ -47,6 +48,7 @@ return [
             'icon' => 'book.svg',
             'text' => 'Contratti',
             'route' => null,
+            'roles' => ['admin', 'superadmin', 'agente'],
             'submenu' => [
                 [
                     'text' => 'Tutti i contratti',
@@ -71,16 +73,17 @@ return [
             'icon' => 'layer.svg',
             'text' => 'Prodotti',
             'route' => null,
+            'roles' => ['admin', 'superadmin'],
             'submenu' => [
                 [
                     'text' => 'Tutti i prodotti',
-                    'route' => 'product.index'
+                    'route' => 'product.index',
+                    'roles' => ['admin', 'superadmin']
                 ],
                 [
                     'text' => 'Categorie',
                     'route' => 'productcategory.index',
                     'roles' => ['admin', 'superadmin']
-
                 ]
             ]
         ],
@@ -88,6 +91,7 @@ return [
             'icon' => 'profile-2user.svg',
             'text' => 'Utenti',
             'route' => null,
+            'roles' => ['admin', 'superadmin'],
             'submenu' => [
                 [
                     'text' => 'Tutti gli utenti',
@@ -104,6 +108,7 @@ return [
             'icon' => 'setting.svg',
             'text' => 'Impostazioni',
             'route' => null,
+            'roles' => ['admin', 'superadmin'],
             'submenu' => [
                 [
                     'text' => 'Campi aggiuntivi',

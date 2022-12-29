@@ -21,14 +21,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'phone',
-        'vat_code',
-        'email',
-        'password'
+    protected $guarded = [
+        'id',
     ];
+
+    public $appends = ['full_name'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,5 +54,10 @@ class User extends Authenticatable
     public function canImpersonate()
     {
         return $this->roles->hasAny(['admin', 'superadmin']);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . " " . $this->last_name;
     }
 }

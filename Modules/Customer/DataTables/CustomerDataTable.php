@@ -35,7 +35,11 @@ class CustomerDataTable extends BaseDataTable
      */
     public function query(Customer $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['owner'])->when(auth()->user()->hasRole('agente'), function ($q) {
+            $q->where(function ($q) {
+                $q->where('owner_id', auth()->user()->id)->orWhereNull('owner_id');
+            });
+        });
     }
 
     /**
@@ -43,7 +47,8 @@ class CustomerDataTable extends BaseDataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html(): HtmlBuilder
+    public
+    function html(): HtmlBuilder
     {
         return $this->builder()
             ->setTableId('roles-table')
@@ -66,7 +71,8 @@ class CustomerDataTable extends BaseDataTable
      *
      * @return array
      */
-    public function getColumns(): array
+    public
+    function getColumns(): array
     {
         return [
             Column::make('first_name'),
@@ -87,7 +93,8 @@ class CustomerDataTable extends BaseDataTable
      *
      * @return string
      */
-    protected function filename(): string
+    protected
+    function filename(): string
     {
         return 'Users_' . date('YmdHis');
     }

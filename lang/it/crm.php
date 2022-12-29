@@ -54,5 +54,11 @@ return [
     'form' => [
         'success_message' => ':entity aggiunto con successo.',
         'update_success_message' => ':entity aggiornato con successo.'
+    ],
+
+    'columns' => [
+        'events' => [
+            'id' => 'ID'
+        ]
     ]
 ];

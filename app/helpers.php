@@ -39,12 +39,10 @@ function getAllModels()
 
             foreach ($modelModuleFiles as $moduleFile) {
                 if ($moduleFile === '.' or $moduleFile === '..' or $moduleFile === '.gitkeep') continue;
-
                 $modelList[$module . '\\Entities\\' . substr($moduleFile, 0, -4)] = substr($moduleFile, 0, -4);
             }
         }
     }
-
 
     return $modelList;
 }

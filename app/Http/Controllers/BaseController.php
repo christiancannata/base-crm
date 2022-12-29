@@ -62,7 +62,7 @@ class BaseController
         $entity->save();
 
         if (isset($params['custom_fields'])) {
-            $entity->saveCustomFields($params['custom_fields']);
+           // $entity->saveCustomFields($params['custom_fields']);
         }
 
         $this->afterStore($entity);

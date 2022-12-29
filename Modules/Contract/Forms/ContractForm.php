@@ -16,7 +16,11 @@ class ContractForm extends Form
     public function buildForm()
     {
 
-        $customers = Customer::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
+        $customers = Customer::orderBy('last_name')->when(auth()->user()->hasRole('agente'), function ($q) {
+            $q->where(function ($q) {
+                $q->where('owner_id', auth()->user()->id)->orWhereNull('owner_id');
+            });
+        })->get()->pluck('full_name', 'id')->toArray();
 
         if ($this->getModel()) {
             $this->add('_method', Field::HIDDEN, [
@@ -63,7 +67,10 @@ class ContractForm extends Form
                 'attr' => [
                     'class' => 'select2 form-control'
                 ]
-            ])->add('created_by_id', 'choice', [
+            ]);
+
+        if (auth()->user()->hasAnyRole(['admin', 'superadmin'])) {
+            $this->add('created_by_id', 'choice', [
                 'label' => 'Creato da',
                 'empty_value' => '-- Seleziona --',
                 'rules' => 'required',
@@ -71,7 +78,10 @@ class ContractForm extends Form
                     'class' => 'select2 form-control'
                 ],
                 'choices' => User::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray()
-            ])->add('referent_id', 'choice', [
+            ]);
+
+
+            $this->add('referent_id', 'choice', [
                 'label' => 'Agente di riferimento',
                 'empty_value' => '-- Seleziona --',
                 'rules' => 'required',
@@ -80,12 +90,28 @@ class ContractForm extends Form
                     'class' => 'select2 form-control'
                 ],
                 'choices' => User::role('agente')->orderBy('last_name')->get()->pluck('full_name', 'id')->toArray()
-            ])
-            ->add('originale_sede', 'checkbox', [
-                'label' => 'Originale in sede',
-                'value' => 1,
-                'checked' => false
-            ])
+            ]);
+
+        } else {
+            $this->add('created_by_id', 'hidden', [
+                'label' => '',
+                'rules' => 'required',
+                'value' => auth()->user()->id
+            ]);
+
+            $this->add('referent_id', 'hidden', [
+                'label' => '',
+                'rules' => 'required',
+                'value' => auth()->user()->id
+            ]);
+        }
+
+
+        $this->add('originale_sede', 'checkbox', [
+            'label' => 'Originale in sede',
+            'value' => 1,
+            'checked' => false
+        ])
             ->add('start_date', 'date', [
                 'label' => 'Data stipulata'
             ]);

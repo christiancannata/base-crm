@@ -22,6 +22,9 @@ Route::middleware(['auth'])->prefix('setting')->group(function () {
 
 });
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('customview/model-ajax-list', [\Modules\Setting\Http\Controllers\CustomViewController::class, 'getAjaxList'])->name('customview.ajax_list');
+    Route::get('customview/{customview}/confirm-delete', [\Modules\Setting\Http\Controllers\CustomViewController::class, 'confirmDelete'])->name('customview.confirm_delete');
     Route::resource('customview', 'CustomViewController');
 });
 

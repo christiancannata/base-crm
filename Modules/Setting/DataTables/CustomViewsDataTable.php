@@ -3,11 +3,9 @@
 namespace Modules\Setting\DataTables;
 
 use App\Http\DataTables\BaseDataTable;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Task\Entities\Task;
-use Modules\Task\Entities\TaskCategory;
+use Modules\Setting\Entities\CustomView;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
@@ -34,27 +32,9 @@ class CustomViewsDataTable extends BaseDataTable
      * @param \App\Models\Task $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Task $model): QueryBuilder
+    public function query(CustomView $model): QueryBuilder
     {
-        return $model->newQuery()
-            ->with('category', 'status')
-            ->when(!empty(request()->get('category_id')), function ($q) {
-                $q->whereIn('category_id', [request()->get('category_id')]);
-            })
-            ->when(!empty(request()->get('assigned_to_id')), function ($q) {
-                $q->whereIn('assigned_to_id', [request()->get('assigned_to_id')]);
-            })
-            ->when(!empty(request()->get('status_id')), function ($q) {
-                $q->whereIn('status_id', [request()->get('status_id')]);
-            })
-            ->when(!empty(request()->get('event_date')), function ($q) {
-                $date = explode(" - ", request()->get('event_date'));
-                $from = \DateTime::createFromFormat('d-m-Y', $date[0]);
-                $to = \DateTime::createFromFormat('d-m-Y', $date[1]);
-                if ($from && $to) {
-                    $q->whereBetween('status_id', [$from->format("Y-m-d 00:00:00"), $from->format("Y-m-d 23:59:59")]);
-                }
-            });
+        return $model->newQuery();
     }
 
 

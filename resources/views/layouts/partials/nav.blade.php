@@ -11,37 +11,39 @@
                         <div class="simplebar-content">
                             <ul id="sidebar-menu" class="sidebar-menu metismenu">
                                 @foreach(config('crm.menu') as $link)
-                                    <li class="list-group-item main-grid active">
-                                        <a
-                                            @if($link['route'])
-                                                href="{{route($link['route'])}}"
-                                            @else
-                                                href="#"
-                                            @endif
-                                            class="
+                                    @if((isset($link['roles']) && auth()->user()->hasAnyRole($link['roles'])) || !isset($link['roles']))
+                                        <li class="list-group-item main-grid active">
+                                            <a
+                                                @if($link['route'])
+                                                    href="{{route($link['route'])}}"
+                                                @else
+                                                    href="#"
+                                                @endif
+                                                class="
                                             @if(count($link['submenu'])>0)  has-arrow @endif
                                           box-style d-flex align-items-center"
-                                            aria-expanded="false">
-                                            <div class="icon">
-                                                <img src="/assets/images/icon/{{$link['icon']}}" alt="element">
-                                            </div>
-                                            <span class="menu-title">{{$link['text']}}</span>
-                                        </a>
-                                            <?php
-                                            $visibleSubmenu = getSubmenu($link);
-                                            ?>
-                                        @if(count($visibleSubmenu)>0)
-                                            <ul class="sidemenu-nav-second-level mm-collapse">
-                                                @foreach($visibleSubmenu as $submenu)
-                                                    <li>
-                                                        <a href="{{route($submenu['route'])}}">
-                                                            <span class="menu-title">{{$submenu['text']}}</span>
-                                                        </a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
+                                                aria-expanded="false">
+                                                <div class="icon">
+                                                    <img src="/assets/images/icon/{{$link['icon']}}" alt="element">
+                                                </div>
+                                                <span class="menu-title">{{$link['text']}}</span>
+                                            </a>
+                                                <?php
+                                                $visibleSubmenu = getSubmenu($link);
+                                                ?>
+                                            @if(count($visibleSubmenu)>0)
+                                                <ul class="sidemenu-nav-second-level mm-collapse">
+                                                    @foreach($visibleSubmenu as $submenu)
+                                                        <li>
+                                                            <a href="{{route($submenu['route'])}}">
+                                                                <span class="menu-title">{{$submenu['text']}}</span>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                    @endif
                                 @endforeach
 
                             </ul>

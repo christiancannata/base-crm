@@ -10,7 +10,6 @@ use Modules\Customer\Entities\Customer;
 
 class Contract extends Model
 {
-    use HasFactory;
     use HasCustomFieldResponses;
 
     protected $guarded = [
@@ -23,10 +22,6 @@ class Contract extends Model
         'start_date'
     ];
 
-    protected static function newFactory()
-    {
-        return \Modules\Task\Database\factories\TaskFactory::new();
-    }
 
     public function status()
     {
@@ -42,7 +37,7 @@ class Contract extends Model
 
     public function referent()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'referent_id');
     }
 
     public function createdBy()

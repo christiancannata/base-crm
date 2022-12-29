@@ -2,7 +2,6 @@
 
 @section('content')
 
-    @include('contract::components.contracts_histogram')
+    @include('dashboard::dashboards.'.auth()->user()->getRoleNames()[0])
 
-    @include('calendar::components.calendar',['eventsRoute' => route('calendar.all-events')])
 @endsection

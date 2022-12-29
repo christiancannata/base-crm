@@ -2,6 +2,7 @@
 
 namespace Modules\Customer\Entities;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Contract\Entities\Contract;
@@ -33,5 +34,10 @@ class Customer extends Model
             return $this->company_name;
         }
         return $this->first_name . " " . $this->last_name;
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }
