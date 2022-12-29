@@ -30,4 +30,10 @@ class TaskController extends BaseController
         $event->save();
 
     }
+
+    public function afterDestroy($id)
+    {
+        Event::where('model_type', Task::class)->where('model_id', $id)->delete();
+
+    }
 }

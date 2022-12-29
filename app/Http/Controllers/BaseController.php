@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use Modules\Calendar\Entities\Event;
+use Modules\Task\Entities\Task;
 
 class BaseController
 {
@@ -22,7 +24,7 @@ class BaseController
         $dataTable = new $this->datatable();
         $entityName = $this->entityName;
         $filters = $dataTable->getFilters();
-        return $dataTable->render('crud.list', compact('entityName','filters'));
+        return $dataTable->render('crud.list', compact('entityName', 'filters'));
     }
 
     /**
@@ -131,6 +133,7 @@ class BaseController
     {
         $entity = $this->entityClass::findOrFail($id);
         $entity->delete();
+        $this->afterDestroy($id);
 
         flash()->success('Elemento eliminato con successo.');
 
@@ -154,5 +157,9 @@ class BaseController
     public function afterUpdate($entity)
     {
 
+    }
+
+    public function afterDestroy($id)
+    {
     }
 }
