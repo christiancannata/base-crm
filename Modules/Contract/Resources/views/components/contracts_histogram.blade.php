@@ -24,8 +24,8 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="single-audience d-flex justify-content-between align-items-center">
                                     <div class="audience-content">
-                                        <h5>Nuovi Contratti</h5>
-                                        <h4>19,202 <span>+55%</span></h4>
+                                        <h5>Contratti stipulati</h5>
+                                        <h4 id="totalContracts"></h4>
                                     </div>
                                     <div class="icon">
                                         <img src="assets/images/icon/white-profile-2user.svg" alt="white-profile-2user">
@@ -36,8 +36,8 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="single-audience d-flex justify-content-between align-items-center">
                                     <div class="audience-content">
-                                        <h5>Nuovi appuntamenti</h5>
-                                        <h4>21,202 <span>+32%</span></h4>
+                                        <h5>Appuntamenti</h5>
+                                        <h4 id="totalEvents"></h4>
                                     </div>
                                     <div class="icon">
                                         <img src="assets/images/icon/eye.svg" alt="eye">
@@ -72,12 +72,14 @@
             function loadCharts() {
 
                 $.get("{{route('dashboard.chart')}}?range=" + $(".range").val(), function (data) {
-
                     if (chart) {
                         chart.destroy();
                     }
-                    chart = new ApexCharts(document.querySelector("#overview_chart_dashboard"), data)
+                    chart = new ApexCharts(document.querySelector("#overview_chart_dashboard"), data.chart)
                     chart.render();
+                    $("#totalContracts").html(data.total_contracts)
+                    $("#totalEvents").html(data.total_events)
+
                 });
 
             }

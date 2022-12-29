@@ -38,12 +38,20 @@ class DashboardController extends Controller
         $x = [];
         $tmpEvents = [];
         $tmpContracts = [];
+        $totalEvents = 0;
+        $totalContracts = 0;
+
         foreach ($period as $date) {
             $x[] = $date->format('d/m');
 
-            $tmpEvents[] = $events->whereBetween('created_at', [$date->format("Y-m-d 00:00:00"), $date->format("Y-m-d 23:59:59")])->count();
-            $tmpContracts[] = $contracts->whereBetween('start_date', [$date->format("Y-m-d 00:00:00"), $date->format("Y-m-d 23:59:59")])->count();
+            $tmpDayEvents = $events->whereBetween('created_at', [$date->format("Y-m-d 00:00:00"), $date->format("Y-m-d 23:59:59")])->count();
+            $tmpDayContracts = $contracts->whereBetween('start_date', [$date->format("Y-m-d 00:00:00"), $date->format("Y-m-d 23:59:59")])->count();
 
+            $tmpEvents[] = $tmpDayEvents;
+            $tmpContracts[] = $tmpDayContracts;
+
+            $totalContracts += $tmpDayContracts;
+            $totalEvents += $tmpDayEvents;
         }
 
         $json = [
@@ -128,7 +136,7 @@ class DashboardController extends Controller
             ]
         ];
 
-        return $json;
+        return response()->json(['chart' => $json, 'total_contracts' => $totalContracts, 'total_events' => $totalEvents]);
     }
 
 }
