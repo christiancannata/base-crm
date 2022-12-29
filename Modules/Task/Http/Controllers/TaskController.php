@@ -31,9 +31,13 @@ class TaskController extends BaseController
 
     }
 
-    public function afterDestroy($id)
+    public function afterDestroy($entity)
     {
-        Event::where('model_type', Task::class)->where('model_id', $id)->delete();
+        //send email to assigned event
+        $events = Event::where('model_type', Task::class)->where('model_id', $entity['id'])->get();
 
+        foreach ($events as $event) {
+            // l'evento è stato annullato
+        }
     }
 }

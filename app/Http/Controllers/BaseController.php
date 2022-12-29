@@ -132,8 +132,11 @@ class BaseController
     public function destroy($id)
     {
         $entity = $this->entityClass::findOrFail($id);
+
+        $oldEntity = $entity->toArray();
+
         $entity->delete();
-        $this->afterDestroy($id);
+        $this->afterDestroy($oldEntity);
 
         flash()->success('Elemento eliminato con successo.');
 
@@ -159,7 +162,7 @@ class BaseController
 
     }
 
-    public function afterDestroy($id)
+    public function afterDestroy(array $entity)
     {
     }
 }
