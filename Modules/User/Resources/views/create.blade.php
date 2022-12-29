@@ -52,37 +52,37 @@
             </div>
 
         </div>
+    </div>
+    <div class="flex-grow-1"></div>
 
-        <div class="flex-grow-1"></div>
-
-        @endsection
+@endsection
 
 
-        @push('scripts')
-            <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
-            <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css"/>
+@push('scripts')
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css"/>
 
-            <script>
-                $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-                    let myDropzone = new Dropzone(".dropzone", {url: "{{route('attachment.upload_temp_file')}}"});
-                    myDropzone.on("success", (file, response) => {
+            let myDropzone = new Dropzone(".dropzone", {url: "{{route('attachment.upload_temp_file')}}"});
+            myDropzone.on("success", (file, response) => {
 
-                    })
+            })
 
-                    $('.delete-attachment').first().remove()
-                })
-                $('.add-to-collection').on('click', function (e) {
-                    e.preventDefault();
-                    var container = $('.collection-container');
-                    var count = container.children().length;
-                    var proto = container.data('prototype').replace(/__NAME__/g, count);
-                    container.append(proto);
-                });
+            $('.delete-attachment').first().remove()
+        })
+        $('.add-to-collection').on('click', function (e) {
+            e.preventDefault();
+            var container = $('.collection-container');
+            var count = container.children().length;
+            var proto = container.data('prototype').replace(/__NAME__/g, count);
+            container.append(proto);
+        });
 
-                $(document).on('click', '.delete-attachment', function (e) {
-                    e.preventDefault()
-                    $(this).closest('.form-group').remove()
-                })
-            </script>
-    @endpush
+        $(document).on('click', '.delete-attachment', function (e) {
+            e.preventDefault()
+            $(this).closest('.form-group').remove()
+        })
+    </script>
+@endpush

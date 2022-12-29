@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::middleware(['auth'])->prefix('setting')->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('productcategory/{productcategory}/confirm-delete', [Modules\Product\Http\Controllers\ProductCategoryController::class, 'confirmDelete'])->name('productcategory.confirm_delete');
     Route::resource('productcategory', ProductCategoryController::class);
 

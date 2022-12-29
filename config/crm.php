@@ -109,6 +109,11 @@ return [
                     'text' => 'Campi aggiuntivi',
                     'route' => 'setting.additional_fields',
                     'roles' => ['admin', 'superadmin']
+                ],
+                [
+                    'text' => 'Configurazione Viste',
+                    'route' => 'customview.index',
+                    'roles' => ['admin', 'superadmin']
                 ]
             ]
         ]

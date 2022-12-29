@@ -45,6 +45,10 @@ return [
         'role' => [
             'singular_name' => 'ruolo',
             'plural_name' => 'ruoli'
+        ],
+        'customview' => [
+            'singular_name' => 'Vista',
+            'plural_name' => 'Viste'
         ]
     ],
     'form' => [

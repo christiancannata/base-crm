@@ -19,4 +19,9 @@ Route::middleware(['auth'])->prefix('setting')->group(function () {
     Route::post('/additional-field', 'SettingController@postAdditionalField')->name('setting.post_additional_fields');
     Route::patch('/additional-field/{field}', 'SettingController@updateAdditionalField')->name('setting.update_additional_fields');
 
+
 });
+Route::middleware(['auth'])->group(function () {
+    Route::resource('customview', 'CustomViewController');
+});
+
