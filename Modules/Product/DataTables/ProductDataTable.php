@@ -2,6 +2,7 @@
 
 namespace Modules\Product\DataTables;
 
+use App\Http\DataTables\BaseDataTable;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Modules\Product\Entities\Product;
 use Yajra\DataTables\EloquentDataTable;
@@ -9,7 +10,7 @@ use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
-class ProductDataTable extends DataTable
+class ProductDataTable extends BaseDataTable
 {
     /**
      * Build DataTable class.
