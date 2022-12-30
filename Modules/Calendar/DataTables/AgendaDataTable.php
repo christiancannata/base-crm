@@ -1,15 +1,16 @@
 <?php
 
-namespace Modules\Product\DataTables;
+namespace Modules\Calendar\DataTables;
 
 use App\Http\DataTables\BaseDataTable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Modules\Product\Entities\Product;
+use Modules\Calendar\Entities\Agenda;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Column;
 
-class ProductDataTable extends BaseDataTable
+class AgendaDataTable extends BaseDataTable
 {
     /**
      * Build DataTable class.
@@ -20,9 +21,20 @@ class ProductDataTable extends BaseDataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function (Product $product) {
-                $route = 'product';
-                return view('datatables.action', ['entity' => $product, 'route' => $route]);
+            ->addColumn('action', function (Agenda $customer) {
+                $route = 'agenda';
+                return view('datatables.action', ['entity' => $customer, 'route' => $route]);
+            })
+            ->editColumn('start', function ($data) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->start)->format('d-m-Y H:i');
+                return $formatedDate;
+            })
+            ->editColumn('end', function ($data) {
+                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->end)->format('d-m-Y H:i');
+                return $formatedDate;
+            })
+            ->addColumn('user_full_name', function ($data) {
+                return $data->user ? $data->user->full_name : '-';
             })
             ->setRowId('id');
     }
@@ -33,9 +45,13 @@ class ProductDataTable extends BaseDataTable
      * @param \App\Models\User $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Product $model): QueryBuilder
+    public function query(Agenda $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['user'])->when(auth()->user()->hasRole('agente'), function ($q) {
+            $q->where(function ($q) {
+                $q->where('user_id', auth()->user()->id)->orWhereNull('user_id');
+            });
+        });
     }
 
     /**
@@ -43,7 +59,8 @@ class ProductDataTable extends BaseDataTable
      *
      * @return \Yajra\DataTables\Html\Builder
      */
-    public function html(): HtmlBuilder
+    public
+    function html(): HtmlBuilder
     {
         return $this->builder()
             ->setTableId('roles-table')
@@ -66,11 +83,17 @@ class ProductDataTable extends BaseDataTable
      *
      * @return array
      */
-    public function getColumns(): array
+    public
+    function getColumns(): array
     {
+
         return [
-            Column::make('name'),
-            Column::make('price'),
+            Column::make(['data' => 'start', 'title' => 'Dal']),
+            Column::make(['data' => 'end', 'title' => 'Al']),
+            Column::make([
+                'data' => 'user_full_name',
+                'title' => 'Agente'
+            ]),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -83,8 +106,9 @@ class ProductDataTable extends BaseDataTable
      *
      * @return string
      */
-    protected function filename(): string
+    protected
+    function filename(): string
     {
-        return 'Prodotti_' . date('YmdHis');
+        return 'Agenda_' . date('YmdHis');
     }
 }

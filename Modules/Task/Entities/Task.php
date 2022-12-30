@@ -2,6 +2,7 @@
 
 namespace Modules\Task\Entities;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Calendar\Entities\Event;
@@ -28,6 +29,12 @@ class Task extends Model
     {
         return $this->belongsTo(TaskStatus::class, 'status_id');
     }
+
+    public function assignedTo()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     public function parent()
     {

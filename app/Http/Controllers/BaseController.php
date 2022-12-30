@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
-use Modules\Calendar\Entities\Event;
-use Modules\Task\Entities\Task;
 
 class BaseController
 {
@@ -62,12 +60,12 @@ class BaseController
         $entity->save();
 
         if (isset($params['custom_fields'])) {
-           // $entity->saveCustomFields($params['custom_fields']);
+            // $entity->saveCustomFields($params['custom_fields']);
         }
 
         $this->afterStore($entity);
 
-        flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
+        flash()->success(trans('crm.form.success_message', ['entity' => trans('crm.modules.' . $this->entityName . '.singular_name')]));
 
         return redirect(route($this->entityName . '.index'));
     }

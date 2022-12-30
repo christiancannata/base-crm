@@ -47,7 +47,8 @@ return [
     'default_namespace' => '',
 
     'custom_fields' => [
-        'upload_file' => \App\FormField\UploadFileType::class
+        'upload_file' => \App\FormField\UploadFileType::class,
+        'agenda' => \App\FormField\AgendaType::class
     ],
 
     'plain_form_class' => \Kris\LaravelFormBuilder\Form::class,

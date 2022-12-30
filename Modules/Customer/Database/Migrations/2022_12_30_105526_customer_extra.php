@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration {
     /**
@@ -12,8 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->string('model_type')->change();
+        Schema::table('customers', function (Blueprint $table) {
+            $table->unsignedInteger('created_by_id')->nullable();
         });
     }
 

@@ -26,6 +26,11 @@ return [
                     'route' => 'task.index'
                 ],
                 [
+                    'text' => 'Gestione Agenda',
+                    'route' => 'agenda.index',
+                    'roles' => ['admin', 'superadmin', 'agente']
+                ],
+                [
                     'text' => 'Categorie',
                     'route' => 'taskcategory.index',
                     'roles' => ['admin', 'superadmin']

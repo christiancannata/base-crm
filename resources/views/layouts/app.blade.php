@@ -41,6 +41,7 @@
 
     <link href="/assets/css/select2.min.css" rel="stylesheet"/>
 
+
 </head>
 
 <body class="body-bg-f8faff">
@@ -719,14 +720,16 @@
 <script src="/assets/js/contact-form-script.js"></script>
 <script src="/assets/js/ajaxchimp.min.js"></script>
 <script src="/assets/js/sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="/assets/js/select2.js"></script>
 <script src="/assets/js/custom.js"></script>
+@stack('scripts')
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.0.2/index.global.min.js"
         integrity="sha512-Oh8TxU+uqKYsmHku33fGrSDbZyN+2U3w/MJSWlnCnpHVzIJSczqx6XxAYjS2zAXCfnH1+YXwwD6BnagxPizYAA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-@stack('scripts')
+
 
 </body>
 </html>

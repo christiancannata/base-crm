@@ -6,9 +6,11 @@ use App\Models\User;
 use Givebutter\LaravelCustomFields\Traits\HasCustomFieldResponses;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Agenda extends Model
 {
     use HasCustomFieldResponses;
+
+    public $table = 'unavailabilities';
 
     protected $guarded = [
         'id',
@@ -26,9 +28,5 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function model()
-    {
-        return $this->morphTo();
-    }
 
 }

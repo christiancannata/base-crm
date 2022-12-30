@@ -49,6 +49,10 @@ return [
         'customview' => [
             'singular_name' => 'Vista',
             'plural_name' => 'Viste'
+        ],
+        'agenda' => [
+            'singular_name' => 'Non disponibilità',
+            'plural_name' => 'Non disponibilità'
         ]
     ],
     'form' => [

@@ -33,10 +33,6 @@ class TaskForm extends Form
                 'label' => 'Descrizione',
                 'rules' => 'required'
             ])
-            ->add('event_date', Field::DATETIME_LOCAL, [
-                'label' => 'Quando',
-                'rules' => 'required'
-            ])
             ->add('customer_id', 'entity', [
                 'label' => 'Cliente',
                 'rules' => 'required',
@@ -55,8 +51,12 @@ class TaskForm extends Form
                 'property' => 'first_name',
                 'empty_value' => '-- Seleziona --',
                 'attr' => [
-                    'class' => 'select2 form-control'
+                    'class' => 'form-control'
                 ]
+            ])
+            ->add('event_date', 'agenda', [
+                'label' => 'Quando',
+                'rules' => 'required'
             ])
             ->add('status_id', 'entity', [
                 'label' => 'Stato',

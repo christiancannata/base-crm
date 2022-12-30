@@ -4,7 +4,6 @@ namespace Modules\Dashboard\Http\Controllers;
 
 use Carbon\CarbonPeriod;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Calendar\Entities\Event;
 use Modules\Contract\Entities\Contract;

@@ -4,11 +4,11 @@ namespace Modules\Task\DataTables;
 
 use App\Http\DataTables\BaseDataTable;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Task\Entities\Task;
 use Modules\Task\Entities\TaskCategory;
-use Modules\Task\Entities\TaskStatus;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
@@ -18,14 +18,16 @@ class TasksDataTable extends BaseDataTable
 
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        //  $users = User::query()->select('id as value', 'id as label')->get();
         return (new EloquentDataTable($query))
             ->addColumn('action', function (Model $model) {
                 return view('datatables.action', ['entity' => $model, 'route' => $this->route]);
             })
-            /*   ->searchPane('assigned_to_id', $users, function ($query, $values) {
-                   $query->whereIn('assigned_to_id', $values);
-               })*/
+            ->editColumn('event_date', function ($data) {
+                return Carbon::createFromFormat('Y-m-d H:i:s', $data->event_date)->format('d-m-Y H:i');
+            })
+            ->editColumn('assigned_to_id', function ($data) {
+                return $data->assignedTo->full_name;
+            })
             ->setRowId('id');
     }
 
@@ -38,7 +40,7 @@ class TasksDataTable extends BaseDataTable
     public function query(Task $model): QueryBuilder
     {
         return $model->newQuery()
-            ->with('category', 'status')
+            ->with('category', 'status', 'assignedTo')
             ->when(!empty(request()->get('category_id')), function ($q) {
                 $q->whereIn('category_id', [request()->get('category_id')]);
             })
@@ -68,9 +70,9 @@ class TasksDataTable extends BaseDataTable
                 ]
             ),
             Column::make('description'),
-            Column::make('event_date'),
+            Column::make(['data' => 'event_date', 'title' => 'Quando']),
             Column::make(['name' => 'assigned_to_id', 'data' => 'assigned_to_id', 'title' => 'Assegnato a']),
-            Column::make('category.name'),
+            Column::make(['data' => 'category.name', 'title' => 'Categoria']),
             Column::make([
                 'title' => 'Stato',
                 'data' => 'status.name'

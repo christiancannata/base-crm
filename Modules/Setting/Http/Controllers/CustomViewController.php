@@ -4,7 +4,6 @@ namespace Modules\Setting\Http\Controllers;
 
 use App\Http\Controllers\BaseController;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Facades\Schema;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Modules\Setting\DataTables\CustomViewsDataTable;
 use Modules\Setting\Entities\CustomView;
