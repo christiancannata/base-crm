@@ -33,11 +33,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 id="modalTitle" class="modal-title"></h4>
+                <button type="button" class="btn btn-default close-modal" data-dismiss="modal">Chiudi</button>
+
             </div>
             <div id="modalBody" class="modal-body"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default close-modal" data-dismiss="modal">Chiudi</button>
-            </div>
         </div>
     </div>
 </div>
@@ -53,6 +52,25 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
+
+            $(document).on('click', '.update-event', function (e) {
+                e.preventDefault()
+
+                $.post("{{route('calendar.latest-events-box')}}",
+                    {}, function (data) {
+                        loadEvents()
+                        modal.hide()
+                    });
+
+            })
+
+            $(document).on('change', '.status_id', function (e) {
+                if ($(this).val() == '') {
+                    $("#noteDiv").show()
+                } else {
+                    $("#noteDiv").hide()
+                }
+            })
 
             loadEvents()
             $(".close-modal").click(function () {
@@ -74,7 +92,7 @@
                 events: '{{$eventsRoute}}',
                 eventClick: function (event, jsEvent, view) {
                     $('#modalTitle').html(event.event.title);
-                    $('#modalBody').html(event.event.modal_html);
+                    $('#modalBody').html(event.event.extendedProps.html);
                     $('#eventUrl').attr('href', event.event.url);
                     modal.show();
                 }

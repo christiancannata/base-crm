@@ -12,11 +12,30 @@ class CalendarController extends Controller
         $from = request()->get('start');
         $to = request()->get('end');
 
-        $events = Event::when(!auth()->user()->hasAnyRole(['admin', 'superadmin']), function ($q) {
+        $events = Event::with('model')->when(!auth()->user()->hasAnyRole(['admin', 'superadmin']), function ($q) {
             $q->where('user_id', auth()->user()->id);
         })->whereBetween('start', [$from, $to])->get();
 
-        return $events;
+        $json = [];
+
+        foreach ($events as $event) {
+
+            $background = null;
+
+            if ($event->model && $event->model->status) {
+                $background = $event->model->status->color;
+            }
+
+            $json[] = [
+                'title' => $event->title,
+                'start' => $event->start,
+                'end' => $event->end,
+                'backgroundColor' => $background,
+                'html' => view('calendar::partials.detail-popup', compact('event'))->render()
+            ];
+        }
+
+        return $json;
     }
 
     public function getLatestEventsBox()

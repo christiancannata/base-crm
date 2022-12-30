@@ -11,8 +11,8 @@ class TaskCategory extends Model
 
     protected $table = 'task_categories';
 
-    protected $fillable = [
-        'name'
+    protected $guarded = [
+        '*'
     ];
 
     protected static function newFactory()

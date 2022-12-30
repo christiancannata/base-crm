@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Calendar\Entities\Event;
+use Modules\Customer\Entities\Customer;
 
 class Task extends Model
 {
@@ -34,6 +35,10 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 
     public function parent()
     {

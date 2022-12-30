@@ -22,9 +22,16 @@ class DashboardController extends Controller
 
     public function getChart()
     {
-        $params = request()->get('range');
+        $range = request()->get('range');
 
-        $dates = explode(" - ", $params);
+        if (empty($range)) {
+            $now = new \DateTime();
+            $lastWeek = clone $now;
+            $lastWeek->sub(new \DateInterval('P7D'));
+            $range = $lastWeek->format("d-m-y") . ' - ' . $now->format("d-m-y");
+        }
+
+        $dates = explode(" - ", $range);
 
         $from = \DateTime::createFromFormat('d-m-Y', $dates[0]);
         $to = \DateTime::createFromFormat('d-m-Y', $dates[1]);
