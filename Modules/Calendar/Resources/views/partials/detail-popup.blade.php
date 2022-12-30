@@ -95,7 +95,7 @@
             <h5>Esita Chiamata</h5>
             <hr>
         </div>
-        <div class="col-md-12 mb-3">
+        <div class="col-md-6 mb-3">
             <label class="form-label">Esito</label>
             <select class=" form-control status_id" name="status_id" required>
                 <option disabled selected>-- Scegli un esito --</option>
@@ -104,7 +104,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-md-12 mb-3">
+        <div class="col-md-6 mb-3">
             <label class="form-label" required>Motivazione</label>
             <select class="select2 form-label">
                 <option disabled selected>-- Scegli un esito --</option>

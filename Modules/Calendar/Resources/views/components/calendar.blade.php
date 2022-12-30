@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<div id="calendarModal" class="modal fade">
+<div id="calendarModal" class="modal fade modal-lg">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
