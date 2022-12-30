@@ -13,7 +13,6 @@
     </div>
 </div>
 
-
 @push('scripts')
     <script src="/assets/js/pages/agenda.js"></script>
 

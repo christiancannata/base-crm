@@ -15,10 +15,9 @@ class Task extends Model
         'id'
     ];
 
-    protected static function newFactory()
-    {
-        return \Modules\Task\Database\factories\TaskFactory::new();
-    }
+    public $dates = [
+        'event_date'
+    ];
 
     public function category()
     {
@@ -45,4 +44,6 @@ class Task extends Model
     {
         return $this->morphMany(Event::class, 'model');
     }
+
+
 }

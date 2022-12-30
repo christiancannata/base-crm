@@ -70,7 +70,37 @@ class AgendaController extends BaseController
 
         $day = new \DateTime($from);
 
+
+        $slots = getTimeSlot(15, '08:00', '20:00');
+
         $hours = [];
+
+        foreach ($slots as $hour) {
+            $hasUnavailability = Agenda::where('user_id', $userId)->where(function ($query) use ($from, $to, $hour) {
+                $query->where([
+                    ['start', '<=', $from . ' ' . $hour['slot_start_time']],
+                    ['end', '>=', $from . ' ' . $hour['slot_start_time']],
+                ])->orWhere([
+                    ['start', '>=', $from . ' ' . $hour['slot_start_time']],
+                    ['start', '<=', $to . ' ' . $hour['slot_end_time']],
+                ]);
+            })->exists();
+
+            $hasAppointments = Event::where('user_id', $userId)->where(function ($query) use ($from, $to, $hour) {
+                $query->where([
+                    ['start', '<=', $from . ' ' . $hour['slot_start_time']],
+                    ['end', '>=', $from . ' ' . $hour['slot_start_time']],
+                ])->orWhere([
+                    ['start', '>=', $from . ' ' . $hour['slot_start_time']],
+                    ['start', '<=', $to . ' ' . $hour['slot_end_time']],
+                ]);
+            })->exists();
+
+            if (!$hasAppointments && !$hasUnavailability) {
+                $hours[] = $hour['slot_start_time'];
+            }
+
+        }
 
         return view('calendar::partials.time_box', compact('day', 'hours'));
     }
