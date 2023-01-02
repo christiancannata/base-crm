@@ -304,7 +304,7 @@
         })
 
         $('*[dynamic="true"]').each(function () {
-            console.log("asdasd")
+
         })
 
         $("#lead_id").change(function () {
@@ -312,7 +312,7 @@
                 $(".lead-form").show()
             } else {
                 $(".lead-form").hide()
-
+                $('.lead-form *[required]').removeAttribute('required')
             }
         })
     })

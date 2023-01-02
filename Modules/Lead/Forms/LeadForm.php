@@ -21,12 +21,12 @@ class LeadForm extends Form
         $this
             ->add('first_name', Field::TEXT, [
                 'label' => 'Nome',
-                'rules' => 'required',
+                'rules' => isset($options['noSubmit']) ? 'required' : null,
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
             ->add('last_name', Field::TEXT, [
                 'label' => 'Cognome',
-                'rules' => 'required',
+                'rules' => isset($options['noSubmit']) ? 'required' : null,
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
             ->add('company_name', Field::TEXT, [
@@ -35,7 +35,7 @@ class LeadForm extends Form
             ])
             ->add('phone', Field::TEXT, [
                 'label' => 'Telefono principale',
-                'rules' => 'required',
+                'rules' => isset($options['noSubmit']) ? 'required' : null,
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
             ->add('secondary_phone', Field::TEXT, [

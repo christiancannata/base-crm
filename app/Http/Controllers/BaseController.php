@@ -117,7 +117,7 @@ class BaseController
         $entity->save();
         $this->afterUpdate($entity);
 
-        flash()->success(trans('crm.form.update_success_message', ['entity' => trans('crm.modules.customer.singular_name')]));
+        flash()->success(ucfirst(trans('crm.form.update_success_message', ['entity' => trans('crm.modules.' . $this->entityName . '.singular_name')])));
 
         return redirect(route($this->entityName . '.index'));
     }
