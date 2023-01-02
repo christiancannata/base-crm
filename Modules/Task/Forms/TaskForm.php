@@ -19,9 +19,12 @@ class TaskForm extends Form
     {
 
         $customers = Customer::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
+
         $agenti = User::orderBy('last_name')->role('agente')->get()->pluck('full_name', 'id')->toArray();
+
         $leads = ['new_lead' => 'Aggiungi lead'];
         $leads += Lead::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
+
         $statuses = TaskStatus::when(!auth()->user()->hasAnyRole(['admin', 'superadmin']), function ($q) {
             $q->where('system_name', 'TO_DO');
         })->get()->pluck('name', 'id')->toArray();
