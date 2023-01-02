@@ -143,6 +143,6 @@ class ContractForm extends Form
             }
         }
 
-        $this->add('submit', 'submit', ['label' => 'Aggiungi', 'attr' => ['class' => 'btn btn-success mb-4 pull-right']]);
+        $this->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
     }
 }

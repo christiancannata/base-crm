@@ -75,12 +75,27 @@ class CustomerDataTable extends BaseDataTable
     function getColumns(): array
     {
         return [
-            Column::make('first_name'),
-            Column::make('last_name'),
-            Column::make('company_name'),
+            Column::make([
+                'data' => 'first_name',
+                'title' => 'Nome'
+            ]),
+            Column::make([
+                'data' => 'last_name',
+                'title' => 'Cognome'
+            ]),
+            Column::make([
+                'data' => 'company_name',
+                'title' => 'Ragione Sociale'
+            ]),
             Column::make('email'),
-            Column::make('phone'),
-            Column::make('vat_code'),
+            Column::make([
+                'data' => 'customer_type',
+                'title' => 'Tipo Cliente'
+            ]),
+            Column::make([
+                'data' => 'phone',
+                'title' => 'Telefono'
+            ]),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

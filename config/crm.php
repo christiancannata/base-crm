@@ -49,6 +49,12 @@ return [
             'route' => 'customer.index',
             'submenu' => []
         ],
+        'leads' => [
+            'icon' => 'user-octagon.svg',
+            'text' => 'Leads',
+            'route' => 'lead.index',
+            'submenu' => []
+        ],
         'contracts' => [
             'icon' => 'book.svg',
             'text' => 'Contratti',

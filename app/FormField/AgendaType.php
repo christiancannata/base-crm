@@ -13,8 +13,13 @@ class AgendaType extends FormField
 
     public function render(array $options = [], $showLabel = true, $showField = true, $showError = true)
     {
-        $options['somedata'] = 'This is some data for view';
-
         return parent::render($options, $showLabel, $showField, $showError);
+    }
+
+    protected function getRenderData()
+    {
+        return [
+            'value' => $this->getValue()
+        ];
     }
 }

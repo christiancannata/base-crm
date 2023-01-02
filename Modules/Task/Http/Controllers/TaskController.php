@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Modules\Calendar\Entities\Event;
+use Modules\Lead\Entities\Lead;
 use Modules\Task\DataTables\TasksDataTable;
 use Modules\Task\Entities\Task;
 use Modules\Task\Forms\TaskForm;
@@ -38,6 +39,13 @@ class TaskController extends BaseController
             $params['event_date'] .= ' ' . request()->get('hour');
         }
 
+        if ($params['lead_id'] == 'new_lead') {
+            $lead = new Lead();
+            $lead->fill($params['new_lead']);
+            $lead->save();
+            $lead->owner_id = auth()->user()->id;
+            $params['lead_id'] = $lead->id;
+        }
 
         $entity = new $this->entityClass();
         $entity->fill($params);

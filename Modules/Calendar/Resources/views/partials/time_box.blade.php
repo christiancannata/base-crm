@@ -12,16 +12,18 @@
             @endforeach
         </select>
     </div>
-    <div class="col-md-12 mb-3">
+    @if(!isset($hideDuration))
+        <div class="col-md-12 mb-3">
 
-        <label>Durata</label>
-        <select required name="period" class="select2 form-control">
-            <option value="30">30 Minuti</option>
-            <option value="60">1 Ora</option>
-            <option value="120">2 Ore</option>
-            <option value="180">3 Ore</option>
-        </select>
-    </div>
+            <label>Durata</label>
+            <select required name="period" class="select2 form-control">
+                <option value="30">30 Minuti</option>
+                <option value="60">1 Ora</option>
+                <option value="120" selected>2 Ore</option>
+                <option value="180">3 Ore</option>
+            </select>
+        </div>
+    @endif
 
 @else
     <div class="col-md-12">

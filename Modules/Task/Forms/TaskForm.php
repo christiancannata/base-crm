@@ -6,6 +6,8 @@ use App\Models\User;
 use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\Form;
 use Modules\Customer\Entities\Customer;
+use Modules\Lead\Entities\Lead;
+use Modules\Lead\Forms\LeadForm;
 use Modules\Setting\Entities\Entity;
 use Modules\Task\Entities\Task;
 use Modules\Task\Entities\TaskCategory;
@@ -18,11 +20,15 @@ class TaskForm extends Form
 
         $customers = Customer::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
 
+        $leads = ['new_lead' => 'Aggiungi lead'];
+        $leads += Lead::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
+
         if ($this->getModel()) {
             $this->add('_method', Field::HIDDEN, [
                 'value' => 'PATCH'
             ]);
         }
+
 
         $this
             ->add('title', Field::TEXT, [
@@ -32,28 +38,69 @@ class TaskForm extends Form
             ->add('description', Field::TEXTAREA, [
                 'label' => 'Descrizione',
                 'rules' => 'required'
-            ])
-            ->add('customer_id', 'entity', [
+            ]);
+
+        if (auth()->user()->hasAnyRole(['admin', 'superadmin'])) {
+
+            $this->add('customer_id', 'choice', [
                 'label' => 'Cliente',
-                'rules' => 'required',
                 'property' => 'full_name',
                 'empty_value' => '-- Seleziona --',
 
                 'attr' => [
-                    'class' => 'select2 form-control'
+                    'class' => 'select2 form-control',
+                    'autocomplete' => 'off'
                 ],
                 'choices' => $customers
-            ])
-            ->add('assigned_to_id', 'entity', [
-                'label' => 'Con',
-                'class' => User::class,
+            ]);
+
+
+            $this->add('lead_id', 'choice', [
+                'label' => 'Lead',
+                'property' => 'full_name',
+                'empty_value' => '-- Seleziona --',
+
+                'attr' => [
+                    'class' => 'select2 form-control',
+                    'autocomplete' => 'off'
+                ],
+                'choices' => $leads
+            ]);
+
+        }
+
+        if (auth()->user()->hasAnyRole(['telemarketing'])) {
+            $this->add('lead_id', 'choice', [
+                'label' => 'Lead',
                 'rules' => 'required',
-                'property' => 'first_name',
+                'property' => 'full_name',
                 'empty_value' => '-- Seleziona --',
                 'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
+                    'autocomplete' => 'off',
+                    'class' => 'select2 form-control'
+                ],
+                'choices' => $leads
+            ]);
+
+            $this->add('new_lead', 'form', [
+                'class' => LeadForm::class,
+                'formOptions' => ['noSubmit' => true],
+                'wrapper' => ['class' => 'row lead-form', 'style' => 'display:none']
+            ]);
+
+        }
+
+        $this->add('assigned_to_id', 'entity', [
+            'label' => 'Con',
+            'class' => User::class,
+            'rules' => 'required',
+            'property' => 'first_name',
+            'empty_value' => '-- Seleziona --',
+            'attr' => [
+                'class' => 'form-control',
+                'autocomplete' => 'off'
+            ]
+        ])
             ->add('event_date', 'agenda', [
                 'label' => 'Quando',
                 'rules' => 'required'
@@ -66,6 +113,7 @@ class TaskForm extends Form
                 'empty_value' => '-- Seleziona --',
 
                 'attr' => [
+                    'autocomplete' => 'off',
                     'class' => 'select2 form-control'
                 ]
             ])
@@ -76,6 +124,7 @@ class TaskForm extends Form
                 'rules' => 'required',
                 'empty_value' => '-- Seleziona --',
                 'attr' => [
+                    'autocomplete' => 'off',
                     'class' => 'select2 form-control'
                 ]
             ])
@@ -130,7 +179,7 @@ class TaskForm extends Form
             }
         }
 
-        $this->add('submit', 'submit', ['label' => 'Aggiungi', 'wrapper' => ['class' => 'form-group col-md-12'], 'attr' => ['class' => 'btn btn-success mb-4 pull-right']]);
+        $this->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'wrapper' => ['class' => 'form-group col-md-12'], 'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
 
     }
 }

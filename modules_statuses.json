@@ -10,5 +10,6 @@
     "Product": true,
     "Setting": true,
     "Attachment": true,
-    "Calendar": true
+    "Calendar": true,
+    "Lead": true
 }

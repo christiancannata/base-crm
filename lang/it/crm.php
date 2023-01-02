@@ -18,6 +18,10 @@ return [
             'singular_name' => 'cliente',
             'plural_name' => 'clienti'
         ],
+        'lead' => [
+            'singular_name' => 'lead',
+            'plural_name' => 'leads'
+        ],
         'task' => [
             'singular_name' => 'appuntamento',
             'plural_name' => 'appuntamenti'

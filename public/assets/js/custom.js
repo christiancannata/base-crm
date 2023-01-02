@@ -306,5 +306,14 @@
         $('*[dynamic="true"]').each(function () {
             console.log("asdasd")
         })
+
+        $("#lead_id").change(function () {
+            if ($(this).val() == 'new_lead') {
+                $(".lead-form").show()
+            } else {
+                $(".lead-form").hide()
+
+            }
+        })
     })
 })(jQuery);

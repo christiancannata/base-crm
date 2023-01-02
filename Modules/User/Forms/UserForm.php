@@ -89,6 +89,6 @@ class UserForm extends Form
         $this->add('submit', 'submit', [
             'label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi',
             'wrapper' => ['class' => 'form-group col-md-12 mb-2'],
-            'attr' => ['class' => 'btn btn-success mb-4 pull-right']]);
+            'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
     }
 }

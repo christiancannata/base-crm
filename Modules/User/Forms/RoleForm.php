@@ -13,6 +13,6 @@ class RoleForm extends Form
             ->add('name', Field::TEXT, [
                 'rules' => 'required'
             ])
-            ->add('submit', 'submit', ['label' => 'Aggiungi', 'attr' => ['class' => 'btn btn-success mb-4 pull-right']]);
+            ->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
     }
 }

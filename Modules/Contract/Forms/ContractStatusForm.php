@@ -21,6 +21,6 @@ class ContractStatusForm extends Form
                 'rules' => 'required',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
-            ->add('submit', 'submit', ['label' => 'Aggiungi', 'wrapper' => ['class' => 'form-group col-md-12'], 'attr' => ['class' => 'btn btn-success mb-4 pull-right']]);
+            ->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'wrapper' => ['class' => 'form-group col-md-12'], 'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
     }
 }
