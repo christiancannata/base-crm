@@ -8,7 +8,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <div class="page-title">
-                        <h3>Aggiungi {{trans('crm.modules.'.strtolower($entityName).'.singular_name')}}</h3>
+                        <h3>@if(isset($entity))Modifica @else Aggiungi @endif {{trans('crm.modules.'.strtolower($entityName).'.singular_name')}}</h3>
                     </div>
                 </div>
 

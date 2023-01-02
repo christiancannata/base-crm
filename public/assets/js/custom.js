@@ -294,7 +294,7 @@
 
 
     $(document).ready(function () {
-        $(".select2").select2({})
+        $(".select2").select2()
 
         $(".price").blur(function () {
             var enteredNumber = '' + $(this).val();

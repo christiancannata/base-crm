@@ -28,7 +28,7 @@ class DashboardController extends Controller
             $now = new \DateTime();
             $lastWeek = clone $now;
             $lastWeek->sub(new \DateInterval('P7D'));
-            $range = $lastWeek->format("d-m-y") . ' - ' . $now->format("d-m-y");
+            $range = $lastWeek->format("d-m-Y") . ' - ' . $now->format("d-m-Y");
         }
 
         $dates = explode(" - ", $range);
@@ -36,8 +36,15 @@ class DashboardController extends Controller
         $from = \DateTime::createFromFormat('d-m-Y', $dates[0]);
         $to = \DateTime::createFromFormat('d-m-Y', $dates[1]);
 
-        $events = Event::where('model_type', Task::class)->whereBetween('created_at', [$from->format("Y-m-d 00:00:00"), $to->format("Y-m-d 23:59:59")])->get();
-        $contracts = Contract::whereBetween('start_date', [$from->format("Y-m-d 00:00:00"), $to->format("Y-m-d 23:59:59")])->get();
+        $events = Event::where('model_type', Task::class)
+            ->when(auth()->user()->hasRole('agente'), function ($q) {
+                $q->where('user_id', auth()->user()->id);
+            })
+            ->whereBetween('created_at', [$from->format("Y-m-d 00:00:00"), $to->format("Y-m-d 23:59:59")])->get();
+
+        $contracts = Contract::whereBetween('created_at', [$from->format("Y-m-d 00:00:00"), $to->format("Y-m-d 23:59:59")])->when(auth()->user()->hasRole('agente'), function ($q) {
+            $q->where('created_by_id', auth()->user()->id);
+        })->get();
 
         $period = CarbonPeriod::create($from, $to);
 
@@ -51,7 +58,7 @@ class DashboardController extends Controller
             $x[] = $date->format('d/m');
 
             $tmpDayEvents = $events->whereBetween('created_at', [$date->format("Y-m-d 00:00:00"), $date->format("Y-m-d 23:59:59")])->count();
-            $tmpDayContracts = $contracts->whereBetween('start_date', [$date->format("Y-m-d 00:00:00"), $date->format("Y-m-d 23:59:59")])->count();
+            $tmpDayContracts = $contracts->whereBetween('created_at', [$date->format("Y-m-d 00:00:00"), $date->format("Y-m-d 23:59:59")])->count();
 
             $tmpEvents[] = $tmpDayEvents;
             $tmpContracts[] = $tmpDayContracts;
