@@ -315,5 +315,19 @@
                 $('.lead-form *[required]').removeAttribute('required')
             }
         })
+
+        $("#preselect_lead_id").change(function () {
+            $('*[name^="new_customer["]').val('')
+            $.ajax({
+                url: "/api/lead/" + $(this).val(), success: function (lead) {
+
+                    for (let x in lead) {
+                        $('*[name="new_customer[' + x + ']"]').val(lead[x])
+                    }
+
+
+                }
+            });
+        })
     })
 })(jQuery);

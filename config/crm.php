@@ -46,6 +46,7 @@ return [
         'customers' => [
             'icon' => 'user-octagon.svg',
             'text' => 'Clienti',
+            'roles' => ['admin', 'superadmin', 'agente'],
             'route' => 'customer.index',
             'submenu' => []
         ],

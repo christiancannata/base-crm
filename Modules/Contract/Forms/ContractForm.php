@@ -9,6 +9,8 @@ use Modules\Contract\Entities\Contract;
 use Modules\Contract\Entities\ContractCategory;
 use Modules\Contract\Entities\ContractStatus;
 use Modules\Customer\Entities\Customer;
+use Modules\Customer\Forms\CustomerForm;
+use Modules\Lead\Entities\Lead;
 use Modules\Setting\Entities\Entity;
 
 class ContractForm extends Form
@@ -16,7 +18,7 @@ class ContractForm extends Form
     public function buildForm()
     {
 
-        $customers = Customer::orderBy('last_name')->when(auth()->user()->hasRole('agente'), function ($q) {
+        $leads = Lead::orderBy('last_name')->when(auth()->user()->hasRole('agente'), function ($q) {
             $q->where(function ($q) {
                 $q->where('owner_id', auth()->user()->id)->orWhereNull('owner_id');
             });
@@ -29,25 +31,22 @@ class ContractForm extends Form
         }
 
         $this
-            /*   ->add('name', Field::TEXT, [
-                   'label' => 'Nome Contratto',
-                   'rules' => 'required'
-               ])*/
-            ->add('customer_id', 'choice', [
-                'label' => 'Cliente',
+            ->add('preselect_lead_id', 'choice', [
+                'label' => 'Importa da Lead',
                 'empty_value' => '-- Seleziona --',
                 'rules' => 'required',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ],
-                'choices' => $customers
+                'choices' => $leads
             ])
-            /*  ->add('new_customer', 'form', [
-                  'class' => CustomerForm::class,
-                  'label' => 'Nuovo Cliente',
-                  'wrapper' => ['class' => 'row'],
-                  'label_attr' => ['class' => 'big-label'],
-              ])*/
+            ->add('new_customer', 'form', [
+                'class' => CustomerForm::class,
+                'label' => 'Cliente',
+                'label_attr' => ['class' => 'big-label'],
+                'formOptions' => ['noSubmit' => true],
+                'wrapper' => ['class' => 'row customer-form']
+            ])
             ->add('category_id', 'entity', [
                 'label' => 'Tipologia di contratto',
                 'empty_value' => '-- Seleziona --',

@@ -73,17 +73,20 @@
                                                             @endif
                                                         </div>
                                                     @endforeach
-                                                    <div class="col-md-12 mb-2">
-                                                        <button type="submit"
-                                                                class="btn btn-success pull-right"
-                                                        >Filtra
-                                                        </button>
-                                                        <button type="reset"
-                                                                class="btn btn-primary pull-right  reset-search-form"
-                                                                style="margin-right:10px;">Reset
-                                                        </button>
 
-                                                    </div>
+                                                    @if(count($filters) > 0)
+                                                        <div class="col-md-12 mb-2">
+                                                            <button type="submit"
+                                                                    class="btn btn-success pull-right"
+                                                            >Filtra
+                                                            </button>
+                                                            <button type="reset"
+                                                                    class="btn btn-primary pull-right  reset-search-form"
+                                                                    style="margin-right:10px;">Reset
+                                                            </button>
+
+                                                        </div>
+                                                    @endif
                                                 </form>
                                             </div>
                                         </div>
