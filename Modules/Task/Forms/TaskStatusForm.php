@@ -22,6 +22,10 @@ class TaskStatusForm extends Form
                 'label' => 'Nome',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
+            ->add('system_name', Field::TEXT, [
+                'label' => 'Codice di sistema',
+                'wrapper' => ['class' => 'form-group col-md-6 mb-3']
+            ])
             ->add('color', Field::COLOR, [
                 'label' => 'Colore',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
