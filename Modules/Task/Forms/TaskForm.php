@@ -19,7 +19,7 @@ class TaskForm extends Form
     {
 
         $customers = Customer::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
-
+        $agenti = User::orderBy('last_name')->role('agente')->get()->pluck('full_name', 'id')->toArray();
         $leads = ['new_lead' => 'Aggiungi lead'];
         $leads += Lead::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
 
@@ -90,16 +90,17 @@ class TaskForm extends Form
 
         }
 
-        $this->add('assigned_to_id', 'entity', [
+        $this->add('assigned_to_id', 'choice', [
             'label' => 'Con',
-            'class' => User::class,
             'rules' => 'required',
+            'choices' => $agenti,
             'property' => 'first_name',
-            'empty_value' => '-- Seleziona --',
+            'empty_value' => !auth()->user()->hasRole('agente') ? '-- Seleziona --' : null,
             'attr' => [
                 'class' => 'form-control',
                 'autocomplete' => 'off'
-            ]
+            ],
+            'default_value' => auth()->user()->hasRole('agente') ? auth()->user()->id : null
         ])
             ->add('event_date', 'agenda', [
                 'label' => 'Quando',
