@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="main-logo">
-                        <a href="index.html">
+                        <a href="/">
                             <img src="/images/{{config('crm.small_logo')}}" alt="main-logo" width="50">
                         </a>
                     </div>
