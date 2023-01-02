@@ -38,54 +38,54 @@
             <b class="d-block">{{$event->description}}</b>
         </div>
         <div class="col-md-12">
-            <h5>Anagrafica Cliente</h5>
+            <h5>Anagrafica Lead</h5>
             <hr>
         </div>
 
-        @if($event->model->customer)
+        @if($event->model->lead)
             <div class="col-md-6 mb-2">
                 <label class="d-block">Nome</label>
-                <b class="d-block">{{$event->model->customer->first_name}}</b>
+                <b class="d-block">{{$event->model->lead->first_name}}</b>
             </div>
             <div class="col-md-6 mb-2">
                 <label class="d-block">Cognome</label>
-                <b class="d-block">{{$event->model->customer->last_name}}</b>
+                <b class="d-block">{{$event->model->lead->last_name}}</b>
             </div>
-            @if($event->model->customer->company_name)
+            @if($event->model->lead->company_name)
                 <div class="col-md-6 mb-2">
                     <label class="d-block">Ragione Sociale</label>
-                    <b class="d-block">{{$event->model->customer->company_name}}</b>
+                    <b class="d-block">{{$event->model->lead->company_name}}</b>
                 </div>
             @endif
-            @if($event->model->customer->vat_code)
+            @if($event->model->lead->vat_code)
                 <div class="col-md-6 mb-2">
                     <label class="d-block">Partita IVA</label>
-                    <b class="d-block">{{$event->model->customer->vat_code}}</b>
+                    <b class="d-block">{{$event->model->lead->vat_code}}</b>
                 </div>
             @endif
             <div class="col-md-6 mb-2">
                 <label class="d-block">Telefono</label>
-                <b class="d-block">{{$event->model->customer->phone}}</b>
+                <b class="d-block">{{$event->model->lead->phone}}</b>
             </div>
             <div class="col-md-6 mb-2">
                 <label class="d-block">Email</label>
-                <b class="d-block">{{$event->model->customer->email}}</b>
+                <b class="d-block">{{$event->model->lead->email}}</b>
             </div>
             <div class="col-md-6 mb-2">
                 <label class="d-block">Indirizzo</label>
-                <b class="d-block">{{$event->model->customer->address}}</b>
+                <b class="d-block">{{$event->model->lead->address}}</b>
             </div>
             <div class="col-md-6 mb-2">
                 <label class="d-block">CAP</label>
-                <b class="d-block">{{$event->model->customer->zip_code}}</b>
+                <b class="d-block">{{$event->model->lead->zip_code}}</b>
             </div>
             <div class="col-md-6 mb-2">
                 <label class="d-block">Comune</label>
-                <b class="d-block">{{$event->model->customer->town}}</b>
+                <b class="d-block">{{$event->model->lead->town}}</b>
             </div>
             <div class="col-md-6 mb-2">
                 <label class="d-block">Città</label>
-                <b class="d-block">{{$event->model->customer->city}}</b>
+                <b class="d-block">{{$event->model->lead->city}}</b>
             </div>
 
         @endif

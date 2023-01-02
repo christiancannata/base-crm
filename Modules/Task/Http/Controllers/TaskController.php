@@ -21,6 +21,8 @@ class TaskController extends BaseController
     public $entityClass = Task::class;
     public $formClass = TaskForm::class;
 
+    public $showView = 'task::show';
+
 
     /**
      * Store a newly created resource in storage.
@@ -81,6 +83,8 @@ class TaskController extends BaseController
         $event->user_id = $model->assigned_to_id;
         $event->save();
 
+
+        //@todo: invia email all'agente
     }
 
     public function afterDestroy($entity)
@@ -90,6 +94,8 @@ class TaskController extends BaseController
 
         foreach ($events as $event) {
             // l'evento è stato annullato
+            //@todo: invia email all'agente
+
         }
     }
 }
