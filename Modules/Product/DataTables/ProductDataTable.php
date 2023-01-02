@@ -71,7 +71,7 @@ class ProductDataTable extends BaseDataTable
         return [
             Column::make('name'),
             Column::make('price'),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

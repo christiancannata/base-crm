@@ -34,7 +34,7 @@ class TaskStatusesDataTable extends BaseDataTable
     {
         return [
             Column::make('name'),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

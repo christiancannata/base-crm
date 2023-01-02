@@ -119,7 +119,7 @@ class ContractsDataTable extends BaseDataTable
                 'data' => 'referent_full_name',
                 'title' => 'Referente'
             ]),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center'),

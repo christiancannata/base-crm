@@ -68,7 +68,7 @@ class CompaniesDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

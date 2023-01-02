@@ -46,7 +46,7 @@ class CustomViewsDataTable extends BaseDataTable
                     'title' => 'Nome'
                 ]
             ),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

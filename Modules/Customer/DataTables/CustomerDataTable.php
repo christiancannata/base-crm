@@ -96,7 +96,7 @@ class CustomerDataTable extends BaseDataTable
                 'data' => 'phone',
                 'title' => 'Telefono'
             ]),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

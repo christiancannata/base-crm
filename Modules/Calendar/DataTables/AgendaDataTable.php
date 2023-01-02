@@ -94,7 +94,7 @@ class AgendaDataTable extends BaseDataTable
                 'data' => 'user_full_name',
                 'title' => 'Agente'
             ]),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

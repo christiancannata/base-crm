@@ -66,7 +66,7 @@ class UsersDataTable extends BaseDataTable
             Column::computed('roles')
                 ->title('Ruoli')
                 ->addClass('text-center'),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center'),

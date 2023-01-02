@@ -76,7 +76,7 @@ class ContractsCategoryDataTable extends BaseDataTable
     {
         return [
             Column::make('name'),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)

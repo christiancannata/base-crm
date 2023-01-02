@@ -70,7 +70,7 @@ class ProductCategoryDataTable extends DataTable
     {
         return [
             Column::make('name'),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

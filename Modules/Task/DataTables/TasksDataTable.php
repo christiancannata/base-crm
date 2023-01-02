@@ -77,7 +77,7 @@ class TasksDataTable extends BaseDataTable
                 'title' => 'Stato',
                 'data' => 'status.name'
             ]),
-            Column::computed('action')
+            Column::computed('action','')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')
