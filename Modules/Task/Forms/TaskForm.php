@@ -22,6 +22,10 @@ class TaskForm extends Form
         $agenti = User::orderBy('last_name')->role('agente')->get()->pluck('full_name', 'id')->toArray();
         $leads = ['new_lead' => 'Aggiungi lead'];
         $leads += Lead::orderBy('last_name')->get()->pluck('full_name', 'id')->toArray();
+        $statuses = TaskStatus::when(!auth()->user()->hasAnyRole(['admin', 'superadmin']), function ($q) {
+            $q->where('system_name', 'TO_DO');
+        })->get()->pluck('name', 'id')->toArray();
+
 
         if ($this->getModel()) {
             $this->add('_method', Field::HIDDEN, [
@@ -106,12 +110,12 @@ class TaskForm extends Form
                 'label' => 'Quando',
                 'rules' => 'required'
             ])
-            ->add('status_id', 'entity', [
+            ->add('status_id', 'choice', [
                 'label' => 'Stato',
-                'class' => TaskStatus::class,
+                'choices' => $statuses,
                 'property' => 'name',
                 'rules' => 'required',
-                'empty_value' => '-- Seleziona --',
+                'empty_value' => !auth()->user()->hasRole('agente') ? '-- Seleziona --' : null,
 
                 'attr' => [
                     'autocomplete' => 'off',
