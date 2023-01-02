@@ -117,25 +117,27 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.0/dist/index.umd.min.js"></script>
     <script>
-        const DateTime = easepick.DateTime;
-
-        const picker = new easepick.create({
-            element: document.getElementsByClassName('datepicker')[0],
-            css: [
-                'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.0/dist/index.css',
-            ],
-            plugins: ['RangePlugin'],
-            format: 'DD-MM-YYYY',
-            RangePlugin: {
-                tooltipNumber(num) {
-                    return num - 1;
-                },
-                locale: {
-                    one: 'giorno',
-                    other: 'giorni',
+        if (document.getElementsByClassName('datepicker')[0]) {
+            const DateTime = easepick.DateTime;
+            const picker = new easepick.create({
+                element: document.getElementsByClassName('datepicker')[0],
+                css: [
+                    'https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.0/dist/index.css',
+                ],
+                plugins: ['RangePlugin'],
+                format: 'DD-MM-YYYY',
+                RangePlugin: {
+                    tooltipNumber(num) {
+                        return num - 1;
+                    },
+                    locale: {
+                        one: 'giorno',
+                        other: 'giorni',
+                    }
                 }
-            }
-        });
+            });
+        }
+
 
         window.originalSubmitUrl = null
 
@@ -154,6 +156,7 @@
 
             })
             $("#searchForm").submit(function (e) {
+
                 e.preventDefault()
 
                 if (!window.originalSubmitUrl) {
