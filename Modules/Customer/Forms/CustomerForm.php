@@ -9,7 +9,7 @@ class CustomerForm extends Form
 {
     public function buildForm()
     {
-
+        $options = $this->getFormOptions();
 
         if ($this->getModel()) {
             $this->add('_method', Field::HIDDEN, [
@@ -91,7 +91,9 @@ class CustomerForm extends Form
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3'],
                 'choices' => config('crm.payment_methods')
 
-            ])
-            ->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'wrapper' => ['class' => 'form-group col-md-12'], 'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
+            ]);
+        if (!isset($options['noSubmit'])) {
+            $this->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'wrapper' => ['class' => 'form-group col-md-12'], 'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
+        }
     }
 }
