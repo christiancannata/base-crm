@@ -1,0 +1,11 @@
+{
+    "name": "Commessa",
+    "alias": "commessa",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Commessa\\Providers\\CommessaServiceProvider"
+    ],
+    "files": []
+}

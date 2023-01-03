@@ -11,5 +11,6 @@
     "Setting": true,
     "Attachment": true,
     "Calendar": true,
-    "Lead": true
+    "Lead": true,
+    "Commessa": true
 }
