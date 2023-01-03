@@ -15,33 +15,47 @@ return [
             'route' => 'dashboard',
             'submenu' => []
         ],
-        'tasks' => [
-            'icon' => 'calendar.svg',
-            'text' => 'Appuntamenti',
-            'route' => null,
-            'roles' => ['admin', 'superadmin', 'agente', 'telemarketing'],
-            'submenu' => [
-                [
-                    'text' => 'Tutti gli appuntamenti',
-                    'route' => 'task.index'
-                ],
-                [
-                    'text' => 'Gestione Agenda',
-                    'route' => 'agenda.index',
-                    'roles' => ['admin', 'superadmin', 'agente']
-                ],
-                [
-                    'text' => 'Categorie',
-                    'route' => 'taskcategory.index',
-                    'roles' => ['admin', 'superadmin']
-                ],
-                [
-                    'text' => 'Gestione Stati',
-                    'route' => 'taskstatus.index',
-                    'roles' => ['admin', 'superadmin']
+        /* 'tasks' => [
+             'icon' => 'calendar.svg',
+             'text' => 'Appuntamenti',
+             'route' => null,
+             'roles' => ['admin', 'superadmin', 'agente', 'telemarketing'],
+             'submenu' => [
+                 [
+                     'text' => 'Tutti gli appuntamenti',
+                     'route' => 'task.index'
+                 ],
+                 [
+                     'text' => 'Gestione Agenda',
+                     'route' => 'agenda.index',
+                     'roles' => ['admin', 'superadmin', 'agente']
+                 ],
+                 [
+                     'text' => 'Categorie',
+                     'route' => 'taskcategory.index',
+                     'roles' => ['admin', 'superadmin']
+                 ],
+                 [
+                     'text' => 'Gestione Stati',
+                     'route' => 'taskstatus.index',
+                     'roles' => ['admin', 'superadmin']
 
-                ]
-            ]
+                 ]
+             ]
+         ],*/
+        'commesse' => [
+            'icon' => 'user-octagon.svg',
+            'text' => 'Commesse',
+            'roles' => ['admin', 'superadmin', 'agente'],
+            'route' => 'commessa.index',
+            'submenu' => []
+        ],
+        'workplaces' => [
+            'icon' => 'user-octagon.svg',
+            'text' => 'Cantieri',
+            'roles' => ['admin', 'superadmin', 'agente'],
+            'route' => 'workplace.index',
+            'submenu' => []
         ],
         'customers' => [
             'icon' => 'user-octagon.svg',
@@ -50,63 +64,63 @@ return [
             'route' => 'customer.index',
             'submenu' => []
         ],
-        'leads' => [
-            'icon' => 'user-octagon.svg',
-            'text' => 'Leads',
-            'route' => 'lead.index',
-            'submenu' => []
-        ],
-        'contracts' => [
-            'icon' => 'book.svg',
-            'text' => 'Contratti',
-            'route' => null,
-            'roles' => ['admin', 'superadmin', 'agente'],
-            'submenu' => [
-                [
-                    'text' => 'Tutti i contratti',
-                    'route' => 'contract.index'
-                ],
-                [
-                    'text' => 'Gestione Stati',
-                    'route' => 'contractstatus.index',
-                    'roles' => ['admin', 'superadmin']
+        /* 'leads' => [
+             'icon' => 'user-octagon.svg',
+             'text' => 'Leads',
+             'route' => 'lead.index',
+             'submenu' => []
+         ],
+         'contracts' => [
+             'icon' => 'book.svg',
+             'text' => 'Contratti',
+             'route' => null,
+             'roles' => ['admin', 'superadmin', 'agente'],
+             'submenu' => [
+                 [
+                     'text' => 'Tutti i contratti',
+                     'route' => 'contract.index'
+                 ],
+                 [
+                     'text' => 'Gestione Stati',
+                     'route' => 'contractstatus.index',
+                     'roles' => ['admin', 'superadmin']
 
-                ],
-                [
-                    'text' => 'Categorie',
-                    'route' => 'contractcategory.index',
-                    'roles' => ['admin', 'superadmin']
+                 ],
+                 [
+                     'text' => 'Categorie',
+                     'route' => 'contractcategory.index',
+                     'roles' => ['admin', 'superadmin']
 
 
-                ]
-            ]
-        ],
-        'products' => [
-            'icon' => 'layer.svg',
-            'text' => 'Prodotti',
-            'route' => null,
-            'roles' => ['admin', 'superadmin'],
-            'submenu' => [
-                [
-                    'text' => 'Tutti i prodotti',
-                    'route' => 'product.index',
-                    'roles' => ['admin', 'superadmin']
-                ],
-                [
-                    'text' => 'Categorie',
-                    'route' => 'productcategory.index',
-                    'roles' => ['admin', 'superadmin']
-                ]
-            ]
-        ],
+                 ]
+             ]
+         ],
+         'products' => [
+             'icon' => 'layer.svg',
+             'text' => 'Prodotti',
+             'route' => null,
+             'roles' => ['admin', 'superadmin'],
+             'submenu' => [
+                 [
+                     'text' => 'Tutti i prodotti',
+                     'route' => 'product.index',
+                     'roles' => ['admin', 'superadmin']
+                 ],
+                 [
+                     'text' => 'Categorie',
+                     'route' => 'productcategory.index',
+                     'roles' => ['admin', 'superadmin']
+                 ]
+             ]
+         ],*/
         'users' => [
             'icon' => 'profile-2user.svg',
-            'text' => 'Utenti',
+            'text' => 'Anagrafiche',
             'route' => null,
             'roles' => ['admin', 'superadmin'],
             'submenu' => [
                 [
-                    'text' => 'Tutti gli utenti',
+                    'text' => 'Tutti le anagrafiche',
                     'route' => 'user.index'
                 ],
                 [

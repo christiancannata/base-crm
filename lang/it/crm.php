@@ -18,6 +18,14 @@ return [
             'singular_name' => 'cliente',
             'plural_name' => 'clienti'
         ],
+        'workplace' => [
+            'singular_name' => 'cantiere',
+            'plural_name' => 'cantieri'
+        ],
+        'commessa' => [
+            'singular_name' => 'commessa',
+            'plural_name' => 'commesse'
+        ],
         'lead' => [
             'singular_name' => 'lead',
             'plural_name' => 'leads'

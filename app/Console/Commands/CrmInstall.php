@@ -44,7 +44,7 @@ class CrmInstall extends Command
 
         $user = new User();
         $user->email = config('crm.superadmin.email');
-        $user->password = Hash::make(config('crm.superadmin.password'));
+        $user->password = config('crm.superadmin.password');
         $user->save();
 
         $user->assignRole('superadmin');

@@ -12,5 +12,6 @@
     "Attachment": true,
     "Calendar": true,
     "Lead": true,
-    "Commessa": true
+    "Commessa": true,
+    "Workplace": true
 }

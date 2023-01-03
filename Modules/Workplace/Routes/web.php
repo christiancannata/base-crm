@@ -12,7 +12,7 @@
 */
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('commessa/{commessa}/confirm-delete', [\Modules\Commessa\Http\Controllers\CommessaController::class, 'confirmDelete'])->name('commessa.confirm_delete');
-    Route::resource('commessa', \Modules\Commessa\Http\Controllers\CommessaController::class);
+    Route::get('workplace/{workplace}/confirm-delete', [\Modules\Workplace\Http\Controllers\WorkplaceController::class, 'confirmDelete'])->name('workplace.confirm_delete');
+    Route::resource('workplace', \Modules\Workplace\Http\Controllers\WorkplaceController::class);
 
 });

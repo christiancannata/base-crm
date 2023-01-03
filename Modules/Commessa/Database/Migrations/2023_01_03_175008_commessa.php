@@ -40,7 +40,7 @@ return new class extends Migration {
             $table->text('altre_info')->nullable();
             $table->string('link_out')->nullable();
             $table->text('offerta_note')->nullable();
-            $table->string('status_prescritto')->nullable();
+            $table->string('status_descrittivo')->nullable();
 
             $table->double('globale_qe_iva')->nullable();
             $table->double('cme_edile')->nullable();

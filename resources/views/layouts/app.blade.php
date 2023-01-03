@@ -9,7 +9,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.svg">
     <!-- Title -->
-    <title>CRM Vitrano & Co</title>
+    <title>AEDES</title>
 
     <!-- Jquery Min JS -->
     <script src="/assets/js/jquery.min.js"></script>
