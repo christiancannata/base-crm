@@ -13,6 +13,8 @@
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::patch('task/{task}/update-call', [\Modules\Task\Http\Controllers\TaskController::class, 'updatePopupCall'])->name('task.update_popup_call');
+
     Route::get('task/{task}/confirm-delete', [\Modules\Task\Http\Controllers\TaskController::class, 'confirmDelete'])->name('task.confirm_delete');
     Route::resource('task', \Modules\Task\Http\Controllers\TaskController::class);
 

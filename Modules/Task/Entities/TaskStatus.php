@@ -7,16 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaskStatus extends Model
 {
-    use HasFactory;
-
     protected $table = 'task_statuses';
 
     protected $guarded = [
         '*'
     ];
 
-    protected static function newFactory()
+    public function parent()
     {
-        return \Modules\Task\Database\factories\TaskStatusFactory::new();
+        return $this->belongsTo(TaskStatus::class);
     }
 }

@@ -19,9 +19,10 @@
                         </select>
                     </div>
 
-                    <ul class="performance-date-list" id="latestEvents">
+                    <div id="latestEvents">
 
-                    </ul>
+                    </div>
+
                 </div>
             </div>
         </div>

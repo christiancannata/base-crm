@@ -28,7 +28,21 @@ class ContractController extends BaseController
         $params = $form->getFieldValues();
 
         if (isset($params['new_customer'])) {
-            $customer = new Customer();
+
+            $customer = null;
+
+            if (!empty($params['new_customer']['fiscal_code'])) {
+                $customer = Customer::where('fiscal_code', $params['new_customer']['fiscal_code'])->first();
+
+                if (!$customer && !empty($params['new_customer']['vat_code'])) {
+                    $customer = Customer::where('vat_code', $params['new_customer']['vat_code'])->first();
+                }
+            }
+
+            if (!$customer) {
+                $customer = new Customer();
+            }
+
             $customer->fill($params['new_customer']);
             $customer->save();
             $params['customer_id'] = $customer->id;

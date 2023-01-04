@@ -29,7 +29,6 @@ class TaskForm extends Form
             $q->where('system_name', 'TO_DO');
         })->get()->pluck('name', 'id')->toArray();
 
-
         if ($this->getModel()) {
             $this->add('_method', Field::HIDDEN, [
                 'value' => 'PATCH'
@@ -92,11 +91,12 @@ class TaskForm extends Form
             $this->add('new_lead', 'form', [
                 'class' => LeadForm::class,
                 'formOptions' => ['noSubmit' => true],
-                'wrapper' => ['class' => 'row lead-form', 'style' => 'display:none']
+                'label' => 'Dati Contatto',
+                'label_attr' => ['class' => 'big-label'],
+                'wrapper' => ['class' => 'row lead-form', 'style' => 'display:none'],
             ]);
 
         }
-
         $this->add('assigned_to_id', 'choice', [
             'label' => 'Con',
             'rules' => 'required',
@@ -118,8 +118,7 @@ class TaskForm extends Form
                 'choices' => $statuses,
                 'property' => 'name',
                 'rules' => 'required',
-                'empty_value' => !auth()->user()->hasRole('agente') ? '-- Seleziona --' : null,
-
+                'empty_value' => !auth()->user()->hasAnyRole(['admin', 'superadmin']) ? null : '-- Seleziona --',
                 'attr' => [
                     'autocomplete' => 'off',
                     'class' => 'select2 form-control'

@@ -34,10 +34,10 @@ class ContractForm extends Form
             ->add('preselect_lead_id', 'choice', [
                 'label' => 'Importa da Lead',
                 'empty_value' => '-- Seleziona --',
-                'rules' => 'required',
                 'attr' => [
                     'class' => 'select2 form-control'
                 ],
+                'wrapper' => ['class' => 'col-md-12 form-group mb-3'],
                 'choices' => $leads
             ])
             ->add('new_customer', 'form', [
@@ -105,7 +105,6 @@ class ContractForm extends Form
             ]);
         }
 
-
         $this->add('originale_sede', 'checkbox', [
             'label' => 'Originale in sede',
             'value' => 1,
@@ -142,6 +141,6 @@ class ContractForm extends Form
             }
         }
 
-        $this->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'attr' => ['class' => 'btn btn-success mb-4 pull-left']]);
+        $this->add('submit', 'submit', ['label' => $this->getModel() ? 'Aggiorna' : 'Aggiungi', 'attr' => ['class' => 'btn btn-success mb-4 pull-left'], 'wrapper' => ['class' => 'col-md-12 form-group mb-3'],]);
     }
 }

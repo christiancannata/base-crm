@@ -13,6 +13,17 @@ class Task extends Model
 {
     use HasFactory;
 
+    // this is a recommended way to declare event handlers
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($task) { // before delete() method call this
+            $task->events()->delete();
+        });
+    }
+
+
     protected $guarded = [
         'id'
     ];
@@ -20,6 +31,11 @@ class Task extends Model
     public $dates = [
         'event_date'
     ];
+
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = nl2br($value);
+    }
 
     public function category()
     {
@@ -56,5 +72,9 @@ class Task extends Model
         return $this->morphMany(Event::class, 'model');
     }
 
+    public function closeReason()
+    {
+        return $this->belongsTo(TaskStatus::class, 'close_reason_id');
+    }
 
 }

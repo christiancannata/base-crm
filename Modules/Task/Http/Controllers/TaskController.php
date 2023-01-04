@@ -3,6 +3,7 @@
 namespace Modules\Task\Http\Controllers;
 
 use App\Http\Controllers\BaseController;
+use App\Notifications\TaskAssigned;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Modules\Calendar\Entities\Event;
 use Modules\Lead\Entities\Lead;
 use Modules\Task\DataTables\TasksDataTable;
 use Modules\Task\Entities\Task;
+use Modules\Task\Entities\TaskStatus;
 use Modules\Task\Forms\TaskForm;
 
 class TaskController extends BaseController
@@ -83,7 +85,7 @@ class TaskController extends BaseController
         $event->user_id = $model->assigned_to_id;
         $event->save();
 
-
+        $event->user->notify(new TaskAssigned($model));
         //@todo: invia email all'agente
     }
 
@@ -97,5 +99,24 @@ class TaskController extends BaseController
             //@todo: invia email all'agente
 
         }
+    }
+
+    public function updatePopupCall(Task $task)
+    {
+        $status = TaskStatus::where('system_name', request()->get('status_system_name'))->first();
+
+        if (!$status) {
+            flash()->error('Nessuno stato trovato con System Name = ' . request()->get('status_system_name'));
+            return back();
+        }
+
+        $task->status_id = $status->id;
+        $task->close_reason_id = !empty(request()->get('close_reason_id')) ? request()->get('close_reason_id') : null;
+        $task->notes = request()->get('notes');
+        $task->save();
+
+        flash()->success('Chiamata esitata correttamente.');
+
+        return back();
     }
 }

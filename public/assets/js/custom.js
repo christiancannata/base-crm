@@ -25,6 +25,18 @@
         if (scrolled < 300) $('.go-top').removeClass('active');
     });
 
+    $(document).on('change', '.status_system_name', function () {
+        if ($(this).val() == 'DONE') {
+            $("#reasonDiv").show()
+            $(".reason_id").attr('required', 'required')
+        } else {
+            $("#reasonDiv").hide()
+            $(".reason_id").val(null)
+            $(".reason_id").removeAttr('required')
+        }
+    })
+
+
     // Click Event JS
     $('.go-top').on('click', function () {
         $("html, body").animate({scrollTop: "0"}, 50);

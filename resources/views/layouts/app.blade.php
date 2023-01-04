@@ -728,7 +728,14 @@
         integrity="sha512-Oh8TxU+uqKYsmHku33fGrSDbZyN+2U3w/MJSWlnCnpHVzIJSczqx6XxAYjS2zAXCfnH1+YXwwD6BnagxPizYAA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<style>
+    @foreach(\Modules\Task\Entities\TaskStatus::whereNotNull('color')->get() as $status)
+            .performance-date-list li.status-{{$status->id}}::before {
+        background-color: {{$status->color}} !important;
+    }
+    @endforeach
 
+</style>
 
 </body>
 </html>

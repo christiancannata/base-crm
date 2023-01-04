@@ -89,14 +89,10 @@ class CustomerDataTable extends BaseDataTable
             ]),
             Column::make('email'),
             Column::make([
-                'data' => 'customer_type',
-                'title' => 'Tipo Cliente'
-            ]),
-            Column::make([
                 'data' => 'phone',
                 'title' => 'Telefono'
             ]),
-            Column::computed('action','')
+            Column::computed('action', '')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

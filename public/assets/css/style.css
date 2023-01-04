@@ -1995,15 +1995,10 @@ Performance Date Style
 .performance-date-list li p {
   font-size: 14px;
 }
-.performance-date-list li:nth-child(2)::before {
-  background-color: #4FCB8D;
+.performance-date-list li::before {
+  background-color: #b0b0b0;
 }
-.performance-date-list li:nth-child(3)::before {
-  background-color: #5C31D6;
-}
-.performance-date-list li:nth-child(4)::before {
-  background-color: #FE5957;
-}
+
 
 .apexcharts-toolbar {
   display: none !important;
