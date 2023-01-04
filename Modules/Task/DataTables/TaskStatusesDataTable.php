@@ -4,7 +4,9 @@ namespace Modules\Task\DataTables;
 
 use App\Http\DataTables\BaseDataTable;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Task\Entities\TaskStatus;
+use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Column;
 
 class TaskStatusesDataTable extends BaseDataTable
@@ -12,6 +14,18 @@ class TaskStatusesDataTable extends BaseDataTable
 
     public $route = 'taskstatus';
 
+
+    public function dataTable(QueryBuilder $query): EloquentDataTable
+    {
+        return (new EloquentDataTable($query))
+            ->addColumn('action', function (Model $model) {
+                return view('datatables.action', ['entity' => $model, 'route' => $this->route]);
+            })
+            ->addColumn('parent_name', function ($status) {
+                return $status->parent ? $status->parent->name : '-';
+            })
+            ->setRowId('id');
+    }
 
     /**
      * Get query source of dataTable.
@@ -21,7 +35,7 @@ class TaskStatusesDataTable extends BaseDataTable
      */
     public function query(TaskStatus $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('parent');
     }
 
 
@@ -33,8 +47,15 @@ class TaskStatusesDataTable extends BaseDataTable
     public function getColumns(): array
     {
         return [
-            Column::make('name'),
-            Column::computed('action','')
+            Column::make([
+                'data' => 'name',
+                'title' => 'Nome'
+            ]),
+            Column::make([
+                'data' => 'parent_name',
+                'title' => 'Padre'
+            ]),
+            Column::computed('action', '')
                 ->exportable(false)
                 ->printable(false)
                 ->addClass('text-center')

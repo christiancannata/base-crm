@@ -10,7 +10,7 @@ class TaskStatus extends Model
     protected $table = 'task_statuses';
 
     protected $guarded = [
-        '*'
+        'id'
     ];
 
     public function parent()

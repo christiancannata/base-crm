@@ -4,6 +4,7 @@ namespace Modules\Task\Forms;
 
 use Kris\LaravelFormBuilder\Field;
 use Kris\LaravelFormBuilder\Form;
+use Modules\Task\Entities\TaskStatus;
 
 class TaskStatusForm extends Form
 {
@@ -30,7 +31,12 @@ class TaskStatusForm extends Form
                 'label' => 'Colore',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
-            ->add('parent', 'entity', [
+            ->add('parent_id', 'choice', [
+                'attr' => [
+                    'class' => 'select2 form-control',
+                    'autocomplete' => 'off'
+                ],
+                'choices' => [null => 'Nessun padre'] + TaskStatus::whereNull('parent_id')->pluck('name', 'id')->toArray(),
                 'label' => 'Stato Padre',
                 'wrapper' => ['class' => 'form-group col-md-6 mb-3']
             ])
